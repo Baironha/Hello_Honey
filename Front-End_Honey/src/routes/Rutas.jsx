@@ -13,7 +13,6 @@ function Routing() {
 
                         {/* Paginas de usuarios */}
                         <Route path="/" element={<Home_Page/>}/>{/* HOMEPAGE */}
-                    
                 </Routes>
             </Router>
         </div>

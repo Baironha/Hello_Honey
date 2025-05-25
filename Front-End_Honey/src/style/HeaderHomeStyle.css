@@ -1,7 +1,7 @@
 #ContHeaderHomepage {
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(ellipse at top left, #0b1e2e, #000000);
+  background: linear-gradient(to bottom, #020111, #040014);
   display: flex;
   align-items: center;
   justify-content: center;
