@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -49,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'gestion_hospitalaria.urls'
+ROOT_URLCONF = 'Back_End_Honey.urls'
 
 TEMPLATES = [
     {
@@ -66,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'gestion_hospitalaria.wsgi.application'
+WSGI_APPLICATION = 'Back_End_Honey.wsgi.application'
 
 
 # Database
@@ -75,7 +77,7 @@ WSGI_APPLICATION = 'gestion_hospitalaria.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'gestion_hospitalaria',
+        'NAME':'hello_honey',
         'USER': 'root',
         'PASSWORD':'1234',
         'HOST':'127.0.0.1',

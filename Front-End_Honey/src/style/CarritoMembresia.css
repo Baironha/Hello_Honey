@@ -1,0 +1,65 @@
+.carrito-container {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.carrito-container.oscuro {
+  background-color: #111;
+  color: #fff;
+}
+
+.carrito-container.claro {
+  background-color: #fff;
+  color: #000;
+}
+
+.cambiar-modo {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.carrito-container.oscuro .cambiar-modo {
+  background-color: #000;
+  color: #fff;
+}
+
+.logo-membresia {
+  width: 100px;
+  border-radius: 8px;
+}
+
+.input-descuento {
+  padding: 5px;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.botones-pago {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.botones-pago button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #0a3d62;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botones-pago button:hover {
+  background-color: #145a91;
+}
