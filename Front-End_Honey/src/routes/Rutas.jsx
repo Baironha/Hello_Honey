@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home_Page from '../pages/Home_Page';
 import Carrito_Compras_Page from '../pages/Carrito_Compras_Page';
 import AddMembreStandard_page from '../pages/AddMembreStandard_page'
+import AddMembresiaPlus from '../components/AddMembresiaPlus';
+import AddMembresiaVip from '../components/AddMembresiaVip';
 
 function Routing() {
 
@@ -14,8 +16,11 @@ function Routing() {
 
                         {/* Paginas de usuarios */}
                         <Route path="/" element={<Home_Page/>}/>{/* HOMEPAGE */}
-                        <Route path="/Carrito" element={<Carrito_Compras_Page/>}/>{/* HOMEPAGE */}
-                        <Route path="/AddStandard" element={<AddMembreStandard_page/>}/>{/* HOMEPAGE */}
+                        <Route path="/Carrito" element={<Carrito_Compras_Page/>}/>{/* Carrito*/}
+
+                        <Route path="/AddStandard" element={<AddMembreStandard_page/>}/>{/*MEMBRESIA*/}
+                        <Route path="/Addplus" element={<AddMembresiaPlus/>}/>{/* HOMEPAGE */}
+                        <Route path="/AddVip" element={<AddMembresiaVip/>}/>{/* HOMEPAGE */}
                 </Routes>
             </Router>
         </div>
