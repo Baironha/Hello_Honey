@@ -1,0 +1,66 @@
+/* ==== TEXTO CENTRAL CON DEGRADADO ARREGLADO ==== */
+.TextosBody1 {
+    background-color: #000000;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.6;
+  margin: 0; /* elimina cualquier espacio que pueda causar líneas */
+  border: none;
+}
+
+/* ==== CONTENEDOR DE CARDS SIN LÍNEAS VISIBLES ==== */
+.HoneyCardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin: 0; /* elimina espacios superiores */
+  padding: 40px 20px;
+  background-color: #000000;
+  border: none;
+}
+
+/* ==== CARDS ==== */
+.HoneyCard {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  color: white;
+  padding: 24px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(1, 11, 97, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  font-family: Arial, sans-serif;
+}
+
+.HoneyCard:hover {
+  transform: scale(1.05);
+  background-color: #000000; /* azul oscuro al pasar el mouse */
+  box-shadow: 0 0 18px rgba(4, 8, 245, 0.4);
+}
+
+/* ==== TÍTULOS Y TEXTO ==== */
+.HoneyCard h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #807f86;
+}
+
+.HoneyCard p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+
+.HoneyCardImg {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 12px;
+}
+

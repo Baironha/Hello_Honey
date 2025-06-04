@@ -1,0 +1,67 @@
+#ContHoneyAsis {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.T1HoneyAsisten {
+  font-size: 2rem;
+  color: #00bfff;
+  margin-bottom: 20px;
+  animation: floatTitle 3s ease-in-out infinite;
+}
+
+.TextoHoneyAsistente {
+  font-size: 1.1rem;
+  color: #c0c0c0;
+  line-height: 1.6;
+  margin: 10px auto;
+  max-width: 800px;
+}
+
+.Gif_Boton_Container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bounceIn 1.2s ease-in-out;
+}
+
+.Gif_Boton_Asistente {
+  width: 160px;
+  height: auto;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 15px #00bfff44;
+}
+
+.Gif_Boton_Asistente:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00bfff88;
+}
+
+.GifTexto {
+  margin-top: 10px;
+  color: #66ccff;
+  font-weight: bold;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatTitle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}

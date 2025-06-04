@@ -1,0 +1,100 @@
+/* Fondo general oscuro */
+.standard-container {
+  background-color: #000;
+  color: #f0f0f0;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 1s ease-in-out;
+  min-height: 100vh;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo */
+.logo-standard {
+  width: 100px;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Imagen grande */
+.imagen-honey {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.imagen-honey:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+}
+
+/* Título */
+.titulo {
+  font-size: 2rem;
+  color: #00bfff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #005c99;
+}
+
+/* Lista de beneficios */
+.beneficios {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.beneficios li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  position: relative;
+  padding-left: 20px;
+}
+
+.beneficios li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: #00bfff;
+}
+
+/* Descripción */
+.descripcion {
+  margin: 30px 0;
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* Botón interactivo */
+.boton-adquirir {
+  background-color: #00bfff;
+  color: #000;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-adquirir:hover {
+  background-color: #0077aa;
+  transform: scale(1.05);
+  color: #fff;
+}
+
+/* Pulsación del logo */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.95; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
