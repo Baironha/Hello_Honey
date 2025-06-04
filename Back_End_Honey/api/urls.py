@@ -4,7 +4,7 @@ from .views import *
 urlpatterns =[
 
     #END-POINTS PRINCIPALES
-
+    path('auth_user/', User_ListCreateView.as_view()),
     path('pacientes/', Usuarios_ListCreateView.as_view(),),
     path('pacientes/<int:pk>', Usuarios_DetailView.as_view(),),
 

@@ -1,12 +1,42 @@
 /* Fondo general oscuro */
+.padre-container {
+  background-color: #030236;
+  border-radius: 10px;
+  width: 100%;
+  height: 100vh; /* ✅ Esto es clave */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.padre-container:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor centrado */
 .standard-container {
-  background-color: #000;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 900px;
+  max-height: 900px;
+  width: 100%;
+  height: calc(100% - 20px);
+  background-color: #022150;
   color: #f0f0f0;
-  padding: 40px 20px;
+  padding: 10px;
   text-align: center;
   font-family: 'Segoe UI', sans-serif;
   animation: fadeIn 1s ease-in-out;
-  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 /* Animación de entrada */
@@ -17,45 +47,47 @@
 
 /* Logo */
 .logo-standard {
-  width: 100px;
-  margin-bottom: 20px;
+  width: 80px;
+  margin-bottom: 12px;
   animation: pulse 2s infinite ease-in-out;
 }
 
 /* Imagen grande */
 .imagen-honey {
-  width: 500px;
-  height: 500px;
+  width: 140px;
+  height: 140px;
   object-fit: cover;
   border-radius: 12px;
-  margin: 20px 0;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  margin: 10px 0;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
   transition: transform 0.3s ease;
 }
 
 .imagen-honey:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
 }
 
 /* Título */
 .titulo {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #00bfff;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px #005c99;
+  margin: 10px 0;
+  text-shadow: 0 0 6px #005c99;
 }
 
 /* Lista de beneficios */
 .beneficios {
   list-style: none;
   padding: 0;
-  margin: 20px 0;
+  margin: 10px 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .beneficios li {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
   position: relative;
   padding-left: 20px;
 }
@@ -69,10 +101,13 @@
 
 /* Descripción */
 .descripcion {
-  margin: 30px 0;
-  font-size: 1rem;
+  margin: 15px 0;
+  font-size: 0.95rem;
   color: #ccc;
-  line-height: 1.6;
+  line-height: 1.4;
+  max-height: 180px;
+  overflow: auto;
+  padding: 0 5px;
 }
 
 /* Botón interactivo */
@@ -80,11 +115,12 @@
   background-color: #00bfff;
   color: #000;
   border: none;
-  padding: 15px 30px;
-  font-size: 1rem;
-  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: auto;
 }
 
 .boton-adquirir:hover {

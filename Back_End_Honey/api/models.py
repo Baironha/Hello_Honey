@@ -16,7 +16,7 @@ class Membresias (models.Model):
 class Usuarios (models.Model):
 
     #nombre              = models.CharField(max_length=50, null=False)
-    edad                 = models.IntegerField(max_length=10, null=False,validators=[MinValueValidator(0), MaxValueValidator(190)])
+    edad                 = models.IntegerField(null=False,validators=[MinValueValidator(0), MaxValueValidator(190)])
     #correo              = models.EmailField(max_length=60, null=False)
     direccion            = models.CharField(max_length=100, blank=True)
     user                 = models.ForeignKey(User, on_delete = models.CASCADE, related_name='Usuarios')
@@ -39,13 +39,6 @@ class ventas (models.Model):
 
 
 
-""" class Administradores (models.Model):
-    nombre               = models.CharField(max_length=50, null=False)
-    rol_admin            = models.CharField(max_length=50, null=False)
-    correo               = models.EmailField(max_length=60, null=False)
-    labora_admin         = models.BooleanField(null=False) """
-
-
 class Rol_Administradores (models.Model):
     nombre_rol      = models.CharField(max_length=50, null=False)
     
@@ -54,7 +47,7 @@ class Administradores (models.Model):
 
     usuario             = models.ForeignKey(User, on_delete = models.CASCADE, related_name='Administradores')
     Rol_Administradores = models.ForeignKey(Rol_Administradores, on_delete = models.CASCADE, related_name='Administradores')
-    experiencia_rol     = models.IntegerField(max_length=50, null=False)
+    experiencia_rol     = models.IntegerField(null=False)
 
 
 
@@ -69,7 +62,7 @@ class Empleados (models.Model):
     usuario         = models.ForeignKey(User, on_delete = models.CASCADE, related_name='Empleados')
     rol_emple       = models.CharField(max_length=50, null=False)
     direccion       = models.CharField(max_length=100, blank=True)
-    experiencia_rol = models.IntegerField(max_length=50, null=False)
+    experiencia_rol = models.IntegerField(null=False)
 
 
 

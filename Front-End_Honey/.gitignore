@@ -8,11 +8,16 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+KAWS.jsx
 dist
 dist-ssr
 *.local
-
+.KAWS
+Front-End_Honey/src/components/KAWS.jsx
+/src/components/KAWS.jsx
+.env
 # Editor directories and files
+
 .vscode/*
 !.vscode/extensions.json
 .idea
