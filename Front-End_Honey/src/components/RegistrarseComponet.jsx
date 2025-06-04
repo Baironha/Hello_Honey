@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import ServiciosRegister from '../Servicios/ServiciosRegister';
+import ServiciosRegister from '../services/ServiciosRegister';
 import Swal from 'sweetalert2';
 import '../style/RegistrarseStyle.css';
 import { Link } from "react-router-dom";
@@ -64,7 +64,8 @@ function RegistrarseComponet() {
                 text: "Por favor rellene los espacios!",
             });
         } else {
-            ServiciosRegister.postUsers(NombreUsu, EmailUsu, ContraUsu, DirecUsu, FotoUsu)
+            ServiciosRegister.postUsers(NombreUsu, EmailUsu, ContraUsu/* , DirecUsu, FotoUsu */)
+            
                 .then(() => {
                     Swal.fire({
                         icon: "success",

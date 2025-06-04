@@ -23,17 +23,13 @@ export { getUsers };
 
 //////////LLAMADO POST//////////
 
-async function postUsers(nombre,email,password,direccion,foto) {
+async function postUsers(username,email,password) {
     try {
         
         const userData = { 
-            rol: "Usuario",
-            nombre,
-            email,
+            username,
             password,
-            direccion,
-            foto
-        
+            email
         };
 
 
@@ -47,7 +43,10 @@ async function postUsers(nombre,email,password,direccion,foto) {
         });
 
      
-        return await response.json();
+        const mensage = await response.json();
+        console.log('Mensaje de error de BackEnd:' + mensage);
+        return mensage
+        
 
         
     } catch (error) {

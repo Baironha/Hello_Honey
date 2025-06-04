@@ -8,6 +8,9 @@ class User_Serializer(serializers.ModelSerializer):
         model  = User # Archivos exportados
         fields = '__all__' #All se refiere a todas las columnas del DB
 
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)
+
 
 
 class Usuarios_Serializer(serializers.ModelSerializer):
