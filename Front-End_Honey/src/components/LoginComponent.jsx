@@ -1,7 +1,7 @@
 
 // src/Componentes/LoginComponent.jsx
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ServiosLogin from "../services/ServiosLogin";
 import "../style/LoginStyle.css";
 import Swal from "sweetalert2";
@@ -10,7 +10,21 @@ import { useNavigate } from "react-router-dom";
 function LoginComponent() {
   const [NombreUsu, SetNombreUsu] = useState("");
   const [ContraUsu, SetContraUsu] = useState("");
+  const [usuarios, SetUsuarios] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+        async function DataUsers() {
+            try {
+                const datos = await ServiosLogin.getUsers();
+                SetUsuarios(datos);
+            } catch (error) {
+                console.error("Error obteniendo usuarios:", error);
+            }
+        }
+        DataUsers();
+    }, []);
+
 
   function nombre(evento) {
     SetNombreUsu(evento.target.value);
@@ -33,10 +47,10 @@ function LoginComponent() {
     try {
       const response = await ServiosLogin.postUsers(NombreUsu, ContraUsu);
       console.log("Respuesta del login:", response);
+      console.log(usuarios)
+      const rol = response.role
 
-      const rol = response.user?.rol;
-
-      if (!rol) {
+      if (rol === null) {
         throw new Error("No se pudo obtener el rol del usuario.");
       }
 

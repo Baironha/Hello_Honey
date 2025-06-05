@@ -1,7 +1,7 @@
 
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 
 
@@ -40,7 +40,7 @@ class ventas (models.Model):
 
 
 class Rol_Administradores (models.Model):
-    nombre_rol      = models.CharField(max_length=50, null=False)
+    nombre_rol      = models.CharField( max_length=50, null=False)
     
 
 class Administradores (models.Model):

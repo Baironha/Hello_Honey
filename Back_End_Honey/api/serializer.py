@@ -1,7 +1,36 @@
 from .models        import Usuarios,metodos_pago,Membresias, ventas, Administradores, Rol_Administradores, Empleados,Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+""" class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token['role'] = user.role
+        return token
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        rol = self.get_user_role(self.user)
+        data['role'] = rol
+        data['username'] = self.user.username
+        data['password'] = self.user.password
+
+        return data """
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        # Obtener el grupo del usuario (rol)
+        groups = self.user.groups.values_list('name', flat=True)
+        # Agrega el primer grupo como 'role'
+        data['role'] = groups[0] if groups else None
+        return data
+
+
+#view y urls
 
 class User_Serializer(serializers.ModelSerializer):
     class Meta:

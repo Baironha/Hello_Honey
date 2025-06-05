@@ -65,7 +65,6 @@ function RegistrarseComponet() {
             });
         } else {
             ServiciosRegister.postUsers(NombreUsu, EmailUsu, ContraUsu/* , DirecUsu, FotoUsu */)
-            
                 .then(() => {
                     Swal.fire({
                         icon: "success",
