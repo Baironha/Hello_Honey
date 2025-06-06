@@ -3,22 +3,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-""" class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        token['role'] = user.role
-        return token
-    def validate(self, attrs):
-        data = super().validate(attrs)
-
-        rol = self.get_user_role(self.user)
-        data['role'] = rol
-        data['username'] = self.user.username
-        data['password'] = self.user.password
-
-        return data """
-
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):

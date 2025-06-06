@@ -1,23 +1,19 @@
-// src/Servicios/ServiosLogin.js
-
-import Cookies from "js-cookie";
-
-// Función para obtener el token desde la cookie
-function getToken() {
-    return Cookies.get("authToken");
-}
-
-console.log(getToken());
 
 
-// GET: Obtener todos los usuarios
+
+/* 
+
+const token = Cookies.get("mi-token");
+console.log(Cookies.get());
+
+
 async function getUsers() {
     try {
         const response = await fetch("http://127.0.0.1:8000/api/auth_user/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Token ${getToken()}`
+            Authorization: `Token ${ token ()}`
         },
         });
 
@@ -32,7 +28,7 @@ async function getUsers() {
     }
 }
 
-// POST: Login de usuario
+
 async function postUsers(username, password) {
     try {
         const userData = {
@@ -63,9 +59,9 @@ async function postUsers(username, password) {
         console.log(data);
         
 
-        // Guardar el token en cookie si existe
+        
         if (data.token) {
-        Cookies.set("authToken", data.token, { expires: 1 }); // 1 día
+        Cookies.set("authToken", data.token, { expires: 1 });
         }
 
         return data;
@@ -75,7 +71,7 @@ async function postUsers(username, password) {
     }
 }
 
-// PUT: Actualizar usuario por ID
+
 async function updateUsers(rol, username, email, password, direccion, id) {
     try {
         const userData = {
@@ -90,7 +86,7 @@ async function updateUsers(rol, username, email, password, direccion, id) {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Token ${getToken()}`
+            Authorization: `Token ${ token ()}`
         },
         body: JSON.stringify(userData),
         });
@@ -111,14 +107,14 @@ async function updateUsers(rol, username, email, password, direccion, id) {
     }
     }
 
-    // DELETE: Eliminar usuario por ID
+    
     async function deleteUser(id) {
     try {
         const response = await fetch(`http://127.0.0.1:8000/api/auth_user/${id}/`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Token ${getToken()}`
+            Authorization: `Token ${ token ()}`
         },
         });
 
@@ -133,10 +129,59 @@ async function updateUsers(rol, username, email, password, direccion, id) {
     }
 }
 
-    // Exportación de funciones
+    
 export default {
     getUsers,
     postUsers,
     updateUsers,
     deleteUser,
 };
+ */
+
+
+
+
+
+
+
+
+
+
+
+async function PostApiToken(username, password) {
+    try {
+        const userData2 = {
+                username: username,
+                password: password
+        };
+        console.log(userData2);
+        const res = await fetch("http://127.0.0.1:8000/api/login/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                 /* "Authorization": `Bearer ${token}`  */
+            },
+            body: JSON.stringify(userData2),
+        });
+        if (!res.ok) {
+            const errorData = await res.json();
+            console.error("Backend error:", errorData);  // <-- esto ayuda muchísimo
+            throw new Error("Error posting user");
+        }
+        const result = await res.json();
+        console.log("respuestas:", result);
+
+        return result;
+        
+        } catch (error) {
+        console.error("Error:", error.message);
+        }
+}
+
+export default {PostApiToken};
+
+
+
+
+
+
