@@ -1,0 +1,45 @@
+.intro-section {
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+  color: #333;
+  text-align: center;
+}
+
+.intro-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.intro-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #1a73e8; /* Azul llamativo */
+}
+
+.intro-description {
+  font-size: 1.125rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.intro-button {
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}

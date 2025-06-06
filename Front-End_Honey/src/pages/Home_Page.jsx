@@ -1,5 +1,6 @@
 
 import CardsModelosHoney from '../components/CardsModelosHoney'
+import EconomiaBodyComponent from '../components/EconomiaBodyComponent'
 import FooterHoneyComponent from '../components/FooterHoneyComponent'
 import GraficoHome from '../components/GraficoHome'
 import Header_Component from '../components/Header_Component'
@@ -17,6 +18,7 @@ function Home_Page() {
             <TextBodyHoneyComponent/>
             <GraficoHome/>
             <HoneyAsistente/>
+            <EconomiaBodyComponent/>
             <CardsModelosHoney/>
             <FooterHoneyComponent/>
         </div>

@@ -1,9 +1,11 @@
 import React from 'react'
 
 function Admin_page() {
-  return (
-    <div>Admin_page</div>
-  )
+    return (
+        <div>
+            
+        </div>
+    )
 }
 
 export default Admin_page

@@ -7,8 +7,8 @@ import AddMembresiaPlus from '../components/AddMembresiaPlus';
 import AddMembresiaVip from '../components/AddMembresiaVip';
 import RegistrarseComponet from '../components/RegistrarseComponet';
 import Login_page from '../pages/Login_page';
-import ChatHoneyComponet from "../components/ChatHoneyComponet.jsx"
 import ChatHoney_Page from '../pages/ChatHoney_Page.jsx';
+import Admin_page from '../pages/Admin_page.jsx';
 function Routing() {
 
 
@@ -18,13 +18,13 @@ function Routing() {
                 <Routes>
 
                         {/* Paginas de usuarios */}
-                        <Route path="/" element={<Home_Page/>}/>{/* HOMEPAGE */}
-                        <Route path="/Registrarse" element={<RegistrarseComponet/>}/>{/* HOMEPAGE */}
-                        <Route path="/Login" element={<Login_page/>}/>{/* HOMEPAGE */}
+                        <Route path="/" element={<Home_Page/>}/>
+                        <Route path="/Registrarse" element={<RegistrarseComponet/>}/>
+                        <Route path="/Login" element={<Login_page/>}/>
 
-                         <Route path="/ChatHoney" element={<ChatHoney_Page/>}/>{/* HOMEPAGE */}
+                        <Route path="/ChatHoney" element={<ChatHoney_Page/>}/>
 
-
+                        <Route path="/admins" element={<Admin_page/>}/>{/*ADMINISTRACION*/}
 
                         <Route path="/Carrito" element={<Carrito_Compras_Page/>}/>{/* Carrito*/}
 
