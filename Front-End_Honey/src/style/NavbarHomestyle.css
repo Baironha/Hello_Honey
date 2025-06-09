@@ -1,11 +1,9 @@
-
-
 /* ==== NAVBAR ==== */
 #NavbarHoney {
   position: fixed;
   top: 1px;
   left: 0;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,13 +51,28 @@
 
 #NavbarHoneyIcons {
   display: flex;
-  gap: 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 160px;
 }
 
-.icon {
-  font-size: 16px;
+.nav-icon-link {
+  padding: 12px 40px;
   color: white;
-  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-icon-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
 }
 
 /* ==== PANEL DESPLEGABLE CON APARICIÓN/DESAPARICIÓN SIMÉTRICA ==== */
@@ -76,22 +89,17 @@
   color: white;
   border-bottom: 3px solid #00ffff;
   box-shadow: 0 6px 18px #00ffff;
-
-  /* Transición total lineal para simetría */
   transition:
     opacity 3s linear,
     max-height 3s linear,
     padding 3s linear,
     visibility 3s linear;
-
-  /* Estado base (cerrado) */
   opacity: 0;
   max-height: 0;
   padding: 0 40px;
   visibility: hidden;
 }
 
-/* APARICIÓN */
 .dropdown-panel-wrapper.active {
   opacity: 1;
   max-height: 1000px;
@@ -99,7 +107,6 @@
   visibility: visible;
 }
 
-/* DESAPARICIÓN */
 .dropdown-panel-wrapper.inactive {
   opacity: 0;
   max-height: 0;

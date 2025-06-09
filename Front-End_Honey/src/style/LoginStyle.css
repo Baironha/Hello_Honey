@@ -1,123 +1,193 @@
-/* Contenedor general */
+/* Fondo general y centrado */
 #Login {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(-45deg, #0d0d0d, #1a1a1a, #333333, #4d4d4d);
-    background-size: 400% 400%;
-    animation: backgroundAnimation 6s linear infinite alternate;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #01010f 15%,     /* negro */
+    #020752 55%,    /* azul oscuro */
+    #01011f 90%  /* azul intermedio */
+  );
+  backdrop-filter: blur(8px);
+  overflow: hidden;
 }
 
-/* Fondo animado con degradado dinámico */
-@keyframes backgroundAnimation {
-    0% { background-position: 0% 50%; filter: brightness(1.2); }
-    50% { background-position: 100% 50%; filter: brightness(1.5); }
-    100% { background-position: 0% 50%; filter: brightness(1.2); }
-}
 
-/* Oscurecimiento progresivo MÁS INTENSO */
-#dark-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0);
-    animation: darkFade 4s ease-in-out infinite alternate;
-    z-index: 1;
-}
 
-/* Animación del oscurecimiento */
-@keyframes darkFade {
-    0% { background: rgba(0, 0, 0, 0.5); }
-    50% { background: rgba(0, 0, 0, 0.9); }
-    100% { background: rgba(0, 0, 0, 0.5); }
-}
-
-/* Partículas dinámicas */
-#particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 60%);
-    animation: particlesMove 6s linear infinite;
-}
-
-/* Movimiento de partículas */
-@keyframes particlesMove {
-    0% { transform: translateY(0px) scale(1); opacity: 0.5; }
-    50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
-    100% { transform: translateY(0px) scale(1); opacity: 0.5; }
-}
-
-/* Contenedor del formulario */
+/* Card del formulario */
 #contForm {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(25px);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0px 8px 25px rgba(255, 215, 0, 0.5);
-    text-align: center;
-    width: 360px;
-    z-index: 2;
-    transition: all 0.3s ease-in-out;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  color: #e0e0e0;
+  width: 90%;
+  max-width: 420px;
+  animation: fadeIn 1.5s ease-out;
 }
 
-/* Efecto de resplandor */
-#contForm:hover {
-    box-shadow: 0px 8px 30px rgba(255, 215, 0, 0.7);
+
+
+
+
+#Login-Honey-Logo {
+  position: fixed;
+  top: 30px;
+  left: 40px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 999;
 }
 
-/* Título con animación de entrada */
-#titulo {
-    font-size: 28px;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    animation: fadeIn 1s ease-in-out;
-}
 
-/* Animación de entrada */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+
+
+
+
+/* Etiquetas */
+#LabelLogin1,
+#LabelLogin2 {
+  font-size: 1rem;
+  color: #8ab4f8;
+  margin-bottom: 8px;
+  display: inline-block;
+  animation: slideInLeft 1s ease-out;
 }
 
 /* Inputs */
-input {
-    width: 100%;
-    padding: 14px;
-    margin-top: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid transparent;
-    border-radius: 5px;
-    font-size: 16px;
-    color: white;
-    outline: none;
-    transition: all 0.4s ease-in-out;
+#InputsLogin1,
+#InputsLogin2 {
+  width: calc(100% - 40px);      /* 10px izquierda + 30px derecha */
+  margin: 0 30px 20px 10px;      /* top: 0, right: 30px, bottom: 20px, left: 10px */
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: fadeIn 1.3s ease;
+}
+
+
+
+#InputsLogin1:focus,
+#InputsLogin2:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: scale(1.02);
 }
 
 /* Botón */
 #buttonLogin {
-    width: 100%;
-    margin-top: 20px;
+    width: calc(100% - 10px);
+    margin: 0 30px 0 10px;
     padding: 14px;
-    background: linear-gradient(90deg, #ffcc00, #ff8800);
     border: none;
-    border-radius: 5px;
-    font-size: 18px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    color: white;
     font-weight: bold;
-    color: black;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.4s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideInUp 1s ease-out;
+}
+
+
+#buttonLogin:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(42, 82, 152, 0.4);
+}
+
+/* Animaciones clave */
+@keyframes backgroundShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#contForm:hover {
+  transform: scale(1.015);
+  box-shadow: 0 0 25px rgba(0, 174, 255, 0.25);
+  border: 1px solid rgba(0, 174, 255, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+}
+
+
+
+
+
+
+
+#registroLinkContainer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.registro-text {
+  display: block;
+  color: #aaa;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.registro-link {
+  color: #4aa8ff;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.registro-link:hover {
+  color: #82cfff;
+  text-decoration: underline;
 }

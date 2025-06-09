@@ -1,7 +1,7 @@
 .intro-section {
-  background-color: #ffffff;
+  background-color: #000000;
   padding: 4rem 2rem;
-  color: #333;
+  color: #e9e4e4;
   text-align: center;
 }
 
@@ -23,7 +23,7 @@
 
 .intro-description {
   font-size: 1.125rem;
-  color: #555;
+  color: #f3ebeb;
   margin-bottom: 2rem;
   line-height: 1.6;
 }

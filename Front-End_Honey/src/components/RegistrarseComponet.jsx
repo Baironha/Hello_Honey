@@ -92,26 +92,26 @@ function RegistrarseComponet() {
     };
 
     return (
-        <div id="Registro">
+        <div id="RegistroContainer">
             <div id="Container-Form-Usuarios">
                 <h1 id="TituloRegistrarse">Registrarse</h1>
                 <label htmlFor="nombre" id="LabelFormTrabajador">Nombre</label><br />
                 <input type="text" value={NombreUsu} onChange={nombre} id="InputFormTrabajador" placeholder="Ingrese su nombre completo" />
-                <br />
                 <label htmlFor="email" id="LabelFormTrabajador">Correo electrónico</label><br />
                 <input type="text" value={EmailUsu} onChange={email} id="InputFormTrabajador" placeholder="Ingrese su correo electrónico" />
-                <br />
                 <label htmlFor="password" id="LabelFormTrabajador">Contraseña</label><br />
                 <input type="text" value={ContraUsu} onChange={password} id="InputFormTrabajador" placeholder="Ingrese su contraseña" />
-                <br />
                 <label htmlFor="direccion" id="LabelFormTrabajador">Dirección</label><br />
                 <input type="text" value={DirecUsu} onChange={direccion} id="InputFormTrabajador" placeholder="Ingrese la dirección de entrega" />
-                <br />
                 <label htmlFor="foto" id="LabelFormTrabajador">Foto de perfil (Opcional)</label><br />
                 <input id="FotoPerfil" type="file" accept="image/*,application/pdf" onChange={cargarImagen} ref={inputFileRef} />
-                <br />
                 <button id="BtnCargar" onClick={cargar}>Registrarse</button>
-                <strong><Link to={'/Login'}>Iniciar sesión</Link></strong>
+                <div id="registro-to-Link-Container">
+                <span className="registro-texto">¿Ya estas registrad@?</span>
+                    <Link to="/Login" className="registro-to-link">
+                        ¡¡Inicia sesion AQUI!!
+                    </Link>
+                </div>
             </div>
         </div>
     );

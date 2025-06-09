@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react'
 import '../style/NavbarHomestyle.css'
+import { Link } from 'react-router-dom'
 
 function Navbar_Honey() {
   const [activeSection, setActiveSection] = useState(null)
@@ -19,7 +19,10 @@ function Navbar_Honey() {
   return (
     <div>
       <nav id="NavbarHoney">
-        <div id="NavbarHoneyLogo">Hello Honey</div>
+        <Link to="/" id="NavbarHoneyLogo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          Hello Honey
+        </Link>
+
         <ul id="NavbarHoneyLinks">
           {menuItems.map(({ key, label }) => (
             <li key={key}>
@@ -33,8 +36,8 @@ function Navbar_Honey() {
           ))}
         </ul>
         <div id="NavbarHoneyIcons">
-          <span className="icon">🔍</span>
-          <span className="icon">✨</span>
+          <Link to="/Registrarse" className="nav-icon-link">Register</Link>
+          <Link to="/Login" className="nav-icon-link">Login</Link>
         </div>
       </nav>
 
