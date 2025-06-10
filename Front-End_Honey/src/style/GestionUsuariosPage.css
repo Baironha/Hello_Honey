@@ -1,0 +1,15 @@
+.gestion-usuarios-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: #0c0f1a;
+  color: white;
+  overflow: hidden;
+}
+
+.gestion-main-content {
+  margin-left: 220px; /* el ancho del sidebar */
+  padding: 2rem;
+  flex: 1;
+  overflow-y: auto;
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Style/HoneyAsistenteStyle.css'
+import Logo from '../img/HoneyLogo.png'
 
 function HoneyAsistente() {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ function HoneyAsistente() {
             </strong></p>
             <div className="Gif_Boton_Container">
                 <img 
-                    src="https://media.tenor.com/1a2b3c4d5e6f7g8h9i0j.gif" 
+                    src={Logo}
                     alt="Cachorro Pastor Belga" 
                     className="Gif_Boton_Asistente" 
                     onClick={handleRedirect}

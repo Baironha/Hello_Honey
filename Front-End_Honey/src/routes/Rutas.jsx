@@ -9,6 +9,8 @@ import RegistrarseComponet from '../components/RegistrarseComponet';
 import Login_page from '../pages/Login_page';
 import ChatHoney_Page from '../pages/ChatHoney_Page.jsx';
 import Admin_page from '../pages/Admin_page.jsx';
+import Economia_page from '../pages/Economia_page.jsx';
+import Gestion_Usuarios_page from '../pages/Gestion_Usuarios_page.jsx';
 function Routing() {
 
 
@@ -21,10 +23,11 @@ function Routing() {
                         <Route path="/" element={<Home_Page/>}/>
                         <Route path="/Registrarse" element={<RegistrarseComponet/>}/>
                         <Route path="/Login" element={<Login_page/>}/>
-
+                        <Route path="/Economia" element={<Economia_page/>}/>
                         <Route path="/ChatHoney" element={<ChatHoney_Page/>}/>
 
                         <Route path="/admins" element={<Admin_page/>}/>{/*ADMINISTRACION*/}
+                        <Route path="/Gestion_usuarios" element={<Gestion_Usuarios_page/>}/>{/*ADMINISTRACION*/}
 
                         <Route path="/Carrito" element={<Carrito_Compras_Page/>}/>{/* Carrito*/}
 

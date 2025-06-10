@@ -3,13 +3,14 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .models import Usuarios,metodos_pago, Membresias, ventas, Administradores,Rol_Administradores,Empleados, Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado, User
-from .serializer import Usuarios_Serializer, metodos_pago_Serializer, Membresias_Serializer, ventas_Serializer,Administradores_Serializer,Rol_Administradores_Serializer,Empleados_Serializer,Rol_Empleados_Serializer,Usuarios_x_Membresias_Serializer,Rol_x_Administradores_Serializer,Rol_x_Empleado_Serializer,User_Serializer, CustomTokenObtainPairSerializer
+from .serializer import Usuarios_Serializer, metodos_pago_Serializer, Membresias_Serializer, ventas_Serializer,Administradores_Serializer,Rol_Administradores_Serializer,Empleados_Serializer,Rol_Empleados_Serializer,Usuarios_x_Membresias_Serializer,Rol_x_Administradores_Serializer,Rol_x_Empleado_Serializer,User_Serializer,auth_group_Serializer,UserGroup_Serializer, CustomTokenObtainPairSerializer
 
 from .permissions import IsAdminUserGroup, IsEmpledoUserGroup,IsUsuarioUserGroup, IsAuthenticated
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
+from django.contrib.auth.models import User, Group
 
-
+UserGroup = User.groups.through
 
 #VIEWS PRINCIPALES 
 
@@ -24,6 +25,15 @@ class User_DetailView(RetrieveUpdateDestroyAPIView):
     queryset         = User.objects.all()
     serializer_class = User_Serializer
 
+
+
+class auth_group_ListCreateView(ListCreateAPIView):
+    queryset         = Group.objects.all()
+    serializer_class = auth_group_Serializer
+
+class UserGroup_ListCreateView(ListCreateAPIView):
+    queryset         = UserGroup.objects.all()
+    serializer_class = UserGroup_Serializer
 
 
 class Usuarios_ListCreateView(ListCreateAPIView):

@@ -93,6 +93,9 @@ function RegistrarseComponet() {
 
     return (
         <div id="RegistroContainer">
+            <Link to="/" id="Login-Honey-Logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                Hello Honey
+            </Link>
             <div id="Container-Form-Usuarios">
                 <h1 id="TituloRegistrarse">Registrarse</h1>
                 <label htmlFor="nombre" id="LabelFormTrabajador">Nombre</label><br />

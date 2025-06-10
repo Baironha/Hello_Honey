@@ -59,9 +59,12 @@ function LoginComponent() {
           },
         }).then(() => {
           const rol = tokenData.role;
-          if (rol === "empleados" || rol === "admins") {
+          if (rol === "empleados") {
             navigate("/"); // Puedes diferenciar rutas si lo deseas
-          } else {
+          } if (rol === "admins") {
+            navigate("/Admins"); // Puedes diferenciar rutas si lo deseas
+          }
+          else {
             Swal.fire({
               icon: "error",
               title: "Rol desconocido",

@@ -1,0 +1,88 @@
+.tabla-usuarios {
+  background: #131b2f;
+  padding: 2rem;
+  border-radius: 10px;
+  color: white;
+  animation: fade-in 0.8s ease;
+}
+
+.tabla-usuarios h2 {
+  margin-bottom: 1.5rem;
+  color: #00bfff;
+}
+
+.tabla-usuarios-botones {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tabla-usuarios-botones button {
+  background: #174ea6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.tabla-usuarios-botones button:hover {
+  background: #2165d3;
+  transform: scale(1.05);
+}
+
+.add-user-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.add-user-form input,
+.add-user-form select {
+  padding: 8px;
+  border: 1px solid #334;
+  border-radius: 5px;
+  background-color: #0f1a30;
+  color: white;
+  flex: 1;
+  min-width: 150px;
+}
+
+.add-user-form button {
+  background-color: #135ad1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-user-form button:hover {
+  background-color: #1c78ff;
+}
+
+.tabla-usuarios-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.tabla-usuarios-tabla th,
+.tabla-usuarios-tabla td {
+  padding: 12px;
+  border-bottom: 1px solid #334;
+  text-align: left;
+}
+
+.tabla-usuarios-tabla tr:hover {
+  background-color: #1b2945;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

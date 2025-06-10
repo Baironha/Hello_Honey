@@ -1,0 +1,216 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0c0f1a;
+  color: white;
+}
+
+.navbar {
+  background: #0e162e;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.dashboard-body {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.sidebar {
+  width: 200px;
+  min-width: 200px;
+  background: #1a233a;
+  padding-top: 4rem;
+  animation: sidebar-slide-in 0.8s ease;
+  height: 100%;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.sidebar li:hover {
+  background: #2a3b5c;
+  transform: translateX(5px);
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.kpi-cards {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: #101828;
+  padding: 1.2rem;
+  border-radius: 8px;
+  flex: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 140, 255, 0.4);
+}
+
+.ventas-dashboard,
+.notificaciones,
+.tabla-usuarios,
+.scrum-tareas,
+.ia-control,
+.email-contact {
+  background: #131b2f;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 10px;
+  animation: fade-in 1s ease;
+}
+
+.grafico-placeholder {
+  background: #0f1528;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+}
+
+.tabla-usuarios table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.tabla-usuarios th,
+.tabla-usuarios td {
+  padding: 10px;
+  border-bottom: 1px solid #334;
+  text-align: left;
+}
+
+.tabla-usuarios button {
+  background: #173d82;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.tabla-usuarios button:hover {
+  background: #1f4fb1;
+  transform: scale(1.05);
+}
+
+.add-user-form {
+  margin-bottom: 1rem;
+}
+
+.add-user-form input,
+.add-user-form select {
+  padding: 8px;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #334;
+  background-color: #0f1a30;
+  color: white;
+}
+
+.add-user-form button {
+  padding: 8px 14px;
+  background-color: #1559a2;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.add-user-form button:hover {
+  background-color: #197be5;
+}
+
+.scrum-columns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.scrum-col {
+  flex: 1;
+  background: #0f1422;
+  padding: 1rem;
+  border-radius: 6px;
+  min-height: 100px;
+  transition: transform 0.3s;
+}
+
+.scrum-col:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0, 100, 255, 0.3);
+}
+
+.ia-status {
+  background: #101820;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  color: #00f0ff;
+}
+
+.email-contact input,
+.email-contact textarea {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  background: #0f1a30;
+  border: 1px solid #334;
+  border-radius: 6px;
+  color: white;
+}
+
+.email-contact button {
+  background: #0e3d75;
+  color: white;
+  padding: 0.75rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.email-contact button:hover {
+  background: #1355a0;
+  transform: translateY(-2px);
+}
+
+@keyframes sidebar-slide-in {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,8 +1,15 @@
 from .models        import Usuarios,metodos_pago,Membresias, ventas, Administradores, Rol_Administradores, Empleados,Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+UserGroup = User.groups.through  # Tabla intermedia automática
+
+class UserGroup_Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserGroup
+        fields = ['user_id', 'group_id']
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
@@ -31,6 +38,11 @@ class Usuarios_Serializer(serializers.ModelSerializer):
         model  = Usuarios # Archivos exportados
         fields = '__all__' #All se refiere a todas las columnas del DB
 
+
+class auth_group_Serializer(serializers.ModelSerializer):
+    class Meta:
+        model  =  Group# Archivos exportados
+        fields = '__all__' #All se refiere a todas las columnas del DB
 
 
 class metodos_pago_Serializer(serializers.ModelSerializer):
