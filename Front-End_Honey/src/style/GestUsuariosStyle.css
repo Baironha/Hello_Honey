@@ -1,11 +1,33 @@
 .tabla-usuarios {
-  background: #131b2f;
+  background: linear-gradient(
+    135deg,
+    #01010f 15%,
+    #020252 55%,
+    #01010f 90%
+  );
   padding: 2rem;
   border-radius: 10px;
   color: white;
   animation: fade-in 0.8s ease;
+
+  position: absolute; /* Posicionamiento absoluto dentro del contenedor */
+  top: 50px;
+  right: 200px;        /* ← distancia del borde derecho */
 }
 
+
+.container-tabla-admin-page {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #01010f 15%,     
+    #020752 55%,    
+    #01011f 90%      
+  ); 
+  position: relative; /* importante para posicionar hijo absoluto */
+  overflow: hidden;   /* evita que el contenido sobresalga visualmente */
+}
 .tabla-usuarios h2 {
   margin-bottom: 1.5rem;
   color: #00bfff;
@@ -79,7 +101,7 @@
 }
 
 .tabla-usuarios-tabla tr:hover {
-  background-color: #1b2945;
+  background-color: #033374;
 }
 
 @keyframes fade-in {

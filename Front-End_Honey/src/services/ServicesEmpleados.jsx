@@ -10,7 +10,8 @@ async function getUsers() {
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             }
         });
 
@@ -34,12 +35,13 @@ async function postUsers(username, email, password) {
             username,
             password, 
             email, 
-            rol: "usuarios" };
+            rol: "empleados" };
 
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             },
             body: JSON.stringify(userData)
         });
@@ -55,14 +57,16 @@ async function postUsers(username, email, password) {
 
 ////////////// LLAMADO UPDATE //////////////
 
-async function updateUsers(rol, nombre, email, password, direccion, id) {
+async function updateUsers(username, email, password,id) {
     try {
-        const userData = { rol, nombre, email, password, direccion };
+        const userData = {username, email, password,};
 
         const response = await fetch(`${API_URL}${id}`, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
+
             },
             body: JSON.stringify(userData)
         });
@@ -78,12 +82,13 @@ async function updateUsers(rol, nombre, email, password, direccion, id) {
 
 async function deleteUser(id) {
     try {
-        
+        const token = Cookies.get('access_token'); // asegúrate de haber guardado el token
+
         const response = await fetch(`${API_URL}${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${Token}`
+                'Authorization': `Bearer ${token}`
             }
         });
 

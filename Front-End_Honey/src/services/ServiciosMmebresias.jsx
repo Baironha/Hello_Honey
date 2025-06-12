@@ -1,7 +1,7 @@
 
 import Cookies from "js-cookie";
 
-const API_URL = "http://127.0.0.1:8000/api/auth_user/";
+const API_URL = "http://127.0.0.1:8000/api/Membresias/";
 const Token= Cookies.get("access_token")
 ////////////// LLAMADO GET //////////////
 
@@ -10,7 +10,8 @@ async function getUsers() {
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             }
         });
 
@@ -28,18 +29,20 @@ async function getUsers() {
 
 ////////////// LLAMADO POST //////////////
 
-async function postUsers(username, email, password) {
+async function postUsers(nombre,monto) {
     try {
         const userData = { 
-            username,
-            password, 
-            email, 
-            rol: "usuarios" };
+            nombre,
+            monto
+        };
+        console.log(userData);
+        
 
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             },
             body: JSON.stringify(userData)
         });
@@ -55,14 +58,15 @@ async function postUsers(username, email, password) {
 
 ////////////// LLAMADO UPDATE //////////////
 
-async function updateUsers(rol, nombre, email, password, direccion, id) {
+async function updateUsers(nombre,password,id) {
     try {
-        const userData = { rol, nombre, email, password, direccion };
+        const userData = {nombre, password };
 
         const response = await fetch(`${API_URL}${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             },
             body: JSON.stringify(userData)
         });

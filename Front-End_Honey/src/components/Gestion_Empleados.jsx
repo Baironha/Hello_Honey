@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import ServiciosUserAdmins from "../services/ServiciosUserAdmins.jsx";
+import ServiciosUserAdmins from "../services/ServicesEmpleados";
 import "../style/GestUsuariosStyle.css";
 
-function Gestion_UsuariosComponents() {
+function Gestion_Empleados() {
     const [users, setUsers] = useState([]);
     const [showAddUserForm, setShowAddUserForm] = useState(false);
     const [showEditUserForm, setShowEditUserForm] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
-    const [form, setForm] = useState({ username: "", email: "", password: "", role: "usuarios" });
+    const [form, setForm] = useState({ username: "", email: "", password: "", role: "empleados" });
 
     useEffect(() => {
         loadUsers();
@@ -19,7 +19,6 @@ function Gestion_UsuariosComponents() {
             const data = await ServiciosUserAdmins.getUsers();
             const formatted = data.map(user => ({ ...user, checked: false }));
             setUsers(formatted);
-            console.log(data);
         } catch (err) {
             console.error(err);
         }
@@ -36,7 +35,6 @@ function Gestion_UsuariosComponents() {
         e.preventDefault();
         if (selectedUser) {
             await ServiciosUserAdmins.updateUsers(
-                form.role,
                 form.username,
                 form.email,
                 form.password || "",
@@ -82,7 +80,7 @@ function Gestion_UsuariosComponents() {
                 email: selected.email,
                 password: "",
                 direccion: selected.direccion || "",
-                role: selected.role || "usuarios"
+                role: selected.role || "empleados"
             });
         }
     };
@@ -90,7 +88,7 @@ function Gestion_UsuariosComponents() {
     return (
         <div className="container-tabla-admin-page">
             <section className="tabla-usuarios">
-                <h2>Usuarios</h2>
+                <h2>Administradores</h2>
                 <div className="tabla-usuarios-botones">
                     <button onClick={() => setShowAddUserForm(!showAddUserForm)}>Agregar Usuario</button>
                     <button onClick={handleDelete}>Eliminar</button>
@@ -127,8 +125,7 @@ function Gestion_UsuariosComponents() {
                             value={form.role}
                             onChange={(e) => setForm({ ...form, role: e.target.value })}
                         >
-                            <option value="usuarios">usuarios</option>
-                            <option value="admin">admin</option>
+                            <option value="empleados">empleados</option>
                         </select>
                         <button type="submit">Guardar</button>
                     </motion.form>
@@ -177,8 +174,8 @@ function Gestion_UsuariosComponents() {
                         {users
                             .filter(user =>
                                 Array.isArray(user.roles)
-                                    ? user.roles.includes("usuarios")
-                                    : user.role === "usuarios"
+                                    ? user.roles.includes("empleados")
+                                    : user.role === "empleados"
                             )
                             .map((user, index) => (
                                 <tr key={user.id || `user-${index}`}>
@@ -202,4 +199,4 @@ function Gestion_UsuariosComponents() {
     );
 }
 
-export default Gestion_UsuariosComponents;
+export default Gestion_Empleados;

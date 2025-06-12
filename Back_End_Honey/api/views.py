@@ -20,7 +20,7 @@ class User_ListCreateView(ListCreateAPIView):
     serializer_class   = User_Serializer
 
 
-class User_DetailView(RetrieveUpdateDestroyAPIView):
+class User_RetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     queryset         = User.objects.all()
     serializer_class = User_Serializer
@@ -63,14 +63,12 @@ class metodos_pago_DetailView(RetrieveUpdateDestroyAPIView):
 class Membresias_ListCreateView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     permission_classes = [IsUsuarioUserGroup]
-    """ permission_classes = [IsAdminUserGroup] """
     queryset         = Membresias.objects.all()
     serializer_class = Membresias_Serializer
 
 class Membresias_DetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     permission_classes = [IsEmpledoUserGroup]
-    """ permission_classes = [IsAdminUserGroup] """
     queryset         = Membresias.objects.all()
     serializer_class = Membresias_Serializer
 

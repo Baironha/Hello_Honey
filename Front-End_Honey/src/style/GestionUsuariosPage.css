@@ -2,7 +2,12 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-  background: #0c0f1a;
+  background: linear-gradient(
+    135deg,
+    #01010f 15%,     /* negro */
+    #020752 55%,    /* azul oscuro */
+    #01011f 90%  /* azul intermedio */
+  );
   color: white;
   overflow: hidden;
 }

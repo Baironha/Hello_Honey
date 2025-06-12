@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import ServiciosUserAdmins from "../services/ServiciosUserAdmins.jsx";
+import ServiciosUserAdmins from "../services/ServicesAdmins";
 import "../style/GestUsuariosStyle.css";
 
 function Gestion_UsuariosComponents() {
@@ -8,7 +8,7 @@ function Gestion_UsuariosComponents() {
     const [showAddUserForm, setShowAddUserForm] = useState(false);
     const [showEditUserForm, setShowEditUserForm] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
-    const [form, setForm] = useState({ username: "", email: "", password: "", role: "usuarios" });
+    const [form, setForm] = useState({ username: "", email: "", password: "", role: "admins" });
 
     useEffect(() => {
         loadUsers();
@@ -82,7 +82,7 @@ function Gestion_UsuariosComponents() {
                 email: selected.email,
                 password: "",
                 direccion: selected.direccion || "",
-                role: selected.role || "usuarios"
+                role: selected.role || "admins"
             });
         }
     };
@@ -90,7 +90,7 @@ function Gestion_UsuariosComponents() {
     return (
         <div className="container-tabla-admin-page">
             <section className="tabla-usuarios">
-                <h2>Usuarios</h2>
+                <h2>Administradores</h2>
                 <div className="tabla-usuarios-botones">
                     <button onClick={() => setShowAddUserForm(!showAddUserForm)}>Agregar Usuario</button>
                     <button onClick={handleDelete}>Eliminar</button>
@@ -127,7 +127,6 @@ function Gestion_UsuariosComponents() {
                             value={form.role}
                             onChange={(e) => setForm({ ...form, role: e.target.value })}
                         >
-                            <option value="usuarios">usuarios</option>
                             <option value="admin">admin</option>
                         </select>
                         <button type="submit">Guardar</button>
@@ -177,8 +176,8 @@ function Gestion_UsuariosComponents() {
                         {users
                             .filter(user =>
                                 Array.isArray(user.roles)
-                                    ? user.roles.includes("usuarios")
-                                    : user.role === "usuarios"
+                                    ? user.roles.includes("admins")
+                                    : user.role === "admins"
                             )
                             .map((user, index) => (
                                 <tr key={user.id || `user-${index}`}>

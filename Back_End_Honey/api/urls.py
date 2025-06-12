@@ -4,9 +4,16 @@ urlpatterns =[
 
     #END-POINTS PRINCIPALES
     path('auth_user/', User_ListCreateView.as_view()),
+    path('auth_user/<int:pk>', User_RetrieveUpdateDestroyAPIView.as_view(),),
+
     path('auth_group/', auth_group_ListCreateView.as_view()),
-    path('login/', CustomTokenObtainPairView.as_view()),
+    path('auth_group/<int:pk>', auth_group_ListCreateView.as_view()),
+    
     path('UserGroup/',UserGroup_ListCreateView.as_view()),
+
+
+    path('login/', CustomTokenObtainPairView.as_view()),
+    
     path('usuarios/', Usuarios_ListCreateView.as_view(),),
     path('usuarios/<int:pk>', Usuarios_DetailView.as_view(),),
 

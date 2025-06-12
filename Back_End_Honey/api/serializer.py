@@ -6,10 +6,6 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 UserGroup = User.groups.through  # Tabla intermedia automática
 
-class UserGroup_Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserGroup
-        fields = ['user_id', 'group_id']
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
@@ -24,12 +20,61 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 #view y urls
 
 class User_Serializer(serializers.ModelSerializer):
-    class Meta:
+    """ class Meta:
         model  = User # Archivos exportados
         fields = '__all__' #All se refiere a todas las columnas del DB
 
+        model1 = UserGroup
+        fields1 = '__all__'
+
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
+    
+
+    def createrol(self,valited_data):
+        return UserGroup.objects.create_rol(**valited_data) """
+    
+
+    """ roles = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'roles']  # Agrega aquí otros campos que necesites
+
+    def get_roles(self, obj):
+        return [group.name for group in obj.groups.all()]
+        
+ """
+    rol = serializers.CharField(write_only=True, required=False)  # este es el campo que viene del frontend
+    roles = serializers.SerializerMethodField()  # este se usa solo para mostrar
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'password', 'rol', 'roles']
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
+
+    def create(self, validated_data):
+        rol_nombre = validated_data.pop('rol', None)  # sacar el rol del frontend
+        password = validated_data.pop('password')
+
+        user = User(**validated_data)
+        user.set_password(password)
+        user.save()
+
+        # Asignar grupo si viene rol
+        if rol_nombre:
+            try:
+                grupo = Group.objects.get(name=rol_nombre)
+                user.groups.add(grupo)
+            except Group.DoesNotExist:
+                raise serializers.ValidationError(f"El grupo '{rol_nombre}' no existe en la base de datos.")
+
+        return user
+
+    def get_roles(self, obj):
+        return [group.name for group in obj.groups.all()]
 
 
 
@@ -43,6 +88,11 @@ class auth_group_Serializer(serializers.ModelSerializer):
     class Meta:
         model  =  Group# Archivos exportados
         fields = '__all__' #All se refiere a todas las columnas del DB
+
+class UserGroup_Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserGroup
+        fields = ['user_id', 'group_id']
 
 
 class metodos_pago_Serializer(serializers.ModelSerializer):

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import ServiciosUserAdmins from "../services/ServiciosUserAdmins.jsx";
+import ServiciosUserAdmins from "../services/ServiciosMmebresias";
 import "../style/GestUsuariosStyle.css";
 
-function Gestion_UsuariosComponents() {
+function Gestion_Membresias() {
     const [users, setUsers] = useState([]);
     const [showAddUserForm, setShowAddUserForm] = useState(false);
     const [showEditUserForm, setShowEditUserForm] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
-    const [form, setForm] = useState({ username: "", email: "", password: "", role: "usuarios" });
+    const [form, setForm] = useState({ nombre: "",monto: ""});
 
     useEffect(() => {
         loadUsers();
@@ -27,7 +27,7 @@ function Gestion_UsuariosComponents() {
 
     const handleAdd = async (e) => {
         e.preventDefault();
-        await ServiciosUserAdmins.postUsers(form.username, form.email, form.password, form.role);
+        await ServiciosUserAdmins.postUsers(form.nombre,form.monto);
         setShowAddUserForm(false);
         loadUsers();
     };
@@ -36,10 +36,9 @@ function Gestion_UsuariosComponents() {
         e.preventDefault();
         if (selectedUser) {
             await ServiciosUserAdmins.updateUsers(
-                form.role,
-                form.username,
-                form.email,
-                form.password || "",
+                
+                form.nombre,
+                form.monto || "",
                 selectedUser.id
             );
             setShowEditUserForm(false);
@@ -51,7 +50,7 @@ function Gestion_UsuariosComponents() {
     const handleDelete = async () => {
         const checkedUser = users.find(u => u.checked);
         if (checkedUser) {
-            const confirmDelete = window.confirm(`¿Estás seguro de que deseas eliminar al usuario "${checkedUser.username || checkedUser.nombre}"?`);
+            const confirmDelete = window.confirm(`¿Estás seguro de que deseas eliminar al usuario "${checkedUser.nombre || checkedUser.monto}"?`);
             if (confirmDelete) {
                 try {
                     await ServiciosUserAdmins.deleteUser(checkedUser.id);
@@ -78,11 +77,8 @@ function Gestion_UsuariosComponents() {
         setSelectedUser(selected);
         if (selected) {
             setForm({
-                username: selected.nombre || selected.username,
-                email: selected.email,
-                password: "",
-                direccion: selected.direccion || "",
-                role: selected.role || "usuarios"
+                nombre: selected.nombre || selected.nombre,
+                monto: ""
             });
         }
     };
@@ -90,7 +86,7 @@ function Gestion_UsuariosComponents() {
     return (
         <div className="container-tabla-admin-page">
             <section className="tabla-usuarios">
-                <h2>Usuarios</h2>
+                <h2>Administradores</h2>
                 <div className="tabla-usuarios-botones">
                     <button onClick={() => setShowAddUserForm(!showAddUserForm)}>Agregar Usuario</button>
                     <button onClick={handleDelete}>Eliminar</button>
@@ -111,25 +107,12 @@ function Gestion_UsuariosComponents() {
                             required
                         />
                         <input
-                            placeholder="Email"
-                            value={form.email}
-                            onChange={(e) => setForm({ ...form, email: e.target.value })}
-                            required
-                        />
-                        <input
                             type="password"
                             placeholder="Contraseña"
                             value={form.password}
                             onChange={(e) => setForm({ ...form, password: e.target.value })}
                             required
                         />
-                        <select
-                            value={form.role}
-                            onChange={(e) => setForm({ ...form, role: e.target.value })}
-                        >
-                            <option value="usuarios">usuarios</option>
-                            <option value="admin">admin</option>
-                        </select>
                         <button type="submit">Guardar</button>
                     </motion.form>
                 )}
@@ -143,21 +126,15 @@ function Gestion_UsuariosComponents() {
                     >
                         <input
                             placeholder="Nombre"
-                            value={form.username}
-                            onChange={(e) => setForm({ ...form, username: e.target.value })}
-                            required
-                        />
-                        <input
-                            placeholder="Email"
-                            value={form.email}
-                            onChange={(e) => setForm({ ...form, email: e.target.value })}
+                            value={form.nombre}
+                            onChange={(e) => setForm({ ...form, nombre: e.target.value })}
                             required
                         />
                         <input
                             type="password"
-                            placeholder="Contraseña"
-                            value={form.password}
-                            onChange={(e) => setForm({ ...form, password: e.target.value })}
+                            placeholder="Monto"
+                            value={form.monto}
+                            onChange={(e) => setForm({ ...form, monto: e.target.value })}
                         />
                         <button type="submit">Actualizar</button>
                     </motion.form>
@@ -169,17 +146,12 @@ function Gestion_UsuariosComponents() {
                             <th>Seleccionar</th>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Rol</th>
+                            <th>Monto</th>
                         </tr>
                     </thead>
                     <tbody>
                         {users
-                            .filter(user =>
-                                Array.isArray(user.roles)
-                                    ? user.roles.includes("usuarios")
-                                    : user.role === "usuarios"
-                            )
+                            
                             .map((user, index) => (
                                 <tr key={user.id || `user-${index}`}>
                                     <td>
@@ -190,9 +162,8 @@ function Gestion_UsuariosComponents() {
                                         />
                                     </td>
                                     <td>{user.id}</td>
-                                    <td>{user.nombre || user.username}</td>
-                                    <td>{user.email}</td>
-                                    <td>{Array.isArray(user.roles) ? user.roles.join(", ") : user.role}</td>
+                                    <td>{user.nombre || user.nombre}</td>
+                                    <td>{user.monto}</td>
                                 </tr>
                             ))}
                     </tbody>
@@ -202,4 +173,4 @@ function Gestion_UsuariosComponents() {
     );
 }
 
-export default Gestion_UsuariosComponents;
+export default Gestion_Membresias;

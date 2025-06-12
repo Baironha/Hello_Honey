@@ -10,7 +10,8 @@ async function getUsers() {
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             }
         });
 
@@ -34,12 +35,13 @@ async function postUsers(username, email, password) {
             username,
             password, 
             email, 
-            rol: "usuarios" };
+            rol: "admins" };
 
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             },
             body: JSON.stringify(userData)
         });
@@ -62,7 +64,8 @@ async function updateUsers(rol, nombre, email, password, direccion, id) {
         const response = await fetch(`${API_URL}${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             },
             body: JSON.stringify(userData)
         });
