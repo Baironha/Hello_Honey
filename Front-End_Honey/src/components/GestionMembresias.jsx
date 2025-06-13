@@ -86,7 +86,7 @@ function Gestion_Membresias() {
     return (
         <div className="container-tabla-admin-page">
             <section className="tabla-usuarios">
-                <h2>Administradores</h2>
+                <h2>Membresias</h2>
                 <div className="tabla-usuarios-botones">
                     <button onClick={() => setShowAddUserForm(!showAddUserForm)}>Agregar Usuario</button>
                     <button onClick={handleDelete}>Eliminar</button>
@@ -102,15 +102,15 @@ function Gestion_Membresias() {
                     >
                         <input
                             placeholder="Nombre"
-                            value={form.username}
-                            onChange={(e) => setForm({ ...form, username: e.target.value })}
+                            value={form.nombre}
+                            onChange={(e) => setForm({ ...form, nombre: e.target.value })}
                             required
                         />
                         <input
-                            type="password"
-                            placeholder="Contraseña"
-                            value={form.password}
-                            onChange={(e) => setForm({ ...form, password: e.target.value })}
+                            type="monto"
+                            placeholder="Monto"
+                            value={form.monto}
+                            onChange={(e) => setForm({ ...form, monto: e.target.value })}
                             required
                         />
                         <button type="submit">Guardar</button>
