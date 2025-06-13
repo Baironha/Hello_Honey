@@ -21,6 +21,7 @@ import "../style/Feedback.css";
 
 export default function FeedbackComponent() {
   const [email, setEmail] = useState("");
+  const [nombre, setnombre] = useState("");
   const [feedback, setFeedback] = useState("");
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
@@ -29,11 +30,7 @@ export default function FeedbackComponent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await ServiciosFeedBack.post("http://localhost:8000/api/feedback/", {
-        email,
-        feedback,
-        rating,
-      });
+      await ServiciosFeedBack.postUsers(nombre,email,feedback,rating);
       setSubmitted(true);
     } catch (error) {
       console.error("Error al enviar feedback:", error);
@@ -53,6 +50,17 @@ export default function FeedbackComponent() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="feedback-input"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="feedback-label">Nombre del usuario</label>
+            <input
+              type="text"
+              value={nombre}
+              onChange={(e) => setnombre(e.target.value)}
               className="feedback-input"
               required
             />

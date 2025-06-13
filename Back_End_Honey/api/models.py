@@ -29,10 +29,11 @@ class metodos_pago (models.Model):
 
 class feedback_usuarios (models.Model):
 
-    email  = models.EmailField(max_length=150, null=False)
-    nombre = models.CharField(max_length=50, null=False)
+    nombre_usu = models.CharField(max_length=50, null=False)
+    email_usu  = models.EmailField(max_length=150, null=False)
     fecha  = models.DateField(null=False)
     texto  = models.CharField(max_length=300, null=False)
+    rating = models.IntegerField(null=True)
 
 
 

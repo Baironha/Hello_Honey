@@ -1,6 +1,6 @@
 async function getUsers() {
     try {
-        const response = await fetch('hhttp://127.0.0.1:8000/api/auth_user', {
+        const response = await fetch('hhttp://127.0.0.1:8000/api/feedback_usuarios', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,18 +23,19 @@ export { getUsers };
 
 //////////LLAMADO POST//////////
 
-async function postUsers(username,email,password) {
+async function postUsers(nombre,email,feedback,rating) {
     try {
         
         const userData = { 
-            username,
-            password,
-            email
+            nombre,
+            email,
+            feedback,
+            rating
         };
 
+        console.log(userData )
 
-
-        const response = await fetch("http://127.0.0.1:8000/api/auth_user/", {
+        const response = await fetch("http://127.0.0.1:8000/api/feedback_usuarios/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,16 +61,14 @@ export{postUsers}
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsers(rol,nombre, email,password,direccion,id) 
+async function updateUsers(nombre, email,texto,id) 
 {
     try {
         
         const userData = { 
-            rol,
             nombre, 
             email,
-            password,
-            direccion
+            texto
 
         
         };
@@ -78,7 +77,7 @@ async function updateUsers(rol,nombre, email,password,direccion,id)
         
 
 
-        const response = await fetch("http://127.0.0.1:8000/api/auth_user/"+id, {
+        const response = await fetch("http://127.0.0.1:8000/api/feedback_usuarios/"+id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -103,7 +102,7 @@ export{updateUsers}
 
 async function deleteUser(id) {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/auth_user/${id}`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/feedback_usuarios/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
