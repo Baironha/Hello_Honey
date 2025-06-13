@@ -1,4 +1,4 @@
-from .models        import Usuarios,metodos_pago,Membresias, ventas, Administradores, Rol_Administradores, Empleados,Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado
+from .models        import Usuarios,metodos_pago,Membresias, ventas, Administradores, Rol_Administradores, Empleados,Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado, feedback_usuarios
 from rest_framework import serializers
 from django.contrib.auth.models import User, Group
 
@@ -77,10 +77,16 @@ class User_Serializer(serializers.ModelSerializer):
         return [group.name for group in obj.groups.all()]
 
 
-
 class Usuarios_Serializer(serializers.ModelSerializer):
     class Meta:
         model  = Usuarios # Archivos exportados
+        fields = '__all__' #All se refiere a todas las columnas del DB
+
+
+
+class feedback_usuarios_Serializer(serializers.ModelSerializer):
+    class Meta:
+        model  = feedback_usuarios # Archivos exportados
         fields = '__all__' #All se refiere a todas las columnas del DB
 
 

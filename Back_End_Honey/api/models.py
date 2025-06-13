@@ -27,6 +27,13 @@ class metodos_pago (models.Model):
     tipo_de_pago = models.CharField(max_length=50, null=False)
 
 
+class feedback_usuarios (models.Model):
+
+    email  = models.EmailField(max_length=150, null=False)
+    nombre = models.CharField(max_length=50, null=False)
+    fecha  = models.DateField(null=False)
+    texto  = models.CharField(max_length=300, null=False)
+
 
 
 class ventas (models.Model):

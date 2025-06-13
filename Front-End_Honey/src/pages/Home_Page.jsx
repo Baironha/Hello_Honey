@@ -1,6 +1,7 @@
 
 import CardsModelosHoney from '../components/CardsModelosHoney'
 import EconomiaBodyComponent from '../components/EconomiaBodyComponent'
+import FeedbackComponent from '../components/FeedbackComponent'
 import FooterHoneyComponent from '../components/FooterHoneyComponent'
 import GraficoHome from '../components/GraficoHome'
 import Header_Component from '../components/Header_Component'
@@ -20,6 +21,7 @@ function Home_Page() {
             <HoneyAsistente/>
             <EconomiaBodyComponent/>
             <CardsModelosHoney/>
+            <FeedbackComponent/>
             <FooterHoneyComponent/>
         </div>
     )

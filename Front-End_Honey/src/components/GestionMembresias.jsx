@@ -131,7 +131,7 @@ function Gestion_Membresias() {
                             required
                         />
                         <input
-                            type="password"
+                            type="monto"
                             placeholder="Monto"
                             value={form.monto}
                             onChange={(e) => setForm({ ...form, monto: e.target.value })}

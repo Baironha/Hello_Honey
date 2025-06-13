@@ -16,7 +16,7 @@ function AdminsHome() {
             <li onClick={() => navigate("/")}>Home</li>
             <li onClick={() => navigate("/tareas")}>Tareas</li>
             <li onClick={() => navigate("Gestion_Membresias")}>Membresías</li>
-            <li onClick={() => navigate("/notificaciones")}>Notificaciones</li>
+            <li onClick={() => navigate("Gestion_Notificaciones")}>Notificaciones</li>
             <li onClick={() => navigate("Gestion_usuarios")}>Usuarios</li>
             <li onClick={() => navigate("Gestion_empleados")}>Empleados</li>
             <li onClick={() => navigate("Gestion_Admins")}>Administradores</li>

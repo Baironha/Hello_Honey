@@ -11,6 +11,8 @@ urlpatterns =[
     
     path('UserGroup/',UserGroup_ListCreateView.as_view()),
 
+    path('feedback_usuarios/',feedback_usuarios_ListCreateView.as_view()),
+    path('feedback_usuarios/<int:pk>',feedback_usuarios_DetailView.as_view()),
 
     path('login/', CustomTokenObtainPairView.as_view()),
     
