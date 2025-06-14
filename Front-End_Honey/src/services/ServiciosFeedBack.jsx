@@ -1,3 +1,11 @@
+/* 
+import Cookies from "js-cookie";
+
+const API_URL = "http://127.0.0.1:8000/api/auth_user/";
+const Token= Cookies.get("access_token")
+ */
+
+
 async function getUsers() {
     try {
         const response = await fetch('hhttp://127.0.0.1:8000/api/feedback_usuarios', {
@@ -23,14 +31,15 @@ export { getUsers };
 
 //////////LLAMADO POST//////////
 
-async function postUsers(nombre,email,feedback,rating) {
+async function postUsers(nombre_usu,email_usu,texto,rating,fecha) {
     try {
         
         const userData = { 
-            nombre,
-            email,
-            feedback,
-            rating
+            nombre_usu,
+            email_usu,
+            texto,
+            rating,
+            fecha
         };
 
         console.log(userData )
@@ -38,7 +47,8 @@ async function postUsers(nombre,email,feedback,rating) {
         const response = await fetch("http://127.0.0.1:8000/api/feedback_usuarios/", {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                /* 'Authorization': `Bearer ${Token}` */
             },
             body: JSON.stringify(userData)
         });
@@ -61,13 +71,14 @@ export{postUsers}
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsers(nombre, email,texto,id) 
+async function updateUsers(nombre, email,fecha,texto,id) 
 {
     try {
         
         const userData = { 
             nombre, 
             email,
+            fecha,
             texto
 
         
@@ -80,7 +91,8 @@ async function updateUsers(nombre, email,texto,id)
         const response = await fetch("http://127.0.0.1:8000/api/feedback_usuarios/"+id, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                /* 'Authorization': `Bearer ${Token}` */
             },
             body: JSON.stringify(userData)
         });
@@ -105,7 +117,8 @@ async function deleteUser(id) {
         const response = await fetch(`http://127.0.0.1:8000/api/feedback_usuarios/${id}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                /* 'Authorization': `Bearer ${Token}` */
             }
         });
 

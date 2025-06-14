@@ -1,36 +1,31 @@
-/* import React from 'react'
-
-function NotificacionesAdmins() {
-    return (
-        <div>
-            <div>
-                <h1>¿Te gusto la experiencia en Hello Honey?</h1>
-                <h3>Deja tu comnetario y nosotros lo leeremos, animate y cuentanos la experiencia vida para poder ,mejorar</h3>
-            </div>
-        </div>
-    )
-}
-
-export default NotificacionesAdmins */
 
 
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { Star } from "lucide-react";
-import ServiciosFeedBack from "../services/ServiciosFeedBack"; // Ajusta la ruta según la ubicación real
+import ServiciosFeedBack from "../services/ServiciosFeedBack"; // Ajusta la ruta si es necesario
 import "../style/Feedback.css";
 
 export default function FeedbackComponent() {
-  const [email, setEmail] = useState("");
-  const [nombre, setnombre] = useState("");
-  const [feedback, setFeedback] = useState("");
+  const [email_usu, setEmail] = useState("");
+  const [nombre_usu, setnombre] = useState("");
+  const [texto, setFeedback] = useState("");
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const [fecha, setFecha] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  // Establecer la fecha actual al cargar el componente
+  useEffect(() => {
+    const hoy = new Date();
+    const formatoFecha = hoy.toISOString().split("T")[0]; // YYYY-MM-DD
+    setFecha(formatoFecha);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await ServiciosFeedBack.postUsers(nombre,email,feedback,rating);
+      await ServiciosFeedBack.postUsers(nombre_usu, email_usu, texto, rating, fecha);
       setSubmitted(true);
     } catch (error) {
       console.error("Error al enviar feedback:", error);
@@ -48,7 +43,7 @@ export default function FeedbackComponent() {
             <label className="feedback-label">Correo electrónico</label>
             <input
               type="email"
-              value={email}
+              value={email_usu}
               onChange={(e) => setEmail(e.target.value)}
               className="feedback-input"
               required
@@ -59,7 +54,7 @@ export default function FeedbackComponent() {
             <label className="feedback-label">Nombre del usuario</label>
             <input
               type="text"
-              value={nombre}
+              value={nombre_usu}
               onChange={(e) => setnombre(e.target.value)}
               className="feedback-input"
               required
@@ -67,9 +62,19 @@ export default function FeedbackComponent() {
           </div>
 
           <div>
+            <label className="feedback-label">Fecha</label>
+            <input
+              type="date"
+              value={fecha}
+              readOnly // evita que se modifique
+              className="feedback-input"
+            />
+          </div>
+
+          <div>
             <label className="feedback-label">Tu feedback</label>
             <textarea
-              value={feedback}
+              value={texto}
               onChange={(e) => setFeedback(e.target.value)}
               className="feedback-textarea"
               rows={4}
