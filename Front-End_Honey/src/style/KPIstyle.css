@@ -1,0 +1,136 @@
+#kpi-wrapper {
+  background-color: #0a0a0a;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  min-height: 100vh;
+}
+
+/* Sección individual */
+.kpi-section {
+  background: linear-gradient(135deg, #0d1117, #0a0a0a);
+  border-radius: 16px;
+  padding: 48px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.04);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: fadeInUp 0.6s ease forwards;
+  transition: transform 0.4s ease;
+}
+
+.kpi-section:hover {
+  transform: translateY(-5px);
+}
+
+/* Cabecera */
+.kpi-header h1,
+.kpi-header h2 {
+  color: #38bdf8;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+/* Títulos */
+#good-kpi h2,
+#como-definir h2,
+#tipos-kpi h2,
+#redactar-kpi h2 {
+  font-size: 26px;
+  color: #60a5fa;
+  border-left: 6px solid #3b82f6;
+  padding-left: 16px;
+  margin-bottom: 20px;
+}
+
+/* Subtítulo */
+#como-definir h3 {
+  font-size: 22px;
+  color: #93c5fd;
+  margin-top: 30px;
+}
+
+/* Párrafos */
+.kpi-section p {
+  font-size: 16px;
+  color: #d1d5db;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+/* Negritas */
+.kpi-section strong {
+  color: #f8fafc;
+}
+
+/* Listas */
+.kpi-section ul {
+  margin-top: 16px;
+  padding-left: 24px;
+}
+
+.kpi-section ul li {
+  margin-bottom: 10px;
+  color: #cbd5e1;
+  list-style: disc;
+}
+
+/* Sección de ejemplo */
+.kpi-ejemplo h1 {
+  color: #38bdf8;
+  font-size: 24px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.kpi-ejemplo p {
+  color: #e2e8f0;
+}
+
+/* Figuras abstractas entre secciones */
+.kpi-section::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 120px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23082f49' fill-opacity='1' d='M0,128L60,160C120,192,240,256,360,256C480,256,600,192,720,181.3C840,171,960,213,1080,224C1200,235,1320,213,1380,202.7L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+  background-size: cover;
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  z-index: 0;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .kpi-section {
+    padding: 32px 20px;
+  }
+
+  .kpi-header h1,
+  .kpi-header h2 {
+    font-size: 24px;
+  }
+
+  #como-definir h3 {
+    font-size: 18px;
+  }
+
+  .kpi-section p,
+  .kpi-section ul li {
+    font-size: 15px;
+  }
+}

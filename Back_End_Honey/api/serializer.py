@@ -20,31 +20,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 #view y urls
 
 class User_Serializer(serializers.ModelSerializer):
-    """ class Meta:
-        model  = User # Archivos exportados
-        fields = '__all__' #All se refiere a todas las columnas del DB
-
-        model1 = UserGroup
-        fields1 = '__all__'
-
-    def create(self, validated_data):
-        return User.objects.create_user(**validated_data)
-    
-
-    def createrol(self,valited_data):
-        return UserGroup.objects.create_rol(**valited_data) """
-    
-
-    """ roles = serializers.SerializerMethodField()
-
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'email', 'roles']  # Agrega aquí otros campos que necesites
-
-    def get_roles(self, obj):
-        return [group.name for group in obj.groups.all()]
-        
- """
     rol = serializers.CharField(write_only=True, required=False)  # este es el campo que viene del frontend
     roles = serializers.SerializerMethodField()  # este se usa solo para mostrar
 
@@ -75,6 +50,8 @@ class User_Serializer(serializers.ModelSerializer):
 
     def get_roles(self, obj):
         return [group.name for group in obj.groups.all()]
+
+
 
 
 class Usuarios_Serializer(serializers.ModelSerializer):

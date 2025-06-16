@@ -1,10 +1,10 @@
 import React from 'react'
-import EconomiaComponet from '../components/EconomiaComponet'
+import SidebarEconomia from '../components/SidebarEconomia'
 
 function Economia_page() {
   return (
     <div>
-        <EconomiaComponet/>
+        <SidebarEconomia/>
     </div>
   )
 }
