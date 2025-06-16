@@ -1,7 +1,10 @@
-import React from 'react'
+ import React from 'react'
 import '../style/AdminPrueba.css'
 import { Outlet, useNavigate } from "react-router-dom";
-function AdminsHome() {
+
+
+
+function SidebarAdmin() {
 
   const navigate = useNavigate();
 
@@ -9,11 +12,11 @@ function AdminsHome() {
     <div>
       <div>
         <aside className="custom-sidebar">
-          {/* <div className="sidebar-title">Panel</div> */}
+          
           
           <ul className="sidebar-menu">
             <h1 className="sidebar-title">PANEL</h1>
-            <li onClick={() => navigate("/")}>Home</li>
+            <li onClick={() => navigate("AdminHome")}>Home</li>
             <li onClick={() => navigate("/tareas")}>Tareas</li>
             <li onClick={() => navigate("Gestion_Membresias")}>Membresías</li>
             <li onClick={() => navigate("Gestion_Notificaciones")}>Notificaciones</li>
@@ -32,4 +35,4 @@ function AdminsHome() {
   );
 }
 
-export default AdminsHome;
+export default SidebarAdmin; 

@@ -13,12 +13,17 @@ import ChatHoney_Page from '../pages/ChatHoney_Page.jsx';
 import Admin_page from '../pages/Admin_page.jsx';
 import Economia_page from '../pages/Economia_page.jsx';
 
+import RutasPrivadas from '../routes/RutasPrivadas.jsx'
+
+
 /* OUTLET */
 import Gestion_Usuarios from '../components/Gestion_UsuariosComponents.jsx';
 import Gestion_Admins from '../components/Gestion_Admins.jsx';
 import Gestion_Empleados from '../components/Gestion_Empleados.jsx';
 import Gestion_Membresias from '../components/GestionMembresias.jsx';
 import Gestion_Notificaciones from '../components/Gestion_Notificaciones.jsx';
+import Gestion_Ventas from '../components/Gestion_Ventas.jsx';
+import AdminHome from '../components/AdminHome.jsx';
 function Routing() {
 
 
@@ -39,14 +44,17 @@ function Routing() {
                         <Route path="/AddStandard" element={<AddMembreStandard_page/>}/>{/*MEMBRESIA*/}
                         <Route path="/Addplus" element={<AddMembresiaPlus/>}/>{/* HOMEPAGE */}
                         <Route path="/AddVip" element={<AddMembresiaVip/>}/>{/* HOMEPAGE */}
-
-                        <Route path="/admins" element={<Admin_page/>}>
+                        
+                        {/* <Route path="/admins" element={<RutasPrivadas><Admin_page/></RutasPrivadas>}>  */}
+                        <Route path="/admins" element={<Admin_page/>}>     
+                
+                            <Route path="AdminHome" element={<AdminHome/>}/>
                             <Route path="Gestion_usuarios" element={<Gestion_Usuarios/>}/>
                             <Route path="Gestion_Admins" element={<Gestion_Admins/>}/>
                             <Route path="Gestion_empleados" element={<Gestion_Empleados/>}/>
-                            
                             <Route path="Gestion_Membresias" element={<Gestion_Membresias/>}/>
                             <Route path="Gestion_Notificaciones" element={<Gestion_Notificaciones/>}/>
+                            <Route path="Gestion_Ventas" element={<Gestion_Ventas/>}/>
                         </Route>
                 </Routes>
             </Router>

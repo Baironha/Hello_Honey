@@ -1,10 +1,3 @@
-/* 
-import Cookies from "js-cookie";
-
-const API_URL = "http://127.0.0.1:8000/api/auth_user/";
-const Token= Cookies.get("access_token")
- */
-
 
 async function getUsers() {
     try {
@@ -83,9 +76,6 @@ async function updateUsers(nombre, email,fecha,texto,id)
 
         
         };
-
-
-        
 
 
         const response = await fetch("http://127.0.0.1:8000/api/feedback_usuarios/"+id, {

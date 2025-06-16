@@ -62,7 +62,7 @@ function LoginComponent() {
           if (rol === "empleados") {
             navigate("/"); // Puedes diferenciar rutas si lo deseas
           } if (rol === "admins") {
-            navigate("/Admins"); // Puedes diferenciar rutas si lo deseas
+            navigate("/Admins/AdminHome"); // Puedes diferenciar rutas si lo deseas
           }
           else {
             Swal.fire({
