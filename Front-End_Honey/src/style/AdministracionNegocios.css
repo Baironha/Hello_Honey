@@ -1,0 +1,67 @@
+/* AdministracionNegocios.css */
+
+.admin-negocios-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  background-color: #fefefe;
+  color: #222;
+}
+
+.admin-negocios-container h1 {
+  text-align: center;
+  color: #004080;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.admin-negocios-container section {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-left: 6px solid #007acc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-negocios-container h2 {
+  color: #007acc;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.admin-negocios-container p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.admin-negocios-container ol,
+.admin-negocios-container ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.admin-negocios-container li {
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+}
+
+strong {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .admin-negocios-container {
+    padding: 1rem;
+  }
+
+  .admin-negocios-container h1 {
+    font-size: 2rem;
+  }
+
+  .admin-negocios-container h2 {
+    font-size: 1.3rem;
+  }
+}

@@ -7,7 +7,7 @@ function EconomiaBodyComponent() {
     const navigate = useNavigate();
 
     const handleRedirect = () => {
-        navigate("/economia");
+        navigate("/Economia/EconomiaHome");
     };
 
     return (

@@ -24,13 +24,13 @@ import Gestion_Membresias from '../components/GestionMembresias.jsx';
 import Gestion_Notificaciones from '../components/Gestion_Notificaciones.jsx';
 import Gestion_Ventas from '../components/Gestion_Ventas.jsx';
 import AdminHome from '../components/AdminHome.jsx';
-import KPI_component from '../components/KPI_component.jsx';
-import Administracion_Proyectos from '../components/Administracion_Proyectos.jsx';
-import AdministracionNegocios from '../components/AdministracionNegocios.jsx';
 
 
 /* OUTLET  Economia*/
-
+import EconomiaHome from '../components/EconomiaHome.jsx';
+import KPI_component from '../components/KPI_component.jsx';
+import Administracion_Proyectos from '../components/Administracion_Proyectos.jsx';
+import AdministracionNegocios from '../components/AdministracionNegocios.jsx';
 
 function Routing() {
 
@@ -66,6 +66,7 @@ function Routing() {
                         </Route>
                         
                         <Route path="/Economia" element={<Economia_page/>}>  
+                            <Route path="EconomiaHome" element={<EconomiaHome/>}/>
                             <Route path="Kpi" element={<KPI_component/>}/>
                             <Route path="Administracion_Negocios" element={<AdministracionNegocios/>}/>
                             <Route path="Administracion_Proyectos" element={<Administracion_Proyectos/>}/>
