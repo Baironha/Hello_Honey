@@ -1,17 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../style/AddMembresiaStandard.css'
-import logoStandard from '../img/PNG_PREMIUN.jpg'
-import imgHoney from '../img/IMG_CARD_ECO.jpg'
+import logoStandard from '../img/Logo_VIP_original.png'
+import imgHoney from '../img/HoneyLogo.png'
 
-function AddMembresiaPlus() {
+function AddMembresiaPremium() {
   const navigate = useNavigate()
 
   const handleComprar = () => {
     const membresia = {
       id: 103,
-      name: "Membresía Plus Honey",
-      price: 5.0,
+      name: "Membresía VIP Honey",
+      price: 3.0,
       duration: "mensual",
       quantity: 1,
       description: "Acceso extendido con beneficios adicionales.",
@@ -26,7 +26,7 @@ function AddMembresiaPlus() {
         <div className="titulo-con-logo">
           <img src={logoStandard} alt="Logo Standard" className="logo-standard" />
           <h1 className="titulo">Membresía plus Honey</h1>
-          <h2 className='PrecioPlus'>$5.00</h2>
+          <h2 className='PrecioPlus'>$3.00</h2>
         </div>
 
         <img src={imgHoney} alt="Honey" className="imagen-honey" />
@@ -51,4 +51,4 @@ function AddMembresiaPlus() {
   )
 }
 
-export default AddMembresiaPlus
+export default AddMembresiaPremium;

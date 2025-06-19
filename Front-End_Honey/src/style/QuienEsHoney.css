@@ -1,6 +1,6 @@
 /* Contenedor principal */
 #Cont_QuienEsHoney {
-  background: linear-gradient(to bottom, #040014, #000000);
+  background-color: #000000;
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
@@ -11,7 +11,7 @@
 #Cont_Texto_QuienEsHoney h1,
 #Cont_Texto_QuienEsHoney h2,
 #Carrusel_QuienEsHoney h2 {
-  color: #00bfff;
+  color: #0026ff;;
   margin-bottom: 20px;
 }
 

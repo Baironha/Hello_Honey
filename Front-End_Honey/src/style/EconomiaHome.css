@@ -1,0 +1,54 @@
+/* Estilo general del fondo */
+.economia-page {
+    background-color: rgb(3, 8, 77);
+    color: white;
+    padding-left: 300px;
+    padding-right: 10px;
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
+/* Línea blanca vertical para los contenedores principales */
+#Container_Inflación_Política_Monetaria,
+#Container_la_política_monetaria,
+#container_Mercados_Financieros_Bolsa_Valores,
+#container_Recesión_Crecimiento_Económico,
+#container_Globalización_Comercio_Internacional,
+#container_Transformación_Digital_Finanzas_Tecnológicas {
+    border-left: 4px solid white;
+    padding-left: 15px;
+    margin-bottom: 40px;
+}
+
+/* Títulos principales */
+#TitulosPrincipalesEco {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Botones */
+#Btn_Mostrar_Mas_Inflación_Política_Monetaria,
+#Btn_Mostrar_Mas_la_política_monetaria,
+#Btn_Mostrar_Mas_Mercados_Financieros_Bolsa_Valores,
+#Btn_Mostrar_Mas_Recesión_Crecimiento_Económico,
+#Btn_Mostrar_Mas_Transformación_Digital_Finanzas_Tecnológicas {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+
+#Btn_Mostrar_Mas_Inflación_Política_Monetaria:hover,
+#Btn_Mostrar_Mas_la_política_monetaria:hover,
+#Btn_Mostrar_Mas_Mercados_Financieros_Bolsa_Valores:hover,
+#Btn_Mostrar_Mas_Recesión_Crecimiento_Económico:hover,
+#Btn_Mostrar_Mas_Transformación_Digital_Finanzas_Tecnológicas:hover {
+    background-color: white;
+    color: rgb(238, 234, 234);
+}

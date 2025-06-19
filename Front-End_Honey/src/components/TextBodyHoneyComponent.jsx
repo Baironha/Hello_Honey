@@ -1,20 +1,20 @@
 
 import '../style/TextBody1style.css'
 
-import ImgEco from '../img/IMG_CARD_ECO.jpg'
-import ImgProf from '../img/IMG_CARD_PROF.jpg'
-import ImgPsico from '../img/IMG_CARD_PSICO.jpg'
+import ImgEco from '../img/IMG_ECONOMIA.png'
+import ImgProf from '../img/IMG_PROFESSIONAL ASSISTANCE.png'
+import ImgPsico from '../img/IMG_PSYCHOLOGY.png'
 
 function TextBodyHoneyComponent() {
   return (
     <div>
       <div className='TextosBody1'>
         <p>
-          <strong>
+          
             Honey es capaz de razonar antes de responder, lo que ayuda a brindarle al <br />
             usuario una experiencia más inmersiva y realista. <br />
             Con el razonamiento de Honey podrás simplificar y planificar con mayor facilidad tus proyectos e ideas.
-          </strong>
+          
         </p>
       </div>
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../style/AddMembresiaVip.css'
-import logoStandard from '../img/PNG_VIP.png'
-import imgHoney from '../img/IMG_CARD_ECO.jpg'
+import logoStandard from '../img/Logo_VIP_original.png'
+import imgHoney from '../img/HoneyLogo.png'
 
 function AddMembresiaVip() {
   const navigate = useNavigate()
@@ -11,7 +11,7 @@ function AddMembresiaVip() {
     const membresia = {
       id: 101,
       name: "Membresía VIP Honey",
-      price: 10.0,
+      price: 9.0,
       duration: "mensual",
       quantity: 1,
       description: "Incluye terapia diaria, asistencia económica y más.",
@@ -25,7 +25,7 @@ function AddMembresiaVip() {
       <div className="titulo-con-logo">
         <img src={logoStandard} alt="Logo Standard" className="logo-standard" />
         <h1 className="titulo">Membresía VIP Honey</h1>
-        <h1 className='PrecioVip'>$10.00</h1>
+        <h1 className='PrecioVip'>$9.00</h1>
       </div>
 
       <img src={imgHoney} alt="Honey" className="imagen-honey" />

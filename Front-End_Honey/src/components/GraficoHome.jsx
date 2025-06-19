@@ -99,11 +99,11 @@ function GraficoHome() {
         <h1 className="grafico-home-title">¿Cómo va el mundo?</h1>
 
         <p className="grafico-home-description">
-          <strong>
+          
             Es importante entender la economía, cómo se mueve y funciona para poder desarrollar proyectos <br />
             con mayor posibilidad de rentabilidad. Saber de economía garantiza un mayor porcentaje de anclaje en el mercado. <br />
             ¡NO TE QUEDES SIN TU ESPACIO EN EL MUNDO EMPRESARIAL!
-          </strong>
+          
         </p>
 
         <div id="grafico-home-selector" className="grafico-home-selector">

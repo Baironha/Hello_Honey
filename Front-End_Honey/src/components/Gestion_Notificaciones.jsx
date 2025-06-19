@@ -8,9 +8,13 @@ const Gestion_Notificaciones = () => {
 
   useEffect(() => {
     const cargarFeedbacks = async () => {
-      const data = await ServiciosFeedback.get();
-      console.log("Feedbacks:", data); // depuración
-      setFeedbacks(data);
+      try {
+        const data = await ServiciosFeedback.get();
+        console.log("Feedbacks:", data);
+        setFeedbacks(data);
+      } catch (error) {
+        console.error("Error al cargar feedbacks:", error);
+      }
     };
 
     cargarFeedbacks();
@@ -45,23 +49,24 @@ const Gestion_Notificaciones = () => {
         {feedbacks.map((feedback) => (
           <div key={feedback.id} className="feedback-card">
             <div className="feedback-header">
-              <div className="feedback-userinfo">
+              <div className="feedback-userinfo-row">
                 <div className="feedback-avatar"></div>
-                <div>
-                  <strong>{feedback.nombre}</strong>
-                  {feedback.estado !== "respondido" && (
-                    <span className="badge-nuevo">Nuevo</span>
-                  )}
-                  <p className="feedback-email">{feedback.correo}</p>
-                  <p className="feedback-time">
-                    Hace {feedback.dias || 0} días
-                  </p>
+                <div className="feedback-name-email">
+                  <div>
+                    <strong>{feedback.nombre_usu}</strong>
+                    {feedback.estado !== "respondido" && (
+                      <span className="badge-nuevo">Nuevo</span>
+                    )}
+                  </div>
+                  <div className="feedback-email">{feedback.email_usu}</div>
                 </div>
               </div>
               <label className="feedback-check">
                 <input type="checkbox" disabled /> Marcar como leído
               </label>
             </div>
+
+            <p className="feedback-time">Hace {feedback.dias || 0} días</p>
 
             <div className="feedback-text">{feedback.texto}</div>
 
@@ -80,9 +85,10 @@ const Gestion_Notificaciones = () => {
                 <button
                   className="btn-responder"
                   onClick={() =>
-                    handleResponder(feedback.id, feedback.correo)
+                    handleResponder(feedback.id, feedback.email_usu)
                   }
                 >
+                  Enviar respuesta
                 </button>
               </div>
             )}

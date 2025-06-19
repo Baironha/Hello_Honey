@@ -1,0 +1,45 @@
+/* Fondo negro y altura completa */
+.psico-container {
+    background-color: #000;
+    color: #fff;
+    height: 100%;
+    width: 100vw;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Contenido con espacio desde el borde izquierdo y superior */
+.psico-content {
+    padding-left: 200px;    /* Espacio desde el borde izquierdo */
+    padding-right: 50px;
+    padding-top: 50px;     /* Espacio desde el borde superior */
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* Estilos para el título principal */
+.psico-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #06023f;
+    padding-left: 20px; /* espacio entre línea y texto */
+}
+
+/* Subtítulos */
+.psico-subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    border-left: 4px solid #06023f;
+    padding-left: 20px;
+}
+
+/* Párrafos de texto */
+.psico-text {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #06023f;
+    padding-left: 20px;
+}

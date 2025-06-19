@@ -1,6 +1,6 @@
 #ContHoneyAsis {
   background-color: #000000;
-  color: #ffffff;
+  color: white;
   padding: 60px 20px;
   text-align: center;
   font-family: Arial, sans-serif;
@@ -9,14 +9,14 @@
 
 .T1HoneyAsisten {
   font-size: 2rem;
-  color: #00bfff;
+  color: #0026ff;
   margin-bottom: 20px;
   animation: floatTitle 3s ease-in-out infinite;
 }
 
 .TextoHoneyAsistente {
   font-size: 1.1rem;
-  color: #c0c0c0;
+  color: white;
   line-height: 1.6;
   margin: 10px auto;
   max-width: 800px;

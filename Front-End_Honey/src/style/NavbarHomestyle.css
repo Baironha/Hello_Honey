@@ -1,28 +1,29 @@
 /* ==== NAVBAR ==== */
 #NavbarHoney {
   position: fixed;
-  top: 1px;
+  top: 0px;
   left: 0;
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 40px;
+  padding: 8px 5px;
   z-index: 1000;
-  background: transparent;
+  background-image:
+  linear-gradient(135deg, #01010f 25%, #02085f 50%, #01011f 100%);
   font-family: 'Google Sans', sans-serif;
 }
 
 #NavbarHoneyLogo {
   color: white;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 100;
 }
 
 #NavbarHoneyLinks {
   list-style: none;
   display: flex;
-  gap: 32px;
+  gap: 10px;
   margin: 0;
   padding: 0;
 }

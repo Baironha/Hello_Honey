@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../style/AddMembresiaStandard.css'
-import logoStandard from '../img/PNG_FREE.png'
-import imgHoney from '../img/IMG_CARD_ECO.jpg'
+import logoStandard from '../img/Logo_FREE_original.png'
+import imgHoney from '../img/HoneyLogo.png'
 
 function AddMembresiaStandard() {
   const navigate = useNavigate()

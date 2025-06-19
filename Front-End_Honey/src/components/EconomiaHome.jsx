@@ -1,23 +1,40 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import '../style/EconomiaHome.css'
 
 function EconomiaHome() {
+
+const [seccionesVisibles, setSeccionesVisibles] = useState({});
+
+const toggleSeccion = (id) => {
+  setSeccionesVisibles(prev => ({
+    ...prev,
+    [id]: !prev[id]  // Alterna entre mostrar y ocultar
+  }));
+};
+
     return (
         <div className="economia-page">
             <div id='Container_Inflación_Política_Monetaria'>
                 {/* SE Muestra de aqui */}
-                <h2>Inflación global</h2>
+                <h2 id='TitulosPrincipalesEco'>Inflación global</h2>
                 <p><strong>¿Qué es la inflación?</strong></p>
                 <p>
                     La inflación es el aumento sostenido y generalizado de los precios de bienes y servicios en una economía durante <br />
                     un período de tiempo. Cuando los precios suben, el poder adquisitivo del dinero disminuye: con la misma cantidad <br />
                     de dinero, puedes comprar menos cosas.
                 </p>
-                <button id='Btn_Mostrar_Mas_Inflación_Política_Monetaria'>Mostrar mas</button>
+                {!seccionesVisibles['Inflación_Política_Monetaria'] && (
+            <button
+                id='Btn_Mostrar_Mas_Inflación_Política_Monetaria'
+                onClick={() => toggleSeccion('Inflación_Política_Monetaria')}
+            >
+                Mostrar más
+            </button>
+            )}
                 {/* HASTA AQUI */}
                 <br />
                 <div id='Cont_desple_Inflación_Política_Monetaria'>
-                    <h2>¿Cómo funciona la inflación?</h2>
+                    <h3>¿Cómo funciona la inflación?</h3>
                     <p><strong>La inflación puede surgir por diversas razones, entre ellas:</strong></p>
                     <ul>
                         <li>Demanda excesiva: cuando muchas personas quieren comprar más de lo que la economía puede producir (inflación por demanda).</li>
@@ -40,7 +57,7 @@ function EconomiaHome() {
 
             <div id='Container_la_política_monetaria'>
                 {/* SE Muestra de aqui */}
-                <h2>La política monetaria</h2>
+                <h2 id='TitulosPrincipalesEco'>La política monetaria</h2>
                 <p>
                     En el contexto de las ciencias económicas, la política monetaria actúa como una herramienta esencial para mantener la estabilidad <br />
                     económica de un país. Si imaginamos la política monetaria como un “container”, este contendría las decisiones, instrumentos y objetivos <br />
@@ -50,7 +67,7 @@ function EconomiaHome() {
                 <button id='Btn_Mostrar_Mas_la_política_monetaria'></button>
                 {/* HASTA AQUI */}
                 <div>
-                    <h2>¿Qué es la política monetaria?</h2>
+                    <h3>¿Qué es la política monetaria?</h3>
                     <p>
                         La política monetaria es el conjunto de acciones que implementa el banco central de un país (como la Reserva Federal en EE. UU. o el Banco <br />
                         Central de Costa Rica) para controlar la cantidad de dinero que circula en la economía y las tasas de interés. Su principal objetivo es mantener <br />
@@ -66,7 +83,7 @@ function EconomiaHome() {
                     </ul>
                     <br />
 
-                    <h2>¿Qué contiene el “container” de la política monetaria?</h2>
+                    <h3>¿Qué contiene el “container” de la política monetaria?</h3>
                     <p>
                         El “container” de la política monetaria contiene varias herramientas fundamentales:
                     </p>
@@ -102,7 +119,7 @@ function EconomiaHome() {
 
             <div id='container_Mercados_Financieros_Bolsa_Valores'>
                 {/* SE Muestra de aqui */}
-                <h2>Mercados Financieros y Bolsa de Valores</h2>
+                <h2 id='TitulosPrincipalesEco'>Mercados Financieros y Bolsa de Valores</h2>
                 <p>
                     Los mercados financieros y la bolsa de valores son motores fundamentales del sistema económico moderno. A través de ellos, se canaliza el dinero desde <br />
                     quienes ahorran hacia quienes invierten, generando crecimiento, empleo y oportunidades. Su comprensión es clave para entender cómo funciona la economía de un país.
@@ -111,8 +128,8 @@ function EconomiaHome() {
                 <button id='Btn_Mostrar_Mas_Mercados_Financieros_Bolsa_Valores'>Mostrar mas</button>
                 {/* HASTA AQUI */}
                 <br />
-                <div>
-                    <h2>¿Qué son los mercados financieros?</h2>
+                <div id='cont_seg_Mercados_Financieros_Bolsa_Valores'>
+                    <h3>¿Qué son los mercados financieros?</h3>
                     <p>
                         Los mercados financieros son espacios donde se compran y venden activos como acciones, bonos, divisas y derivados. Funcionan como intermediarios entre los agentes <br />
                         económicos, facilitando el flujo de capital entre quienes tienen excedentes (ahorrantes o inversionistas) y quienes necesitan financiamiento (empresas, gobiernos).br
@@ -124,7 +141,7 @@ function EconomiaHome() {
                         <li><strong>Mercado de divisas (Forex):</strong> Donde se compran y venden monedas extranjeras. Es el más grande y líquido del mundo.</li>
                         <li><strong>Mercado de derivados:</strong> Permite negociar contratos basados en activos subyacentes, como materias primas, divisas o índices bursátiles.</li>
                     </ul>
-                    <h2>¿Qué es la bolsa de valores?</h2>
+                    <h3>¿Qué es la bolsa de valores?</h3>
                     <p>
                         La bolsa de valores es una institución donde se negocian principalmente acciones (participaciones en empresas) y bonos (instrumentos de deuda). Actúa como <br />
                         un mercado organizado, transparente y supervisado que ofrece seguridad a inversionistas e instituciones. <br />
@@ -142,7 +159,7 @@ function EconomiaHome() {
                     </p>
                     <br />
 
-                    <h2>Importancia de los mercados financieros</h2>
+                    <h3>Importancia de los mercados financieros</h3>
                     <p>
                         Los mercados financieros son fundamentales para el crecimiento económico. Permiten que las empresas innoven, se expandan y generen empleo. Además, los <br />
                         gobiernos pueden financiar proyectos públicos emitiendo bonos. <br />
@@ -151,7 +168,7 @@ function EconomiaHome() {
                     </p>
                     <br />
 
-                    <h2>Riesgos y regulación</h2>
+                    <h3>Riesgos y regulación</h3>
                     <p>
                         Pese a sus beneficios, los mercados financieros también presentan riesgos. La especulación excesiva, las crisis de confianza y las burbujas financieras pueden <br />
                         causar inestabilidad. Ejemplos históricos como la crisis del 2008 muestran cómo un mal manejo del riesgo puede afectar a millones de personas. <br />
@@ -160,7 +177,7 @@ function EconomiaHome() {
                     </p>
                     <br />
 
-                    <h2>Tecnología y acceso</h2>
+                    <h3>Tecnología y acceso</h3>
                     <p>
                         En los últimos años, la tecnología ha transformado el acceso a los mercados. Hoy, muchas personas invierten desde una app en su celular. Esto democratiza las finanzas, pero <br />
                         también exige educación financiera para evitar errores costosos. <br />
@@ -180,14 +197,14 @@ function EconomiaHome() {
 
 
             <div id='container_Recesión_Crecimiento_Económico'> 
-                <h2>Recesión y Crecimiento Económico</h2>
+                <h2 id='TitulosPrincipalesEco'>Recesión y Crecimiento Económico</h2>
                 <p>
                     La economía mundial experimenta ciclos constantes de expansión y contracción. Estos periodos, conocidos como crecimiento económico y recesión, son parte inherente del funcionamiento del sistema <br />
                     capitalista. Entender cómo y por qué ocurren permite a los ciudadanos, gobiernos y empresas anticiparse, tomar decisiones acertadas y minimizar los impactos negativos. Ambos fenómenos, aunque opuestos, <br />
                     están íntimamente relacionados y reflejan la complejidad del sistema económico global.
                 </p>
                 <button id='Btn_Mostrar_Mas_Recesión_Crecimiento_Económico'>Mostrar mas</button>
-                <div>
+                <div id='cont_seg_Recesión_Crecimiento_Económico'>
                     <h2>¿Qué es una recesión?</h2>
                     <p>
                         a recesión es una etapa del ciclo económico caracterizada por una caída sostenida de la actividad económica, que suele medirse por una disminución del Producto Interno Bruto (PIB) durante dos trimestres <br />
@@ -225,7 +242,7 @@ function EconomiaHome() {
                     </p>
                     <br />
 
-                    <h2>La relación entre recesión y crecimiento</h2>
+                    <h3>La relación entre recesión y crecimiento</h3>
                     <p>
                         Estos dos fenómenos no deben entenderse como eventos aislados, sino como fases complementarias del ciclo económico. Toda economía, tarde o temprano, atraviesa momentos de auge y momentos de contracción. <br />
                         Lo importante es que las políticas públicas estén orientadas a:
@@ -245,11 +262,11 @@ function EconomiaHome() {
 
 
             <div id='container_Globalización_Comercio_Internacional'>
-                <h2>Globalización y Comercio Internacional</h2>
+                <h2 id='TitulosPrincipalesEco'>Globalización y Comercio Internacional</h2>
                 <p>La globalización y el comercio internacional son fenómenos interrelacionados que han transformado la economía mundial en las últimas décadas. Gracias a los avances tecnológicos, la reducción de barreras comerciales y la <br />
                 integración de mercados, las economías hoy están más conectadas que nunca. Este proceso ha traído consigo múltiples oportunidades, pero también desafíos sociales, políticos y ambientales. Comprender su impacto es esencial <br />
                 para analizar el rumbo de las sociedades contemporáneas.</p>
-                <div>
+                <div id='cont_seg_Globalización_Comercio_Internacional'>
                     <h2>¿Qué es la globalización?</h2>
                     <p>
                         La globalización es un proceso dinámico de interconexión creciente entre países, culturas y economías. Implica la libre circulación de bienes, servicios, información, capitales y personas a nivel mundial. Este <br />
@@ -265,7 +282,7 @@ function EconomiaHome() {
                         2008 o la interrupción de cadenas de suministro durante la pandemia del COVID-19.
                     </p>
                     <br />
-                    <h2>¿Qué es el comercio internacional?</h2>
+                    <h3>¿Qué es el comercio internacional?</h3>
                     <p>
                         El comercio internacional es el intercambio de bienes y servicios entre países. Es una de las principales expresiones económicas de la globalización. A través del comercio, los países pueden:
                     </p>
@@ -288,15 +305,15 @@ function EconomiaHome() {
 
 
 
-            <div id='container_Transformación_Digital_Finanzas_Tecnológicas '>
-                <h2>Transformación Digital y Finanzas Tecnológicas (Fintech)</h2>
+            <div id='container_Transformación_Digital_Finanzas_Tecnológicas'>
+                <h2 id='TitulosPrincipalesEco'>Transformación Digital y Finanzas Tecnológicas (Fintech)</h2>
                 <p>
                     La transformación digital está cambiando todos los aspectos de la vida moderna, y el sector financiero no es la excepción. En este contexto surgen las Fintech, empresas que combinan tecnología <br />
                     y servicios financieros para ofrecer soluciones más accesibles, rápidas y personalizadas. Este fenómeno está redefiniendo la forma en que las personas manejan su dinero, acceden a préstamos, <br />
                     invierten y se relacionan con instituciones financieras. Analizar esta transformación permite comprender cómo la innovación está remodelando el sistema económico global.
                 </p>
                 <button id='Btn_Mostrar_Mas_Transformación_Digital_Finanzas_Tecnológicas'>Mostrar mas</button>
-                <div>
+                <div id='cont_seg_Transformación_Digital_Finanzas_Tecnológicas'>
                     <h2>¿Qué es la transformación digital?</h2>
                     <p>
                         La transformación digital es el proceso mediante el cual las organizaciones integran tecnologías digitales en todas sus áreas, modificando su funcionamiento, cultura y oferta de valor. En el <br />
@@ -307,7 +324,7 @@ function EconomiaHome() {
                     </p>
                     <br />
 
-                    <h2>Qué son las Fintech?</h2>
+                    <h3>Qué son las Fintech?</h3>
                     <p>
                         El término Fintech proviene de la unión de “financial” y “technology”. Se refiere a un conjunto de empresas que utilizan herramientas tecnológicas para ofrecer servicios financieros innovadores, <br />
                         eficientes y accesibles. Algunas áreas donde operan incluyen:

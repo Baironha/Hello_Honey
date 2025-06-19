@@ -1,12 +1,11 @@
 .footer-container {
-  background-color: #0d1117;
+  background-color: #000000;
   color: #ffffff;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 40px 20px;
   font-family: Arial, sans-serif;
-  border-top: 1px solid #222;
 }
 
 .footer-section {
@@ -15,7 +14,7 @@
 }
 
 .footer-section h3 {
-  color: #00bfff;
+  color: #0026ff;
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
@@ -39,7 +38,7 @@
 }
 
 .social-icons a {
-  color: #00bfff;
+  color: #0026ff;
   font-size: 1.5rem;
   transition: transform 0.3s ease, color 0.3s ease;
 }

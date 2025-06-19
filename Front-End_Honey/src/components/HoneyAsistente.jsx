@@ -7,7 +7,7 @@ function HoneyAsistente() {
     const navigate = useNavigate();
 
     const handleRedirect = () => {
-        navigate('/ChatHoney');
+        navigate('/Psicologia');
     }
 
     return (
@@ -19,7 +19,7 @@ function HoneyAsistente() {
                 Recordarte que cuidar de tu salud mental no es un lujo, es una necesidad.
             </p>
             <br />
-            <p className='TextoHoneyAsistente'><strong>
+            <p className='TextoHoneyAsistente'><strong className='TextoHoneyAsistente'>
                 Honey está diseñada para ayudar a las personas a gestionar el estrés de forma consciente y efectiva, brindando herramientas psicológicas adaptadas a sus necesidades diarias.<br />
                 A través de un enfoque basado en la empatía, la autorreflexión y el acompañamiento emocional, facilita que cada persona pueda reconectar consigo misma, identificar lo que siente y retomar el control de su bienestar mental.  
                 Ya sea en medio de una jornada exigente o en momentos de calma, Honey actúa como una guía accesible y confiable para promover el equilibrio emocional y fortalecer el autocuidado.

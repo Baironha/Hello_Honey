@@ -4,10 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import '../style/CardsModelsStyle.css';
 import { FaCheckCircle } from 'react-icons/fa';
 
-import imgFree from '../img/PNG_FREE.png';
-import imgPremiun from '../img/PNG_PREMIUN.jpg';
-import imgVip from '../img/PNG_VIP.png';
 import Logo from '../img/HoneyLogo.png'
+
+
+import Logo_PREMIUM_original from '../img/Logo_PREMIUM_original.png'
+import Logo_VIP_original from '../img/Logo_VIP_original.png'
+import Logo_FREE_original from '../img/Logo_FREE_original.png'
+
+
+
 function CardsModelosHoney() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -43,7 +48,7 @@ function CardsModelosHoney() {
 
               {/* Card Standard */}
               <div className='ModelsHoney' onClick={navegarAStandard}>
-              <img src={imgFree} alt="Modelo Standard" className='CardsImgModels' />
+              <img src={Logo_FREE_original} alt="Modelo Standard" className='CardsImgModels' />
               <h3 className='TModelFree'>Standard</h3>
               <p className='TextModelHoney'>
                   <strong>$ 0.00</strong> <br />
@@ -56,7 +61,7 @@ function CardsModelosHoney() {
 
               {/* Card Plus */}
               <div className='HoneyCard' onClick={navegarAPlus}>
-                  <img src={imgPremiun} alt="Modelo Plus" className='CardsImgModels' />
+                  <img src={Logo_PREMIUM_original} alt="Modelo Plus" className='CardsImgModels' />
                   <h3 className='TModelFree'>Plus</h3>
                   <p className='TextModelHoney'>
                       <strong>$ 3.00</strong> <br />
@@ -70,7 +75,7 @@ function CardsModelosHoney() {
 
               {/* Card VIP */}
               <div className='HoneyCard' onClick={navegarAVip}>
-                  <img src={imgVip} alt="Modelo VIP" className='CardsImgModels' />
+                  <img src={Logo_VIP_original} alt="Modelo VIP" className='CardsImgModels' />
                   <h3 className='TModelFree'>VIP</h3>
                   <p className='TextModelHoney'>
                       <strong>$ 5.00</strong> <br />

@@ -37,6 +37,7 @@ class feedback_usuarios (models.Model):
     
 
 
+
 class ventas (models.Model):
 
     usuario            = models.ForeignKey(User, on_delete = models.CASCADE, related_name='ventas')

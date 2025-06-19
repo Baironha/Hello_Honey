@@ -47,10 +47,10 @@ function QuienEsHoney() {
         <h1>¿Quiénes somos?</h1>
         <h2>Hello Honey es la empresa creadora de la IA Honey</h2>
         <p>
-          <strong>
+          
             Honey es una IA enfocada en la economía y psicología, una asistente virtual
             que está dispuesta ayudarte en todo momento con problemas que pueden ser abrumadores.
-          </strong>
+          
         </p>
       </div>
 
