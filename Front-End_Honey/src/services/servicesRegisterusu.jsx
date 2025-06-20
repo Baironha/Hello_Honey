@@ -1,6 +1,6 @@
 async function getUsers() {
     try {
-        const response = await fetch('hhttp://127.0.0.1:8000/api/auth_user', {
+        const response = await fetch('http://127.0.0.1:8000/api/auth_user', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,13 +23,19 @@ export { getUsers };
 
 //////////LLAMADO POST//////////
 
-async function postUsers(imagen, direccion) {
+async function postUsers(Imagen, edad, direccion,user) {
     try {
         
         const userData = { 
-            imagen,
-            direccion
+            Imagen,
+            edad,
+            direccion,
+            membresia: "1",
+            user 
         };
+
+        console.log(userData);
+        
 
 
 
@@ -43,7 +49,8 @@ async function postUsers(imagen, direccion) {
 
      
         const mensage = await response.json();
-        console.log('Mensaje de error de BackEnd:' + mensage);
+        console.log('Mensaje de error de BackEnd:', JSON.stringify(mensage));
+
         return mensage
         
 
@@ -59,12 +66,13 @@ export{postUsers}
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsers(direccion,id) 
+async function updateUsers(direccion,edad,id) 
 {
     try {
         
         const userData = { 
-            direccion
+            direccion,
+            edad
         
         };
 
@@ -97,7 +105,7 @@ export{updateUsers}
 
 async function deleteUser(id) {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/auth_user/${id}`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/usuarios/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

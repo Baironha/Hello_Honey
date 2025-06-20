@@ -8,17 +8,36 @@
     font-family: sans-serif;
 }
 
-/* Línea blanca vertical para los contenedores principales */
-#Container_Inflación_Política_Monetaria,
-#Container_la_política_monetaria,
-#container_Mercados_Financieros_Bolsa_Valores,
-#container_Recesión_Crecimiento_Económico,
-#container_Globalización_Comercio_Internacional,
-#container_Transformación_Digital_Finanzas_Tecnológicas {
-    border-left: 4px solid white;
-    padding-left: 15px;
-    margin-bottom: 40px;
+.Cont_Izquierdos_Eco {
+    width: 800px;
+    margin-left: auto;
+    margin-right: 50px;
+    text-align: right;
 }
+
+
+.Cont_Derecho_eco{
+    width: 800px;
+    margin-right: auto;
+    margin-left: 30px;
+    text-align: left;
+}
+
+
+
+#Container_la_política_monetaria, #container_Recesión_Crecimiento_Económico, #container_Transformación_Digital_Finanzas_Tecnológicas{
+
+    border-left: 4px solid white;
+    padding-left: 30px;
+    margin-bottom: 50px;
+}
+
+#container_Mercados_Financieros_Bolsa_Valores,#Container_Inflación_Política_Monetaria,#container_Globalización_Comercio_Internacional{
+    border-right: 4px solid white;
+    padding-right: 30px;
+    margin-bottom: 50px;
+}
+
 
 /* Títulos principales */
 #TitulosPrincipalesEco {

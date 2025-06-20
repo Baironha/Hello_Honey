@@ -1,0 +1,25 @@
+.gf-valores-container {
+    background-color: #17181a;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    max-height: 300px;
+    color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.gf-valores-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #0919c5;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.gf-valores-loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-top: 2rem;
+}

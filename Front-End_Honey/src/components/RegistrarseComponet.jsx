@@ -11,6 +11,7 @@ function RegistrarseComponet() {
     const [NombreUsu, SetNombreUsu] = useState("");
     const [EmailUsu, SetEmailUsu] = useState("");
     const [ContraUsu, SetContraUsu] = useState("");
+    const [Edadusu, Setedad] = useState("");
     const [DirecUsu, SetDirecUsu] = useState("");
     const [FotoUsu, setFotoUsu] = useState("");
     const inputFileRef = useRef(null);
@@ -42,13 +43,14 @@ function RegistrarseComponet() {
         return { Location: url };
     };
 
-    const cargarImagen = async (evento) => {
+/*     async function cargarImagen (evento) {
         const file = evento.target.files[0];
         if (file) {
             try {
                 const result = await uploadImageToS3(file);
                 setFotoUsu(result.Location);
                 console.log("Imagen subida exitosamente:", result.Location);
+                return result.Location
             } catch (error) {
                 console.error('Error al subir la imagen a S3:', error);
                 Swal.fire({
@@ -59,22 +61,37 @@ function RegistrarseComponet() {
             }
         }
     };
+ */
+
+
+    function cargarImagen (evento) {
+        setFotoUsu(evento.target.files[0]);
+    }
+
 
     const nombre = (evento) => SetNombreUsu(evento.target.value);
     const email = (evento) => SetEmailUsu(evento.target.value);
     const password = (evento) => SetContraUsu(evento.target.value);
+    const edad = (evento) => Setedad(evento.target.value);
     const direccion = (evento) => SetDirecUsu(evento.target.value);
 
-    const cargar = () => {
-        if (NombreUsu === "" || EmailUsu === "" || ContraUsu === "" || DirecUsu === "") {
+    async function cargar() {
+        if (NombreUsu === "" || EmailUsu === "" || ContraUsu === "" || DirecUsu === "" || Edadusu === "") {
             Swal.fire({
                 icon: "error",
                 title: "Campos incompletos",
                 text: "Por favor rellene los espacios!",
             });
         } else {
-            ServiciosRegister.postUsers(NombreUsu, EmailUsu, ContraUsu)
-            servicesRegisterusu.postUsers(DirecUsu, FotoUsu)
+            
+            const respuesta = await ServiciosRegister.postUsers(NombreUsu, EmailUsu, ContraUsu)
+            console.log(respuesta)
+            const img = await uploadImageToS3(FotoUsu)
+            console.log("Constante ", img.Location);
+            
+            
+            servicesRegisterusu.postUsers(img.Location, Edadusu, DirecUsu, respuesta.id)
+
                 .then(() => {
                     Swal.fire({
                         icon: "success",
@@ -85,6 +102,7 @@ function RegistrarseComponet() {
                     SetEmailUsu("");
                     SetContraUsu("");
                     SetDirecUsu("");
+                    Setedad("");
                     setFotoUsu("");
                     if (inputFileRef.current) {
                         inputFileRef.current.value = "";
@@ -137,6 +155,16 @@ function RegistrarseComponet() {
                     value={ContraUsu}
                     onChange={password}
                     placeholder="Ingrese su contraseña"
+                />
+
+                <label htmlFor="input-edad" id="LabelFormTrabajador">Edad</label><br />
+                <input
+                    id="input-edad"
+                    className="input-trabajador"
+                    type="num"
+                    value={Edadusu}
+                    onChange={edad}
+                    placeholder="Ingrese su edad"
                 />
 
                 <label htmlFor="input-direccion" id="LabelFormTrabajador">Dirección</label><br />

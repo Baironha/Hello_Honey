@@ -1,6 +1,6 @@
 async function getUsers() {
     try {
-        const response = await fetch('hhttp://127.0.0.1:8000/api/auth_user', {
+        const response = await fetch('http://127.0.0.1:8000/api/auth_user', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,6 +32,9 @@ async function postUsers(username,email,password) {
             email
         };
 
+        console.log(userData);
+        
+
 
 
         const response = await fetch("http://127.0.0.1:8000/api/auth_user/", {
@@ -44,7 +47,7 @@ async function postUsers(username,email,password) {
 
      
         const mensage = await response.json();
-        console.log('Mensaje de error de BackEnd:' + mensage);
+        console.log('Mensaje de error de BackEnd:', mensage);
         return mensage
         
 
