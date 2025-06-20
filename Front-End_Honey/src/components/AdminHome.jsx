@@ -1,7 +1,7 @@
-
-
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import JitsiRoom from "../components/ReunionesAdminComponent";
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 import "../style/AdminHomeStyle.css";
 
 const AdmininHome = () => {
@@ -9,14 +9,45 @@ const AdmininHome = () => {
   const [mensaje, setMensaje] = useState("");
   const [roomName, setRoomName] = useState(null);
 
-  const handleEnviarCorreo = () => {
-    if (!correo || !mensaje) {
-      alert("Por favor completa el correo y el mensaje.");
-      return;
-    }
-    alert(`Correo enviado a: ${correo}\nMensaje: ${mensaje}`);
-    setCorreo("");
-    setMensaje("");
+  const form = useRef();
+
+  const handleEnviarCorreo = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_15kzjih', 'template_hktr8lp', form.current, {
+        publicKey: 'oC2Z_8LglE8Xa6AM2',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setCorreo("");
+          setMensaje("");
+
+          Swal.fire({
+            title: '✅ Correo enviado de forma exitosa',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000,
+            background: '#ffffff',
+            color: '#333',
+            position: 'center',
+            customClass: {
+              popup: 'swal2-show-large',
+              title: 'swal2-title-large'
+            },
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        }
+      );
   };
 
   const handleIniciarReunion = () => {
@@ -31,21 +62,25 @@ const AdmininHome = () => {
       <div className="vertical-container">
         <div className="card">
           <h2>Enviar Correos</h2>
-          <input
-            type="email"
-            className="input"
-            placeholder="Correo destinatario"
-            value={correo}
-            onChange={(e) => setCorreo(e.target.value)}
-          />
-          <textarea
-            className="textarea"
-            placeholder="Escribe tu mensaje aquí..."
-            rows={6}
-            value={mensaje}
-            onChange={(e) => setMensaje(e.target.value)}
-          ></textarea>
-          <button className="button" onClick={handleEnviarCorreo}>Enviar</button>
+          <form ref={form} onSubmit={handleEnviarCorreo}>
+            <input
+              type="email"
+              name="user_email"
+              className="input"
+              placeholder="Correo destinatario"
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
+            />
+            <textarea
+              name="message"
+              className="textarea"
+              placeholder="Escribe tu mensaje aquí..."
+              rows={6}
+              value={mensaje}
+              onChange={(e) => setMensaje(e.target.value)}
+            ></textarea>
+            <button className="button" type="submit">Enviar</button>
+          </form>
         </div>
 
         <div className="card">
@@ -73,9 +108,9 @@ const AdmininHome = () => {
               </tr>
             </thead>
             <tbody>
-              <tr><td>Básica</td><td>$10</td><td>1 mes</td></tr>
-              <tr><td>Estándar</td><td>$25</td><td>3 meses</td></tr>
-              <tr><td>Premium</td><td>$80</td><td>12 meses</td></tr>
+              <tr><td>FREE</td><td>$0.0</td><td>1 mes</td></tr>
+              <tr><td>PREMIUM</td><td>$5.00</td><td>1 mes</td></tr>
+              <tr><td>VIP</td><td>$9.00</td><td>1 mes</td></tr>
             </tbody>
           </table>
         </div>

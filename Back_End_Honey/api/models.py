@@ -4,6 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
 
 
+
 # TABLAS PRIMARIAS
 
 class Membresias (models.Model):
@@ -12,9 +13,9 @@ class Membresias (models.Model):
     
 
 
-class Usuarios (models.Model):
+class Usuarios_perfil (models.Model):
 
-    #nombre              = models.CharField(max_length=50, null=False)
+    Imagen               = models.CharField(max_length=200)
     edad                 = models.IntegerField(null=False,validators=[MinValueValidator(0), MaxValueValidator(190)])
     #correo              = models.EmailField(max_length=60, null=False)
     direccion            = models.CharField(max_length=100, blank=True)
@@ -36,6 +37,16 @@ class feedback_usuarios (models.Model):
     rating     = models.IntegerField(null=True) 
     
 
+class RespuestaFeedback(models.Model):
+    feedback        = models.ForeignKey(feedback_usuarios, on_delete=models.CASCADE, related_name="RespuestaFeedback")
+    mensaje         = models.TextField()
+    fecha_respuesta = models.DateTimeField(auto_now_add=True)
+    enviado         = models.BooleanField(default=False)
+
+    def __str__(self):
+        if self.feedback and self.feedback.email_usu:
+            return f"Respuesta a {self.feedback.email_usu} en {self.fecha_respuesta.strftime('%d/%m/%Y')}"
+        return "Respuesta sin referencia"
 
 
 class ventas (models.Model):

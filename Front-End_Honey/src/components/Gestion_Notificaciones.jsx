@@ -10,7 +10,6 @@ const Gestion_Notificaciones = () => {
     const cargarFeedbacks = async () => {
       try {
         const data = await ServiciosFeedback.get();
-        console.log("Feedbacks:", data);
         setFeedbacks(data);
       } catch (error) {
         console.error("Error al cargar feedbacks:", error);
@@ -20,22 +19,18 @@ const Gestion_Notificaciones = () => {
     cargarFeedbacks();
   }, []);
 
-  const handleResponder = async (feedbackId, correo) => {
+  const handleResponder = async (feedbackId) => {
     const mensaje = respuestas[feedbackId] || "";
 
-    const enviado = await ServiciosFeedback.post(correo, mensaje);
+    const resultado = await ServiciosFeedback.responder(feedbackId, mensaje);
 
-    if (enviado) {
-      const actualizado = await ServiciosFeedback.patch(feedbackId);
-
-      if (actualizado) {
-        setFeedbacks((prev) =>
-          prev.map((f) =>
-            f.id === feedbackId ? { ...f, estado: "respondido" } : f
-          )
-        );
-        setRespuestas((prev) => ({ ...prev, [feedbackId]: "" }));
-      }
+    if (resultado) {
+      setFeedbacks((prev) =>
+        prev.map((f) =>
+          f.id === feedbackId ? { ...f, estado: "respondido" } : f
+        )
+      );
+      setRespuestas((prev) => ({ ...prev, [feedbackId]: "" }));
     }
   };
 
@@ -65,11 +60,8 @@ const Gestion_Notificaciones = () => {
                 <input type="checkbox" disabled /> Marcar como leído
               </label>
             </div>
-
             <p className="feedback-time">Hace {feedback.dias || 0} días</p>
-
             <div className="feedback-text">{feedback.texto}</div>
-
             {feedback.estado !== "respondido" && (
               <div className="respuesta-form">
                 <textarea
@@ -82,14 +74,7 @@ const Gestion_Notificaciones = () => {
                   }
                   placeholder="Escribe tu respuesta..."
                 />
-                <button
-                  className="btn-responder"
-                  onClick={() =>
-                    handleResponder(feedback.id, feedback.email_usu)
-                  }
-                >
-                  Enviar respuesta
-                </button>
+                <button className="btn-responder" onClick={() => handleResponder(feedback.id)} >Enviar respuesta</button>
               </div>
             )}
           </div>

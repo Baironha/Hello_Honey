@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from .models import Usuarios,metodos_pago, Membresias, ventas, Administradores,Rol_Administradores,Empleados, Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado, User, feedback_usuarios
-from .serializer import Usuarios_Serializer, metodos_pago_Serializer, Membresias_Serializer, ventas_Serializer,Administradores_Serializer,Rol_Administradores_Serializer,Empleados_Serializer,Rol_Empleados_Serializer,Usuarios_x_Membresias_Serializer,Rol_x_Administradores_Serializer,Rol_x_Empleado_Serializer,User_Serializer,auth_group_Serializer,UserGroup_Serializer, CustomTokenObtainPairSerializer,feedback_usuarios_Serializer
+from .models import Usuarios_perfil,metodos_pago, Membresias, ventas, Administradores,Rol_Administradores,Empleados, Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado, User, feedback_usuarios, RespuestaFeedback
+from .serializer import Usuarios_Serializer, metodos_pago_Serializer, Membresias_Serializer, ventas_Serializer,Administradores_Serializer,Rol_Administradores_Serializer,Empleados_Serializer,Rol_Empleados_Serializer,Usuarios_x_Membresias_Serializer,Rol_x_Administradores_Serializer,Rol_x_Empleado_Serializer,User_Serializer,auth_group_Serializer,UserGroup_Serializer, CustomTokenObtainPairSerializer,feedback_usuarios_Serializer, RespuestaFeedback_Serializer
 
 from .permissions import IsAdminUserGroup, IsEmpledoUserGroup,IsUsuarioUserGroup, IsAuthenticated
 from rest_framework.permissions import AllowAny
@@ -37,12 +37,12 @@ class UserGroup_ListCreateView(ListCreateAPIView):
 
 
 class Usuarios_ListCreateView(ListCreateAPIView):
-    queryset         = Usuarios.objects.all()
+    queryset         = Usuarios_perfil.objects.all()
     serializer_class = Usuarios_Serializer
 
 class Usuarios_DetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
-    queryset         = Usuarios.objects.all()
+    queryset         = Usuarios_perfil.objects.all()
     serializer_class = Usuarios_Serializer
 
 
@@ -53,6 +53,17 @@ class feedback_usuarios_ListCreateView(ListCreateAPIView):
 class feedback_usuarios_DetailView(RetrieveUpdateDestroyAPIView):
     queryset         = feedback_usuarios.objects.all()
     serializer_class = feedback_usuarios_Serializer
+
+
+
+class RespuestaFeedback_ListCreateView(ListCreateAPIView):
+    queryset         = RespuestaFeedback.objects.all()
+    serializer_class = RespuestaFeedback_Serializer
+
+class RespuestaFeedback_DetailView(RetrieveUpdateDestroyAPIView):
+    queryset         = RespuestaFeedback.objects.all()
+    serializer_class = RespuestaFeedback_Serializer
+
 
 
 class metodos_pago_ListCreateView(ListCreateAPIView):

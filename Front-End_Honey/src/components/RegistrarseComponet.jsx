@@ -1,9 +1,10 @@
 import React, { useState, useRef } from "react";
 import ServiciosRegister from '../services/ServiciosRegister';
+import servicesRegisterusu from '../services/servicesRegisterusu.jsx';
 import Swal from 'sweetalert2';
 import '../style/RegistrarseStyle.css';
 import { Link } from "react-router-dom";
-import { PutObjectCommand } from '@aws-sdk/client-s3';  // SDK correcto
+import { PutObjectCommand } from '@aws-sdk/client-s3';
 import KAWS from "../components/KAWS";
 
 function RegistrarseComponet() {
@@ -16,20 +17,28 @@ function RegistrarseComponet() {
 
     const S3_BUCKET = 'bucketbyronimg';
     const REGION = 'us-east-2';
-
     const s3 = KAWS.amazon();
 
     const uploadImageToS3 = async (file) => {
+        if (!(file instanceof File)) {
+            throw new Error("El archivo proporcionado no es válido.");
+        }
+
+        const arrayBuffer = await file.arrayBuffer();
+        const uint8Array = new Uint8Array(arrayBuffer);
+
+        const uniqueKey = `${Date.now()}-${file.name}`;
         const params = {
             Bucket: S3_BUCKET,
-            Key: file.name,
-            Body: file,
+            Key: uniqueKey,
+            Body: uint8Array,
             ContentType: file.type,
         };
+
         const command = new PutObjectCommand(params);
         await s3.send(command);
 
-        const url = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${file.name}`;
+        const url = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${uniqueKey}`;
         return { Location: url };
     };
 
@@ -64,7 +73,8 @@ function RegistrarseComponet() {
                 text: "Por favor rellene los espacios!",
             });
         } else {
-            ServiciosRegister.postUsers(NombreUsu, EmailUsu, ContraUsu/* , DirecUsu, FotoUsu */)
+            ServiciosRegister.postUsers(NombreUsu, EmailUsu, ContraUsu)
+            servicesRegisterusu.postUsers(DirecUsu, FotoUsu)
                 .then(() => {
                     Swal.fire({
                         icon: "success",
@@ -98,21 +108,62 @@ function RegistrarseComponet() {
             </Link>
             <div id="Container-Form-Usuarios">
                 <h1 id="TituloRegistrarse">Registrarse</h1>
-                <label htmlFor="nombre" id="LabelFormTrabajador">Nombre</label><br />
-                <input type="text" value={NombreUsu} onChange={nombre} id="InputFormTrabajador" placeholder="Ingrese su nombre completo" />
-                <label htmlFor="email" id="LabelFormTrabajador">Correo electrónico</label><br />
-                <input type="text" value={EmailUsu} onChange={email} id="InputFormTrabajador" placeholder="Ingrese su correo electrónico" />
-                <label htmlFor="password" id="LabelFormTrabajador">Contraseña</label><br />
-                <input type="text" value={ContraUsu} onChange={password} id="InputFormTrabajador" placeholder="Ingrese su contraseña" />
-                <label htmlFor="direccion" id="LabelFormTrabajador">Dirección</label><br />
-                <input type="text" value={DirecUsu} onChange={direccion} id="InputFormTrabajador" placeholder="Ingrese la dirección de entrega" />
-                <label htmlFor="foto" id="LabelFormTrabajador">Foto de perfil (Opcional)</label><br />
-                <input id="FotoPerfil" type="file" accept="image/*,application/pdf" onChange={cargarImagen} ref={inputFileRef} />
+
+                <label htmlFor="input-nombre" id="LabelFormTrabajador">Nombre</label><br />
+                <input
+                    id="input-nombre"
+                    className="input-trabajador"
+                    type="text"
+                    value={NombreUsu}
+                    onChange={nombre}
+                    placeholder="Ingrese su nombre completo"
+                />
+
+                <label htmlFor="input-email" id="LabelFormTrabajador">Correo electrónico</label><br />
+                <input
+                    id="input-email"
+                    className="input-trabajador"
+                    type="text"
+                    value={EmailUsu}
+                    onChange={email}
+                    placeholder="Ingrese su correo electrónico"
+                />
+
+                <label htmlFor="input-password" id="LabelFormTrabajador">Contraseña</label><br />
+                <input
+                    id="input-password"
+                    className="input-trabajador"
+                    type="password"
+                    value={ContraUsu}
+                    onChange={password}
+                    placeholder="Ingrese su contraseña"
+                />
+
+                <label htmlFor="input-direccion" id="LabelFormTrabajador">Dirección</label><br />
+                <input
+                    id="input-direccion"
+                    className="input-trabajador"
+                    type="text"
+                    value={DirecUsu}
+                    onChange={direccion}
+                    placeholder="Ingrese la dirección de entrega"
+                />
+
+                <label htmlFor="FotoPerfil" id="LabelFormTrabajador">Foto de perfil (opcional)</label><br />
+                <input
+                    id="FotoPerfil"
+                    type="file"
+                    accept="image/*"
+                    onChange={cargarImagen}
+                    ref={inputFileRef}
+                />
+
                 <button id="BtnCargar" onClick={cargar}>Registrarse</button>
+
                 <div id="registro-to-Link-Container">
-                <span className="registro-texto">¿Ya estas registrad@?</span>
+                    <span className="registro-texto">¿Ya estás registrad@?</span>
                     <Link to="/Login" className="registro-to-link">
-                        ¡¡Inicia sesion AQUI!!
+                        ¡¡Inicia sesión AQUÍ!!
                     </Link>
                 </div>
             </div>

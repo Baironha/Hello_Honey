@@ -13,6 +13,9 @@ urlpatterns =[
 
     path('feedback_usuarios/',feedback_usuarios_ListCreateView.as_view()),
     path('feedback_usuarios/<int:pk>',feedback_usuarios_DetailView.as_view()),
+    
+    path('RespuestaFeedback/',RespuestaFeedback_ListCreateView.as_view()),
+    path('RespuestaFeedback/<int:pk>',RespuestaFeedback_DetailView.as_view()),
 
     path('login/', CustomTokenObtainPairView.as_view()),
     

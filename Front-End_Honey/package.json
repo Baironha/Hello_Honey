@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.820.0",
+    "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.2.0",
     "@jitsi/react-sdk": "^1.4.4",
     "@paypal/react-paypal-js": "^8.8.3",
-    "chart.js": "^4.4.9",
+    "chart.js": "^4.5.0",
     "chartjs-adapter-date-fns": "^3.0.0",
     "chartjs-plugin-zoom": "^2.2.0",
     "cookies-js": "^1.2.3",
