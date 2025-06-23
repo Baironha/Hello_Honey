@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../Style/QuienEsHoney.css';
+import Planificacion_Proyectos from '../img/PLANIFICACIONPROYECT.png'
+import Analisis_Mercado from '../img/ANALISISMERCADO.png'
+import KPI from '../img/KPI.png'
+
 
 function QuienEsHoney() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -10,12 +14,12 @@ function QuienEsHoney() {
   const items = [
     {
       type: 'image',
-      src: 'https://media.giphy.com/media/l3vR85PnGsBwu1PFK/giphy.gif',
+      src: {Planificacion_Proyectos} ,
       text: 'Honey te acompaña cuando el día se siente abrumador.',
     },
     {
       type: 'video',
-      src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+      src: {Analisis_Mercado},
       text: 'Videos motivacionales para reconectar contigo mismo.',
     },
     {
@@ -30,7 +34,7 @@ function QuienEsHoney() {
   infinite: true,
   speed: 500,
   centerMode: true,
-  centerPadding: '17%', // más preciso para igualar ambos lados
+  centerPadding: '17%', 
   slidesToShow: 1,
   arrows: true,
   autoplay: true,
@@ -88,3 +92,69 @@ function QuienEsHoney() {
 }
 
 export default QuienEsHoney;
+ */
+
+
+
+
+
+
+
+import React, { useState } from 'react';
+import '../Style/QuienEsHoney.css';
+import Planificacion_Proyectos from '../img/PLANIFICACIONPROYECT.png'
+import Analisis_Mercado from '../img/ANALISISMERCADO.png'
+import KPI from '../img/KPI.png'
+
+import meditacion from '../img/meditacion2.jpg'
+import Terapia from '../img/TERAPIA.jpg'
+import MentalidadGanadora from '../img/MentalidadGanadora.jpg'
+
+const slides = [
+  { src: Planificacion_Proyectos, caption: 'Caption Text' },
+  { src: Analisis_Mercado, caption: 'Caption Two' },
+  { src: KPI, caption: 'Caption Three' },
+  { src:meditacion, caption: 'Caption Ford' },
+  { src:Terapia, caption: 'Caption Five' }, 
+  { src:MentalidadGanadora, caption: 'Caption Six' },
+];
+
+const Slideshow = () => {
+  const [current, setCurrent] = useState(0);
+
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  const goToSlide = (index) => setCurrent(index);
+
+  return (
+    <div className='Container-Carrusel'>
+      <div className="slideshow-box">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`slideshow-slide fade ${index === current ? 'active' : ''}`}
+          >
+            <div className="slideshow-number">{index + 1} / {slides.length}</div>
+            <img src={slide.src} alt={`slide-${index}`} className="slideshow-img" />
+            <div className="slideshow-caption">{slide.caption}</div>
+          </div>
+        ))}
+
+        <button className="slideshow-btn prev" onClick={prevSlide}>❮</button>
+        <button className="slideshow-btn next" onClick={nextSlide}>❯</button>
+
+        <div className="slideshow-dots">
+          {slides.map((_, index) => (
+            <span
+              key={index}
+              className={`slideshow-dot ${index === current ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Slideshow;

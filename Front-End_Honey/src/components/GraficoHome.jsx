@@ -51,7 +51,7 @@ function GraficoHome() {
       const data = await response.json();
 
       if (data && data.c) {
-        const color = 'rgba(0, 123, 255, 0.6)'; // azul opaco
+        const color = 'rgb(33, 71, 241)'; // azul opaco
         const now = new Date();
         const timestamps = [
           new Date(now.getTime() - 60000 * 3), // hace 3 min
@@ -135,7 +135,7 @@ function GraficoHome() {
                         const date = context[0].parsed.x;
                         return new Date(date).toLocaleString();
                       },
-                      labelTextColor: () => 'rgba(0, 123, 255, 0.6)'
+                      labelTextColor: () => 'rgb(33, 71, 241)'
                     }
                   }
                 },
@@ -146,12 +146,12 @@ function GraficoHome() {
                       tooltipFormat: 'PPpp',
                       unit: 'minute'
                     },
-                    ticks: { color: 'rgba(0, 123, 255, 0.6)' },
+                    ticks: { color: 'rgb(33, 71, 241)' },
                     grid: { color: '#222' }
                   },
                   y: {
                     ticks: {
-                      color: 'rgba(0, 123, 255, 0.6)',
+                      color: 'rgb(33, 71, 241)' ,
                       callback: value => `$${value}`
                     },
                     grid: { color: '#222' }

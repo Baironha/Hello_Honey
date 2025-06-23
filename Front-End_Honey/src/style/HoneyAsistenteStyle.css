@@ -23,6 +23,7 @@
 }
 
 .Gif_Boton_Container {
+  background-color: #000000;
   margin-top: 40px;
   display: flex;
   flex-direction: column;
@@ -36,12 +37,12 @@
   border-radius: 12px;
   cursor: pointer;
   transition: transform 0.3s ease;
-  box-shadow: 0 0 15px #00bfff44;
+  border-radius: 60%;
 }
 
 .Gif_Boton_Asistente:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 20px #00bfff88;
+  box-shadow: 0 0 20px #002fff88;
 }
 
 .GifTexto {

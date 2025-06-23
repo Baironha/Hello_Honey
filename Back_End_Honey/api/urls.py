@@ -44,6 +44,14 @@ urlpatterns =[
     path('Rol_Empleados/<int:pk>', Rol_Empleados_DetailView.as_view(),),
 
 
+
+
+
+    path("honey/responder/", HoneyResponderView.as_view(), name="honey-responder"),
+
+
+
+
     #END-POINTS SEGUNDARIOS 
     path('Usuarios_x_Membresias/', Usuarios_x_Membresias_ListCreateView.as_view(),),
     path('Usuarios_x_Membresias/<int:pk>', Usuarios_x_Membresias_DetailView.as_view(),),

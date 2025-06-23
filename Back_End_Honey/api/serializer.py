@@ -1,4 +1,4 @@
-from .models        import Usuarios_perfil, metodos_pago,Membresias, ventas, Administradores, Rol_Administradores, Empleados,Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado, feedback_usuarios, RespuestaFeedback
+from .models        import Usuarios_perfil, metodos_pago,Membresias, ventas, Administradores, Rol_Administradores, Empleados,Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado, feedback_usuarios, RespuestaFeedback,Conversacion
 from rest_framework import serializers
 from django.contrib.auth.models import User, Group
 
@@ -132,6 +132,33 @@ class Rol_Empleados_Serializer(serializers.ModelSerializer):
     class Meta:
         model  = Rol_Empleados # Archivos exportados
         fields = '__all__' #All se refiere a todas las columnas del DB
+
+
+
+
+
+
+
+
+
+
+
+class ConversacionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Conversacion
+        fields = '__all__'
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

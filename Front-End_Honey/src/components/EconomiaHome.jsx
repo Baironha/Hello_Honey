@@ -31,12 +31,20 @@ function EconomiaHome() {
             <br />
             <br />
             <br />
+            <br />
+            <h1>Economia</h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <div className='Cont_Izquierdos_Eco '> 
                 {/* Inflación */}
                 <div id='Container_Inflación_Política_Monetaria'>
                     <h2 id='TitulosPrincipalesEco'>Inflación global</h2>
-                    <GF_Valores_Economia/>
+                    
                     <p>¿Qué es la inflación?</p>
+                    <GF_Valores_Economia/>
                     <p>
                         La inflación es el aumento sostenido y generalizado de los precios de bienes y servicios en una economía durante un período de tiempo. Cuando los precios suben, el poder adquisitivo del dinero disminuye: con la misma cantidad de dinero, puedes comprar menos cosas.
                     </p>

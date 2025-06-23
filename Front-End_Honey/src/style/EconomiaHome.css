@@ -4,23 +4,34 @@
     color: white;
     padding-left: 300px;
     padding-right: 10px;
+    width: 100%;
     min-height: 100vh;
     font-family: sans-serif;
+    height: 100%;
 }
 
 .Cont_Izquierdos_Eco {
-    width: 800px;
+    width: 700px;
     margin-left: auto;
-    margin-right: 50px;
+    margin-right: 70px;
     text-align: right;
+
+    /* Borde agregado */
+    /* border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px; */
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 
+
 .Cont_Derecho_eco{
-    width: 800px;
+    width: 700px;
     margin-right: auto;
     margin-left: 30px;
     text-align: left;
+    border-radius: 3px;
+    border-color: brown;
 }
 
 
@@ -44,6 +55,7 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 /* Botones */

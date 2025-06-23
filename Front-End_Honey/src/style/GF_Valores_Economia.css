@@ -1,12 +1,18 @@
 .gf-valores-container {
+
     background-color: #17181a;
-    padding: 2rem;
-    border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     max-width: 600px;
-    max-height: 300px;
+    max-height: 500px;
     color: #f4f4f4;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    margin-left: auto;
+    margin-right: 70px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 2rem; /* importante para el diseño interno */
+    border-radius: 12px; /* si deseas mantener estética */
 }
 
 .gf-valores-title {

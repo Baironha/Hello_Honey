@@ -87,6 +87,34 @@ class Empleados (models.Model):
 
 
 
+
+class Conversacion(models.Model):
+    ROLES = [
+        ('user', 'Usuario'),
+        ('honey', 'Honey'),
+    ]
+    TIPOS = [
+        ('texto', 'Texto'),
+        ('audio', 'Audio'),
+        ('file', 'Archivo'),
+    ]
+
+    contenido = models.TextField()
+    rol = models.CharField(max_length=10, choices=ROLES)
+    tipo = models.CharField(max_length=10, choices=TIPOS, default='texto')
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.rol.upper()} - {self.tipo} - {self.fecha.strftime('%Y-%m-%d %H:%M')}"
+
+
+
+
+
+
+
+
+
 #TABLAS INTERMEDIAS 
 class Usuarios_x_Membresias(models.Model):
     id_usuario    = models.ForeignKey(User, on_delete = models.CASCADE, related_name='Usuarios_x_Membresias')

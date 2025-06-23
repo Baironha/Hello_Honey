@@ -137,7 +137,8 @@
 }
 
 .info-card {
-  width: 240px;
+  height: 200px;
+  width: 200px;
   background: #1a1a1a;
   border-radius: 8px;
   text-decoration: none;
