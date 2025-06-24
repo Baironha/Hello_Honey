@@ -1,0 +1,141 @@
+    .task-board {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 200px;
+    right: 1px;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding: 20px;
+    color: #ffffff;
+    background: linear-gradient(
+        135deg,
+        #01010f 15%,     /* negro */
+        #020752 55%,    /* azul oscuro */
+        #01011f 90%  /* azul intermedio */
+    );
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Formulario */
+.task-input {
+    left: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.task-input input,
+.task-input select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  flex: 1 1 200px;
+}
+
+.task-input button {
+  padding: 8px 12px;
+  background-color: #2563eb;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.task-input button:hover {
+  background-color: #1e40af;
+}
+
+/* Columnas */
+.columns {
+  position: absolute;
+  top: 130px; /* ajusta según tu formulario u otros elementos arriba */
+  right: 50px; /* ¡Aquí estamos alineando a 10px del borde derecho! */
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.column {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  width: 300px;
+  min-height: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.column h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* Tareas */
+.task-card {
+  background-color: #e5e7eb;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  word-break: break-word;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: grab;
+}
+
+.task-card:active {
+  cursor: grabbing;
+}
+
+.task-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.task-actions button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.task-actions button:hover {
+  transform: scale(1.2);
+}
+
+/* Prioridad */
+.badge {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.badge.urgente {
+  background-color: #dc2626;
+  color: white;
+}
+
+.badge.importante {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.badge.regular {
+  background-color: #10b981;
+  color: white;
+}

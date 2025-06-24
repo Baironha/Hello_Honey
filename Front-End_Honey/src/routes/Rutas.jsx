@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom
 import Home_Page from '../pages/Home_Page';
 import Carrito_Compras_Page from '../pages/Carrito_Compras_Page';
 import AddMembreStandard_page from '../pages/AddMembreStandard_page'
-import AddMembresiaPremium from '../components/AddMembresiaPremium.jsx';
+import AddMembresiaPreMIUM from '../components/AddMembresiaPremium.jsx';
 import AddMembresiaVip from '../components/AddMembresiaVip';
 import RegistrarseComponet from '../components/RegistrarseComponet';
 import Login_page from '../pages/Login_page';
@@ -13,7 +13,7 @@ import ChatHoney_Page from '../pages/ChatHoney_Page.jsx';
 import Admin_page from '../pages/Admin_page.jsx';
 import Economia_page from '../pages/Economia_page.jsx';
 
-import RutasPrivadas from '../routes/RutasPrivadas.jsx'
+/* import RutasPrivadas from '../routes/RutasPrivadas.jsx' */
 
 
 /* OUTLET  Admin*/
@@ -31,8 +31,8 @@ import EconomiaHome from '../components/EconomiaHome.jsx';
 import KPI_component from '../components/KPI_component.jsx';
 import Administracion_Proyectos from '../components/Administracion_Proyectos.jsx';
 import AdministracionNegocios from '../components/AdministracionNegocios.jsx';
-import PsicologiaHome from '../components/PisicologiaHome.jsx';
 import Psicologica_Page from '../pages/Psicologica_Page.jsx';
+import TareasAdmin from '../components/TareasAdmin.jsx';
 
 function Routing() {
 
@@ -52,13 +52,15 @@ function Routing() {
                         <Route path="/Carrito" element={<Carrito_Compras_Page/>}/>{/* Carrito*/}
 
                         <Route path="/AddStandard" element={<AddMembreStandard_page/>}/>{/*MEMBRESIA*/}
-                        <Route path="/AddMembresiaPremium" element={<AddMembresiaPremium/>}/>{/* HOMEPAGE */}
+                        <Route path="/AddMembresiaPremium" element={<AddMembresiaPreMIUM/>}/>{/* HOMEPAGE */}
                         <Route path="/AddVip" element={<AddMembresiaVip/>}/>{/* HOMEPAGE */}
+
                         <Route path="/Psicologia" element={<Psicologica_Page/>}/>{/*MEMBRESIA*/}
 
 
                         <Route path="/admins" element={<Admin_page/>}>  
                             <Route path="AdminHome" element={<AdminHome/>}/>
+                            <Route path="TareasAdmin" element={<TareasAdmin/>}/>
                             <Route path="Gestion_usuarios" element={<Gestion_Usuarios/>}/>
                             <Route path="Gestion_Admins" element={<Gestion_Admins/>}/>
                             <Route path="Gestion_empleados" element={<Gestion_Empleados/>}/>

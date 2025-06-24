@@ -17,7 +17,7 @@ function SidebarAdmin() {
           <ul className="sidebar-menu">
             <h1 className="sidebar-title">PANEL</h1>
             <li onClick={() => navigate("AdminHome")}>Home</li>
-            <li onClick={() => navigate("/tareas")}>Tareas</li>
+            <li onClick={() => navigate("TareasAdmin")}>Tareas</li>
             <li onClick={() => navigate("Gestion_Membresias")}>Membresías</li>
             <li onClick={() => navigate("Gestion_Notificaciones")}>Notificaciones</li>
             <li onClick={() => navigate("Gestion_usuarios")}>Usuarios</li>
