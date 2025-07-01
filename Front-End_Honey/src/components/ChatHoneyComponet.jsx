@@ -1,229 +1,74 @@
-/* import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import "../style/ChatHoney.css";
-
-function ChatComponent() {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-  const [file, setFile] = useState(null);
-  const [audioURL, setAudioURL] = useState(null);
-  const [recording, setRecording] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-  const mediaRecorderRef = useRef(null);
-  const audioChunks = useRef([]);
-
-  const navigate = useNavigate();
-
-  const handleGoHome = () => {
-    navigate("/");
-  };
-
-  const handleSend = () => {
-    if (!input && !file && !audioURL) return;
-
-    const newMessage = {
-      type: file ? "file" : audioURL ? "audio" : "text",
-      content: file || audioURL || input,
-      role: "user",
-    };
-
-    setMessages((prev) => [...prev, newMessage]);
-    setInput("");
-    setFile(null);
-    setAudioURL(null);
-  };
-
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const startRecording = async () => {
-    setRecording(true);
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    mediaRecorderRef.current = new MediaRecorder(stream);
-    audioChunks.current = [];
-
-    mediaRecorderRef.current.ondataavailable = (e) => {
-      audioChunks.current.push(e.data);
-    };
-
-    mediaRecorderRef.current.onstop = () => {
-      const audioBlob = new Blob(audioChunks.current, { type: "audio/webm" });
-      const url = URL.createObjectURL(audioBlob);
-      setAudioURL(url);
-    };
-
-    mediaRecorderRef.current.start();
-  };
-
-  const stopRecording = () => {
-    setRecording(false);
-    mediaRecorderRef.current.stop();
-  };
-
-  const toggleTheme = () => {
-    setDarkMode((prev) => !prev);
-  };
-
-  return (
-    <div className={`main-container ${darkMode ? "dark" : ""}`}>
-      <aside className="sidebar">
-        <button className="new-chat-button" onClick={handleGoHome}>
-          🏠 Ir a Home
-        </button>
-
-        <button className="new-chat-button">Nuevo Chat</button>
-
-        <input type="text" placeholder="Buscar chat" />
-        <label>Modelo:</label>
-        <select>
-          <option>Psicologia</option>
-          <option>Economia</option>
-        </select>
-        <div className="sidebar-section">Historial de chats</div>
-        <div className="sidebar-section">Documentos subidos</div>
-        <div className="sidebar-section">Imágenes subidas</div>
-        <label>Contactanos:</label>
-        <select>
-          <option>contacto1@gmail.com</option>
-          <option>contacto2@outlook.com</option>
-        </select>
-        <div className="theme-switch">
-          <label className="switch">
-            <input type="checkbox" checked={darkMode} onChange={toggleTheme} />
-            <span className="slider"></span>
-          </label>
-        </div>
-      </aside>
-
-      <div className="chat-container">
-        <div className="chat-messages">
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`chat-message ${msg.role === "user" ? "user" : "assistant"}`}
-            >
-              <div className="chat-bubble fade-in">
-                {msg.type === "text" && msg.content}
-                {msg.type === "file" && (
-                  <a
-                    href={URL.createObjectURL(msg.content)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    📎 {msg.content.name}
-                  </a>
-                )}
-                {msg.type === "audio" && <audio controls src={msg.content} />}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="chat-input-area">
-          <label className="file-button">
-            📎
-            <input
-              type="file"
-              accept=".pdf,.docx,.doc,image/*"
-              onChange={handleFileChange}
-            />
-          </label>
-
-          <button
-            className={`mic-button ${recording ? "recording" : ""}`}
-            onClick={recording ? stopRecording : startRecording}
-          >
-            🎤
-          </button>
-
-          <input
-            type="text"
-            value={input}
-            placeholder="Escribe tu mensaje..."
-            onChange={(e) => setInput(e.target.value)}
-          />
-
-          <button className="send-button" onClick={handleSend}>
-            ➤
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default ChatComponent;
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { enviarMensaje, obtenerHistorial } from "../services/ServicioChatHoney";
 import "../style/ChatHoney.css";
 
-function ChatComponent() {
+function ChatHoneyComponent() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [file, setFile] = useState(null);
-  const [audioURL, setAudioURL] = useState(null);
   const [recording, setRecording] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
   const mediaRecorderRef = useRef(null);
   const audioChunks = useRef([]);
-  const audioHandler = useRef(null);
-  const recordUrl = useRef("/audio"); // ajusta tu endpoint si es necesario
-
   const navigate = useNavigate();
 
   const handleGoHome = () => {
     navigate("/");
   };
 
-  const handleSend = () => {
-    if (!input && !file && !audioURL) return;
-
-    const newMessage = {
-      type: file ? "file" : audioURL ? "audio" : "text",
-      content: file || audioURL || input,
-      role: "user",
+  useEffect(() => {
+    const cargarHistorial = async () => {
+      try {
+        const data = await obtenerHistorial();
+        const formateado = data.flatMap((item) => [
+          { type: "text", content: item.mensaje, role: "user" },
+          { type: "text", content: item.respuesta, role: "assistant" },
+        ]);
+        setMessages(formateado);
+      } catch (error) {
+        console.error("Error al cargar historial:", error);
+      }
     };
 
-    setMessages((prev) => [...prev, newMessage]);
-    setInput("");
-    setFile(null);
-    setAudioURL(null);
-  };
+    cargarHistorial();
+  }, []);
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
+  // ✅ Envía mensaje de texto puro
+  const handleSend = async () => {
+    if (!input) return;
 
-  // === ADAPTACIÓN de tu lógica de grabación JS ===
+    const newUserMessage = { type: "text", content: input, role: "user" };
+    setMessages((prev) => [...prev, newUserMessage]);
 
-  const recorder = (url, handler) => {
-    recordUrl.current = url;
-    if (typeof handler !== "undefined") {
-      audioHandler.current = handler;
+    try {
+      const res = await enviarMensaje(input); // solo texto
+      console.log("[DEBUG] Respuesta del backend:", res);
+
+      const respuestaTexto = res.respuesta;
+      const respuestaAudio = res.audio;
+
+      setMessages((prev) =>
+        [
+          ...prev,
+          { type: "text", content: respuestaTexto, role: "assistant" },
+          respuestaAudio
+            ? {
+                type: "audio",
+                content: `http://localhost:8000${respuestaAudio}`,
+                role: "assistant",
+              }
+            : null,
+        ].filter(Boolean)
+      );
+    } catch (err) {
+      console.error("Error al enviar mensaje:", err);
     }
+
+    setInput("");
   };
 
+  // ✅ Inicia grabación de audio
   const startRecording = async () => {
     try {
       setRecording(true);
@@ -241,30 +86,46 @@ function ChatComponent() {
 
         const blob = new Blob(audioChunks.current, { type: "audio/webm" });
         const url = URL.createObjectURL(blob);
-        setAudioURL(url); // Para previsualizar en React
+        console.log("🎙️ Audio grabado:", url);
 
-        const formData = new FormData();
-        formData.append("audio", blob, "audio");
+        // ✅ Muestra en UI mensaje "usuario envió audio"
+        setMessages((prev) => [
+          ...prev,
+          { type: "audio", content: url, role: "user" },
+        ]);
 
         try {
-          const response = await fetch(recordUrl.current, {
-            method: "POST",
-            body: formData,
-          });
-          const json = await response.json();
-          if (audioHandler.current) audioHandler.current(json);
+          const res = await enviarMensaje("", blob);
+          console.log("[DEBUG] Respuesta backend:", res);
+
+          const respuestaTexto = res.respuesta;
+          const respuestaAudio = res.audio;
+
+          setMessages((prev) =>
+            [
+              ...prev,
+              { type: "text", content: respuestaTexto, role: "assistant" },
+              respuestaAudio
+                ? {
+                    type: "audio",
+                    content: `http://localhost:8000${respuestaAudio}`,
+                    role: "assistant",
+                  }
+                : null,
+            ].filter(Boolean)
+          );
         } catch (err) {
-          console.error("Error al enviar audio:", err);
+          console.error("Error enviando audio:", err);
         }
       };
 
       mediaRecorderRef.current.start();
     } catch (err) {
-      console.error("Error al enviar audio:", err);
-      alert("No fue posible iniciar el grabador de audio. ¿Tienes los permisos activados?");
+      console.error("Error al iniciar grabación:", err);
     }
   };
 
+  // ✅ Detiene grabación y envía
   const stopRecording = () => {
     setRecording(false);
     if (mediaRecorderRef.current) {
@@ -276,17 +137,8 @@ function ChatComponent() {
     setDarkMode((prev) => !prev);
   };
 
-  // === Hook para inicializar el recorder ===
-  useEffect(() => {
-    recorder("/audio", (response) => {
-      console.log("Respuesta del servidor:", response);
-      // Aquí puedes hacer algo con la respuesta si quieres
-    });
-  }, []);
-
   return (
     <div className={`main-container ${darkMode ? "dark" : ""}`}>
-      {/* Sidebar */}
       <aside className="sidebar">
         <button className="new-chat-button" onClick={handleGoHome}>
           🏠 Ir a Home
@@ -314,24 +166,20 @@ function ChatComponent() {
         </div>
       </aside>
 
-      {/* Chat Container */}
       <div className="chat-container">
         <div className="chat-messages">
           {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`chat-message ${msg.role === "user" ? "user" : "assistant"}`}
-            >
+            <div key={index} className={`chat-message ${msg.role}`}>
               <div className="chat-bubble fade-in">
-                {msg.type === "text" && msg.content}
-                {msg.type === "file" && (
-                  <a
-                    href={URL.createObjectURL(msg.content)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    📎 {msg.content.name}
-                  </a>
+                {msg.type === "text" && (
+                  <div className="message-text">
+                    {msg.content.split("\n").map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
+                  </div>
                 )}
                 {msg.type === "audio" && <audio controls src={msg.content} />}
               </div>
@@ -340,29 +188,18 @@ function ChatComponent() {
         </div>
 
         <div className="chat-input-area">
-          <label className="file-button">
-            📎
-            <input
-              type="file"
-              accept=".pdf,.docx,.doc,image/*"
-              onChange={handleFileChange}
-            />
-          </label>
-
           <button
             className={`mic-button ${recording ? "recording" : ""}`}
             onClick={recording ? stopRecording : startRecording}
           >
             🎤
           </button>
-
           <input
             type="text"
             value={input}
             placeholder="Escribe tu mensaje..."
             onChange={(e) => setInput(e.target.value)}
           />
-
           <button className="send-button" onClick={handleSend}>
             ➤
           </button>
@@ -372,4 +209,4 @@ function ChatComponent() {
   );
 }
 
-export default ChatComponent;
+export default ChatHoneyComponent;

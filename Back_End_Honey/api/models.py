@@ -17,7 +17,6 @@ class Usuarios_perfil (models.Model):
 
     Imagen               = models.CharField(max_length=200)
     edad                 = models.IntegerField(null=False,validators=[MinValueValidator(0), MaxValueValidator(190)])
-    #correo              = models.EmailField(max_length=60, null=False)
     direccion            = models.CharField(max_length=100, blank=True)
     user                 = models.ForeignKey(User, on_delete = models.CASCADE, related_name='Usuarios')
     membresia            = models.ForeignKey(Membresias, on_delete = models.CASCADE, related_name='Usuarios')
@@ -88,27 +87,16 @@ class Empleados (models.Model):
 
 
 
-class Conversacion(models.Model):
-    ROLES = [
-        ('user', 'Usuario'),
-        ('honey', 'Honey'),
-    ]
-    TIPOS = [
-        ('texto', 'Texto'),
-        ('audio', 'Audio'),
-        ('file', 'Archivo'),
-    ]
 
-    contenido = models.TextField()
-    rol = models.CharField(max_length=10, choices=ROLES)
-    tipo = models.CharField(max_length=10, choices=TIPOS, default='texto')
-    fecha = models.DateTimeField(auto_now_add=True)
+
+class Conversacion(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name="conversaciones")
+    mensaje = models.TextField()
+    respuesta = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.rol.upper()} - {self.tipo} - {self.fecha.strftime('%Y-%m-%d %H:%M')}"
-
-
-
+        return f"{self.usuario.username} - {self.timestamp.strftime('%Y-%m-%d %H:%M')}"
 
 
 

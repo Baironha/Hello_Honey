@@ -266,8 +266,8 @@ input:checked + .slider:before {
 }
 
 .chat-message.assistant .chat-bubble {
-  background-color: #e5e5ea;
-  color: black;
+  background-color: #1a26c9;
+  color: white;
 }
 
 .main-container.dark .chat-messages {
@@ -302,7 +302,7 @@ input:checked + .slider:before {
   border-radius: 20px;
   border: 1px solid #ccc;
   font-size: 14px;
-  color: red !important;
+  color: rgb(255, 255, 255) !important;
 }
 
 /* BOTONES EN MODO CLARO */

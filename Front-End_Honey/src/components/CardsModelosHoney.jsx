@@ -25,7 +25,7 @@ function CardsModelosHoney() {
 
     const navegarAPlus = () => {
         setLoading(true);
-        setTimeout(() => navigate('/Addplus'), 3000);
+        setTimeout(() => navigate('/AddMembresiaPremium'), 3000);
     };
 
     const navegarAVip = () => {

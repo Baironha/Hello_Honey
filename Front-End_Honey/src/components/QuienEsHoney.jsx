@@ -3,9 +3,10 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../Style/QuienEsHoney.css';
-import Planificacion_Proyectos from '../img/PLANIFICACIONPROYECT.png'
-import Analisis_Mercado from '../img/ANALISISMERCADO.png'
-import KPI from '../img/KPI.png'
+import meditacion from '../img/meditacion2.jpg'
+import Terapia from '../img/TERAPIA.jpg'
+import MentalidadGanadora from '../img/MentalidadGanadora.jpg'
+
 
 
 function QuienEsHoney() {
@@ -14,12 +15,12 @@ function QuienEsHoney() {
   const items = [
     {
       type: 'image',
-      src: {Planificacion_Proyectos} ,
+      src: { meditacion} ,
       text: 'Honey te acompaña cuando el día se siente abrumador.',
     },
     {
       type: 'video',
-      src: {Analisis_Mercado},
+      src: {Terapia},
       text: 'Videos motivacionales para reconectar contigo mismo.',
     },
     {
@@ -99,24 +100,23 @@ export default QuienEsHoney;
 
 
 
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Style/QuienEsHoney.css';
-import Planificacion_Proyectos from '../img/PLANIFICACIONPROYECT.png'
-import Analisis_Mercado from '../img/ANALISISMERCADO.png'
-import KPI from '../img/KPI.png'
 
-import meditacion from '../img/meditacion2.jpg'
-import Terapia from '../img/TERAPIA.jpg'
-import MentalidadGanadora from '../img/MentalidadGanadora.jpg'
+import Planificacion_Proyectos from '../img/PLANIFICACIONPROYECT.png';
+import Analisis_Mercado from '../img/ANALISISMERCADO.png';
+import KPI from '../img/KPI.png';
+import meditacion from '../img/meditacion2.jpg';
+import Terapia from '../img/TERAPIA.jpg';
+import MentalidadGanadora from '../img/MentalidadGanadora.jpg';
 
 const slides = [
   { src: Planificacion_Proyectos, caption: 'Caption Text' },
   { src: Analisis_Mercado, caption: 'Caption Two' },
   { src: KPI, caption: 'Caption Three' },
-  { src:meditacion, caption: 'Caption Ford' },
-  { src:Terapia, caption: 'Caption Five' }, 
-  { src:MentalidadGanadora, caption: 'Caption Six' },
+  { src: meditacion, caption: 'Caption Ford' },
+  { src: Terapia, caption: 'Caption Five' },
+  { src: MentalidadGanadora, caption: 'Caption Six' },
 ];
 
 const Slideshow = () => {
@@ -125,6 +125,15 @@ const Slideshow = () => {
   const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
   const goToSlide = (index) => setCurrent(index);
+
+  // Automatización del carrusel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000); // cambia cada 5 segundos
+
+    return () => clearInterval(interval); // limpia el intervalo al desmontar
+  }, []);
 
   return (
     <div className='Container-Carrusel'>

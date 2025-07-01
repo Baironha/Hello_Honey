@@ -20,12 +20,12 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 #view y urls
 
 class User_Serializer(serializers.ModelSerializer):
-    rol = serializers.CharField(write_only=True, required=False)  # este es el campo que viene del frontend
-    roles = serializers.SerializerMethodField()  # este se usa solo para mostrar
+    rol = serializers.CharField(write_only=True, required=False)  
+    roles = serializers.SerializerMethodField() 
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password', 'rol', 'roles']
+        fields = '__all__'
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -61,6 +61,14 @@ class Usuarios_Serializer(serializers.ModelSerializer):
 
 
 
+class ConversacionSerializer(serializers.ModelSerializer):
+    usuario = serializers.StringRelatedField(read_only=True)
+
+    class Meta:
+        model = Conversacion
+        fields = '__all__'
+
+
 class feedback_usuarios_Serializer(serializers.ModelSerializer):
     class Meta:
         model  = feedback_usuarios # Archivos exportados
@@ -80,9 +88,13 @@ class auth_group_Serializer(serializers.ModelSerializer):
         fields = '__all__' #All se refiere a todas las columnas del DB
 
 class UserGroup_Serializer(serializers.ModelSerializer):
+    group_name = serializers.SerializerMethodField()
     class Meta:
         model = UserGroup
-        fields = ['user_id', 'group_id']
+        fields = ['id', 'user', 'group', 'group_name']
+    
+    def get_group_name(self, obj):
+        return obj.group.name
 
 
 class metodos_pago_Serializer(serializers.ModelSerializer):
@@ -132,31 +144,6 @@ class Rol_Empleados_Serializer(serializers.ModelSerializer):
     class Meta:
         model  = Rol_Empleados # Archivos exportados
         fields = '__all__' #All se refiere a todas las columnas del DB
-
-
-
-
-
-
-
-
-
-
-
-class ConversacionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Conversacion
-        fields = '__all__'
-
-
-
-
-
-
-
-
-
-
 
 
 

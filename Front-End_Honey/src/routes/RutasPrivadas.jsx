@@ -1,7 +1,5 @@
 
 
-
-
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,10 +8,16 @@ const Logout = () => {
 
   const handleLogout = () => {
     Cookies.remove("access_token");
-    navigate("/Login"); // Redirigir después de eliminar el token
+    navigate("/Login"); 
   };
 
-  return <button onClick={handleLogout}>Cerrar Sesión</button>;
+  return <button onClick={handleLogout}>NO ESTAS AUTORIZADO <br />
+  INICIA SESION</button>;
 };
 
 export default Logout;
+
+
+
+
+

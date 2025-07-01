@@ -1,0 +1,142 @@
+/* Usa toda la pantalla y centra contenido */
+.Container_principal_VIP{
+  
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  background-color: #020202;
+  display: flex;
+  justify-content: center; /* centrado horizontal */
+  padding: 10px 20px; /* 10px superior */
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.standard-container-vip {
+  background: linear-gradient(
+    135deg,
+    #01010f 15%,     /* negro */
+    #020752 55%,     /* azul oscuro */
+    #01011f 90%       /* azul intermedio */
+  );
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+
+  /* ✅ Desplazar hacia abajo */
+  margin-top: 100px;
+}
+
+
+
+/* Título con logo */
+.titulo-con-logo_VIP {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.logo-standard_VIP {
+  width: 80px;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.titulo_VIP {
+  font-size: 28px;
+  color: #f8f8fc;
+  margin: 0;
+}
+
+
+.PrecioPlus_VIP {
+  font-size: 22px;
+  color: #00aaff;
+  margin-top: 8px;
+}
+
+.logo_VIP{
+  width: 100px;
+  height: auto;
+  margin: 20px 0;
+}
+/* Imagen decorativa */
+.imagen-honey_VIP {
+  width: 100px;
+  height: auto;
+  margin: 20px 0;
+  
+}
+
+/* Lista de beneficios */
+.beneficios_VIP {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: left;
+  color: #ffffff;
+}
+
+.beneficios_VIP li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Descripción */
+.descripcion_VIP{
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* Botón */
+.boton-adquirir_VIP {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.boton-adquirir_VIP:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .standard-container_VIP {
+    padding: 24px;
+  }
+
+  .titul_VIP {
+    font-size: 24px;
+  }
+
+  .PrecioPlus_VIP{
+    font-size: 20px;
+  }
+
+  .beneficios_VIP li {
+    font-size: 14px;
+  }
+
+  .descripcion_VIP {
+    font-size: 14px;
+  }
+
+  .boton-adquirir_VIP {
+    width: 100%;
+  }
+}

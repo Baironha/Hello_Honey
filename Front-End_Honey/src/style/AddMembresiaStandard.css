@@ -1,136 +1,139 @@
-/* Fondo general oscuro */
-.padre-container {
-  background-color: #030236;
-  border-radius: 10px;
-  width: 100%;
-  height: 100vh; /* ✅ Esto es clave */
+/* Usa toda la pantalla y centra contenido */
+.Container-Principal-Standard {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  background-color: #020202;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.padre-container:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Contenedor centrado */
-.standard-container {
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 900px;
-  max-height: 900px;
-  width: 100%;
-  height: calc(100% - 20px);
-  background-color: #022150;
-  color: #f0f0f0;
-  padding: 10px;
-  text-align: center;
-  font-family: 'Segoe UI', sans-serif;
-  animation: fadeIn 1s ease-in-out;
+  justify-content: center; /* centrado horizontal */
+  padding: 10px 20px; /* 10px superior */
   box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.standard-segundario-container-standar {
+  background: linear-gradient(
+    135deg,
+    #01010f 15%,     /* negro */
+    #020752 55%,    /* azul oscuro */
+    #01011f 90%  /* azul intermedio */
+  );
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+
+  margin-top: 10px;
+}
+
+
+/* Título con logo */
+.titulo-con-logo-Standard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
+  margin-bottom: 24px;
 }
 
-/* Animación de entrada */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Logo */
-.logo-standard {
+.logo-standard{
   width: 80px;
+  height: auto;
   margin-bottom: 12px;
-  animation: pulse 2s infinite ease-in-out;
 }
 
-/* Imagen grande */
-.imagen-honey {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin: 10px 0;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  transition: transform 0.3s ease;
+.titulo-Standard {
+  font-size: 28px;
+  color: #f8f8fc;
+  margin: 0;
 }
 
-.imagen-honey:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+
+.PrecioPlus-Standard {
+  font-size: 22px;
+  color: #00aaff;
+  margin-top: 8px;
 }
 
-/* Título */
-.titulo {
-  font-size: 1.5rem;
-  color: #00bfff;
-  margin: 10px 0;
-  text-shadow: 0 0 6px #005c99;
+.logo-Standard{
+  width: 100px;
+  height: auto;
+  margin: 20px 0;
+}
+/* Imagen decorativa */
+.imagen-honey-Standard {
+  width: 100px;
+  height: auto;
+  margin: 20px 0;
+  
 }
 
 /* Lista de beneficios */
-.beneficios {
-  list-style: none;
+.beneficios-Standard {
+  list-style-type: none;
   padding: 0;
-  margin: 10px 0;
-  max-width: 100%;
-  overflow: hidden;
+  margin: 0 0 20px 0;
+  text-align: left;
+  color: #ffffff;
 }
 
-.beneficios li {
-  margin-bottom: 6px;
-  font-size: 0.95rem;
-  position: relative;
-  padding-left: 20px;
-}
-
-.beneficios li::before {
-  content: '✔';
-  position: absolute;
-  left: 0;
-  color: #00bfff;
+.beneficios-Standard li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 /* Descripción */
-.descripcion {
-  margin: 15px 0;
-  font-size: 0.95rem;
-  color: #ccc;
-  line-height: 1.4;
-  max-height: 180px;
-  overflow: auto;
-  padding: 0 5px;
+.descripcion-Standard{
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 24px;
+  line-height: 1.6;
 }
 
-/* Botón interactivo */
-.boton-adquirir {
-  background-color: #00bfff;
-  color: #000;
+/* Botón */
+.boton-adquirir-Standard {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
   border: none;
-  padding: 10px 20px;
-  font-size: 0.95rem;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-top: auto;
+  transition: background 0.3s ease;
 }
 
-.boton-adquirir:hover {
-  background-color: #0077aa;
-  transform: scale(1.05);
-  color: #fff;
+.boton-adquirir-Standard:hover {
+  background-color: #0056b3;
 }
 
-/* Pulsación del logo */
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.95; }
-  50% { transform: scale(1.05); opacity: 1; }
+/* Responsive */
+@media (max-width: 600px) {
+  .standard-container-Standard {
+    padding: 24px;
+  }
+
+  .titul-Standard {
+    font-size: 24px;
+  }
+
+  .PrecioPlus-Standard {
+    font-size: 20px;
+  }
+
+  .beneficios-Standard li {
+    font-size: 14px;
+  }
+
+  .descripcion-Standard {
+    font-size: 14px;
+  }
+
+  .boton-adquirir-Standard {
+    width: 100%;
+  }
 }

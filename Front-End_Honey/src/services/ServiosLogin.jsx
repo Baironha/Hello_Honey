@@ -14,11 +14,7 @@ async function PostApiToken(username, password) {
             },
             body: JSON.stringify(userData2),
         });
-        if (!res.ok) {
-            const errorData = await res.json();
-            console.error("Backend error:", errorData);  // <-- esto ayuda muchísimo
-            throw new Error("Error posting user");
-        }
+       
         const result = await res.json();
         console.log("respuestas:", result);
 
@@ -29,7 +25,10 @@ async function PostApiToken(username, password) {
         }
 }
 
-export default {PostApiToken};
+
+
+
+export default PostApiToken;
 
 
 

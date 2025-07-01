@@ -66,13 +66,14 @@ export{postUsers}
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsers(direccion,edad,id) 
+async function updateUsers(direccion,edad,Imagen,id) 
 {
     try {
         
         const userData = { 
             direccion,
-            edad
+            edad,
+            Imagen
         
         };
 
@@ -123,4 +124,12 @@ async function deleteUser(id) {
     }
 }
 
-export default { deleteUser, getUsers, postUsers, updateUsers};
+export default { deleteUser, getUsers, postUsers, updateUsers}; 
+
+
+
+
+
+
+
+

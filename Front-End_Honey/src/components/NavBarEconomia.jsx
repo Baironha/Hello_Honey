@@ -10,6 +10,8 @@ import VIP from '../img/Logo_VIP_original.png'
 import Asesoramientofinanciero from '../img/Asesoramiento financiero.png'
 import Concentracion from '../img/img_CONCENTRACION.png'
 
+
+
 function NavBarEconomia() {
   const [activeSection, setActiveSection] = useState(null)
 
@@ -27,9 +29,10 @@ function NavBarEconomia() {
   return (
     <div>
       <nav id="NavbarHoney">
-        <Link to="/" id="NavbarHoneyLogo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          Hello Honey
+        <Link to="/" id="NavbarHoneyLogo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} >
+          Hello Honey 
         </Link>
+        {/* <img src={Logo} alt="" /> */}
 
         <ul id="NavbarHoneyLinks">
           {menuItems.map(({ key, label }) => (

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import "../style/CarritoMembresia.css"
 import BtnPayPal from '../components/PagoPaypal'
+import GooglePayButton from "./GooglePay_component"
 
 export default function ShoppingCart() {
   const location = useLocation()
@@ -148,6 +149,7 @@ export default function ShoppingCart() {
                 </div>
 
                 <BtnPayPal />
+                <GooglePayButton/>
                 <button className="checkout-btn">Proceder al Pago</button>
 
                 <div className="security-info">

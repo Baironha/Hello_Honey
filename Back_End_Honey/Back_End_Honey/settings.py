@@ -10,6 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+
+from decouple import config
+""" from decouple import config
+ELEVENLABS_API_KEY = config("ELEVENLABS_API_KEY", default="") """
+ELEVENLABS_API_KEY = config("ELEVENLABS_API_KEY", default="")
+
+
+api_key = config("OPENAI_API_KEY", default="").strip()
+
+
+
 from pathlib import Path
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,6 +32,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-gl7!rq3v+9s@)v44jnpuej#@_rolc=$m=$jdg(+snq)eoa1rw='
+
+
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -139,7 +154,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+""" STATIC_URL = 'static/' """
+
+#SE AGREGO ACA BAIRON
+import os
+
+STATIC_URL = '/static/'
+
+# Esto apunta a la carpeta /static en la raíz del proyecto
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# (Opcional) para producción futura
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

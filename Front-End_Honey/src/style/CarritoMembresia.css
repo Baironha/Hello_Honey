@@ -12,13 +12,13 @@
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  padding-top: 50px;
   box-sizing: border-box;
   overflow-x: hidden;
 }
 
 
 .cartCarrito-container {
-  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
   min-height: 100vh;

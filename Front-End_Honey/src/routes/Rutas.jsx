@@ -25,7 +25,7 @@ import Gestion_Notificaciones from '../components/Gestion_Notificaciones.jsx';
 import Gestion_Ventas from '../components/Gestion_Ventas.jsx';
 import AdminHome from '../components/AdminHome.jsx';
 
-
+import PrivateRoutes from '../routes/RutasPrivadas.jsx'
 /* OUTLET  Economia*/
 import EconomiaHome from '../components/EconomiaHome.jsx';
 import KPI_component from '../components/KPI_component.jsx';
@@ -33,6 +33,7 @@ import Administracion_Proyectos from '../components/Administracion_Proyectos.jsx
 import AdministracionNegocios from '../components/AdministracionNegocios.jsx';
 import Psicologica_Page from '../pages/Psicologica_Page.jsx';
 import TareasAdmin from '../components/TareasAdmin.jsx';
+import Perfilusuarios from '../pages/Perfilusuarios_Page.jsx';
 
 function Routing() {
 
@@ -56,7 +57,7 @@ function Routing() {
                         <Route path="/AddVip" element={<AddMembresiaVip/>}/>{/* HOMEPAGE */}
 
                         <Route path="/Psicologia" element={<Psicologica_Page/>}/>{/*MEMBRESIA*/}
-
+                        <Route path="/PerfilUsuarios" element={<Perfilusuarios/>}/>{/*MEMBRESIA*/}
 
                         <Route path="/admins" element={<Admin_page/>}>  
                             <Route path="AdminHome" element={<AdminHome/>}/>
@@ -76,8 +77,6 @@ function Routing() {
                             <Route path="Administracion_Proyectos" element={<Administracion_Proyectos/>}/>
                         </Route>
 
-
-                         
                         
                 </Routes>
             </Router>

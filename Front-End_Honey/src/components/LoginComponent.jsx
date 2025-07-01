@@ -1,9 +1,10 @@
 
 import { useState } from "react";
-import ServiosLogin from "../services/ServiosLogin";
+
 import "../style/LoginStyle.css";
 import Swal from "sweetalert2";
 import { useNavigate, Link } from "react-router-dom";
+import PostApiToken from "../services/ServiosLogin";
 
 import Cookies from "cookies-js";
 
@@ -26,7 +27,9 @@ function LoginComponent() {
     }
 
     try {
-      const tokenData = await ServiosLogin.PostApiToken(NombreUsu, ContraUsu);
+      const tokenData = await /* ServiciosLogin. */PostApiToken(NombreUsu,ContraUsu);
+      console.log(tokenData);
+      
       if (tokenData && tokenData.access && tokenData.refresh && tokenData.role) {
         // Guardar los tokens en cookies
         Cookies.set("access_token", tokenData.access, {
@@ -60,9 +63,11 @@ function LoginComponent() {
         }).then(() => {
           const rol = tokenData.role;
           if (rol === "empleados") {
-            navigate("/"); // Puedes diferenciar rutas si lo deseas
+            navigate("/"); 
           } if (rol === "admins") {
-            navigate("/Admins/AdminHome"); // Puedes diferenciar rutas si lo deseas
+            navigate("/Admins/AdminHome");
+          } if (rol === "usuarios"){
+            navigate("/");
           }
           else {
             Swal.fire({
@@ -93,7 +98,10 @@ function LoginComponent() {
   };
 
   return (
+
+   
     <div id="Login">
+      
       <Link to="/" id="Login-Honey-Logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
         Hello Honey
       </Link>
@@ -107,7 +115,7 @@ function LoginComponent() {
           placeholder="Ingrese su nombre completo"
         />
         <br />
-        <label htmlFor="password" id="LabelLogin2">Contraseña</label><br />
+        <label  id="LabelLogin2">Contraseña</label><br />
         <input
           id="InputsLogin2"
           type="password"

@@ -1,9 +1,21 @@
-async function getUsers() {
+
+import Cookies from "js-cookie";
+
+const API_URL = "http://127.0.0.1:8000/api/auth_user/";
+const Token= Cookies.get("access_token")
+////////////// LLAMADO GET //////////////
+
+
+
+
+
+async function getUsers(id) {
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/auth_user', {
+        const response = await fetch('http://127.0.0.1:8000/api/auth_user/' + id + "/", {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             }
         });
 
@@ -63,13 +75,14 @@ export{postUsers}
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsers(rol,nombre, email,password,direccion,id) 
+async function updateUsers(rol,nombre,last_name, email,password,direccion,id) 
 {
     try {
         
         const userData = { 
             rol,
             nombre, 
+            last_name,
             email,
             password,
             direccion
@@ -78,13 +91,11 @@ async function updateUsers(rol,nombre, email,password,direccion,id)
         };
 
 
-        
-
-
         const response = await fetch("http://127.0.0.1:8000/api/auth_user/"+id, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Token}`
             },
             body: JSON.stringify(userData)
         });
@@ -125,3 +136,17 @@ async function deleteUser(id) {
 }
 
 export default { deleteUser, getUsers, postUsers, updateUsers};
+
+
+
+
+
+
+
+
+
+
+
+
+
+

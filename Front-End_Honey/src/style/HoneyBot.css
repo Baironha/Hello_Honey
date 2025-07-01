@@ -1,0 +1,33 @@
+.honey-bot {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.honey-bot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.jump {
+  animation: jump 0.6s ease;
+}
+
+@keyframes jump {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-30px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}

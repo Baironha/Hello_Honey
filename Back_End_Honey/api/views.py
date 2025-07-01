@@ -1,10 +1,20 @@
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.parsers import MultiPartParser
+from django.shortcuts import get_object_or_404
+import boto3
+import uuid
+from django.conf import settings
+import os
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
 from .models import Usuarios_perfil,metodos_pago, Membresias, ventas, Administradores,Rol_Administradores,Empleados, Rol_Empleados,Usuarios_x_Membresias,Rol_x_Administradores,Rol_x_Empleado, User, feedback_usuarios, RespuestaFeedback, Conversacion
 from .serializer import Usuarios_Serializer, metodos_pago_Serializer, Membresias_Serializer, ventas_Serializer,Administradores_Serializer,Rol_Administradores_Serializer,Empleados_Serializer,Rol_Empleados_Serializer,Usuarios_x_Membresias_Serializer,Rol_x_Administradores_Serializer,Rol_x_Empleado_Serializer,User_Serializer,auth_group_Serializer,UserGroup_Serializer, CustomTokenObtainPairSerializer,feedback_usuarios_Serializer, RespuestaFeedback_Serializer,ConversacionSerializer
-
+import requests
+from .voz import generar_audio
 from .permissions import IsAdminUserGroup, IsEmpledoUserGroup,IsUsuarioUserGroup, IsAuthenticated
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -44,6 +54,59 @@ class Usuarios_DetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     queryset         = Usuarios_perfil.objects.all()
     serializer_class = Usuarios_Serializer
+
+
+
+
+class UsuariosActualizarImagenView(APIView):
+    permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser]
+
+    def put(self, request, user_id):
+        perfil = get_object_or_404(Usuarios_perfil, user__id=user_id)
+        nueva_imagen = request.FILES.get("imagen")
+
+        if not nueva_imagen:
+            return Response({"error": "No se envió ninguna imagen"}, status=400)
+
+        # Nombre único
+        extension = nueva_imagen.name.split('.')[-1]
+        filename = f"usuarios/perfiles/{uuid.uuid4()}.{extension}"
+
+        # Subir a S3
+        s3 = boto3.client(
+            's3',
+            aws_access_key_id=settings.REACT_APP_AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.REACT_APP_AWS_SECRET_ACCESS_KEY,
+        )
+
+        s3.upload_fileobj(
+            nueva_imagen,
+            settings.bucketbyronimg,
+            filename,
+            ExtraArgs={"ACL": "public-read", "ContentType": nueva_imagen.content_type}
+        )
+
+        # Borrar imagen anterior si existe
+        if perfil.Imagen:
+            try:
+                prev_key = perfil.Imagen.replace(f"https://{settings.bucketbyronimg}.s3.amazonaws.com/", "")
+                s3.delete_object(Bucket=settings.bucketbyronimg, Key=prev_key)
+            except Exception as e:
+                print(f"No se pudo eliminar la imagen anterior: {e}")
+
+        # Guardar nueva URL
+        image_url = f"https://{settings.bucketbyronimg}.s3.amazonaws.com/{filename}"
+        perfil.Imagen = image_url
+        perfil.save()
+
+        return Response({"mensaje": "Imagen actualizada correctamente", "url": image_url})
+
+
+
+
+
+
 
 
 class feedback_usuarios_ListCreateView(ListCreateAPIView):
@@ -165,102 +228,114 @@ class Rol_Empleados_DetailView(RetrieveUpdateDestroyAPIView):
 
 
 
-
-
-import os
-import tempfile
-import whisper
-import openai
-import pyttsx3
-from pydub import AudioSegment
-from django.conf import settings
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.parsers import MultiPartParser
-""" from rest_framework import status """
+from rest_framework.permissions import AllowAny
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.generics import ListAPIView
+import requests
+from .whisper import transcribir_audio
 
 
-
-def generar_respuesta_inteligente(mensaje):
-    openai.api_key = settings.OPENAI_API_KEY
-
-    respuesta = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "Eres Honey, una asistente virtual simpática, clara y profesional."},
-            {"role": "user", "content": mensaje},
-        ],
-        max_tokens=150,
-        temperature=0.7,
-    )
-    return respuesta.choices[0].message.content.strip()
-
-
-class HoneyResponderView(APIView):
-    parser_classes = [MultiPartParser]
+class ChatView(ListAPIView):
+    permission_classes = [AllowAny]
+    queryset = Conversacion.objects.all()
+    serializer_class = ConversacionSerializer
 
     def post(self, request):
-        tipo = request.data.get("tipo", "texto")
+        usuario = request.user if request.user.is_authenticated else None
 
-        # --- TEXTO ---
-        if tipo == "texto":
-            contenido = request.data.get("contenido")
-            if not contenido:
-                return Response({"error": "Mensaje vacío"}, status=400)
+        # 1️⃣ Detecta entrada: texto o audio
+        mensaje = request.data.get("prompt", "")
+        audio_file = request.FILES.get("audio", None)
 
-            user_msg = Conversacion.objects.create(contenido=contenido, rol="user", tipo="texto")
-            respuesta = generar_respuesta_inteligente(contenido)
-            honey_msg = Conversacion.objects.create(contenido=respuesta, rol="honey", tipo="texto")
+        print(f"\n[DEBUG] Usuario: {usuario}")
+        print(f"[DEBUG] Texto recibido: {mensaje}")
+        print(f"[DEBUG] Archivo de audio recibido: {bool(audio_file)}")
 
-            return Response({
-                "respuesta": respuesta,
-                "tipo": "texto",
-                "mensajes": [
-                    ConversacionSerializer(user_msg).data,
-                    ConversacionSerializer(honey_msg).data,
-                ]
-            })
+        # 2️⃣ Si hay audio, lo guarda en temp_audio y usa Whisper
+        if audio_file:
+            local_dir = "temp_audio"
+            os.makedirs(local_dir, exist_ok=True)  # ✅ Crea carpeta si no existe
 
-        # --- AUDIO ---
-        elif tipo == "audio" and "audio" in request.FILES:
-            audio_file = request.FILES["audio"]
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as tmp:
+            local_path = os.path.join(local_dir, audio_file.name)
+            with open(local_path, "wb") as f:
                 for chunk in audio_file.chunks():
-                    tmp.write(chunk)
-                tmp_path = tmp.name
+                    f.write(chunk)
 
-            model = whisper.load_model("base")
-            transcription = model.transcribe(tmp_path)["text"]
-            os.remove(tmp_path)
+            mensaje = transcribir_audio(local_path)
+            print(f"[DEBUG] Texto transcrito con Whisper: {mensaje}")
 
-            user_msg = Conversacion.objects.create(contenido=transcription, rol="user", tipo="audio")
-            respuesta = generar_respuesta_inteligente(transcription)
-            honey_msg = Conversacion.objects.create(contenido=respuesta, rol="honey", tipo="audio")
+        # 3️⃣ Construye historial
+        historial = Conversacion.objects.filter(usuario=usuario).order_by("-timestamp")[:5]
 
-            # Convertir a voz
-            tts_engine = pyttsx3.init()
-            tts_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
-            tts_engine.save_to_file(respuesta, tts_file.name)
-            tts_engine.runAndWait()
+        mensajes = [
+            {
+                "role": "user",
+                "content": "Eres Honey, una asistente dulce, empática y muy humana. Recuerda las conversaciones anteriores con el usuario."
+            }
+        ]
 
-            audio = AudioSegment.from_file(tts_file.name, format="mp3")
-            audio_path = tts_file.name.replace(".mp3", ".wav")
-            audio.export(audio_path, format="wav")
+        for c in reversed(historial):
+            mensajes.append({"role": "user", "content": c.mensaje})
+            mensajes.append({"role": "assistant", "content": c.respuesta})
 
-            with open(audio_path, "rb") as f:
-                response = Response(f.read(), content_type="audio/wav")
-                response["Content-Disposition"] = "attachment; filename=honey.wav"
+        mensajes.append({"role": "user", "content": mensaje})
 
-            os.remove(tts_file.name)
-            os.remove(audio_path)
+        # 4️⃣ Llama a LM Studio
+        lm_response = requests.post(
+            "http://localhost:1234/v1/chat/completions",
+            json={
+                "model": "mistralai/mistral-7b-instruct-v0.3",
+                "messages": mensajes
+            }
+        )
 
-            return response
+        print(f"[DEBUG] LM Studio Status: {lm_response.status_code}")
+        print(f"[DEBUG] LM Studio Raw Response: {lm_response.text}")
 
-        return Response({"error": "Tipo inválido o archivo faltante"}, status=400)
+        if lm_response.status_code != 200:
+            return Response(
+                {"error": "LM Studio falló", "details": lm_response.text},
+                status=500
+            )
+
+        respuesta = lm_response.json().get("choices", [{}])[0].get("message", {}).get("content", "")
+        print(f"[DEBUG] Respuesta generada: {respuesta}")
+
+        conversacion = Conversacion.objects.create(
+            usuario=usuario,
+            mensaje=mensaje,
+            respuesta=respuesta
+        )
+
+        # 5️⃣ Genera voz de la respuesta
+        audio_url = None
+        try:
+            audio_url = generar_audio(respuesta)
+        except Exception as e:
+            print(f"[DEBUG] Error generando audio: {e}")
+
+        serializer = ConversacionSerializer(conversacion)
+
+        return Response({
+            "respuesta": respuesta,
+            "audio": audio_url,
+            "datos": serializer.data
+        })
 
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def historial_chat(request):
+    usuario = request.user if request.user.is_authenticated else None
 
+    if usuario:
+        chats = Conversacion.objects.filter(usuario=usuario).order_by("timestamp")
+    else:
+        chats = Conversacion.objects.all().order_by("timestamp")
 
+    serializer = ConversacionSerializer(chats, many=True)
+    return Response(serializer.data)
 
 
 
@@ -311,3 +386,51 @@ class Rol_x_Empleado_DetailView(RetrieveUpdateDestroyAPIView):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer 
+
+
+
+
+
+
+
+
+
+
+
+
+    """ BOTON DE PAGO CON GOOGLE PAY """
+# views.py
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from django.conf import settings
+import stripe
+
+# ✅ Configura la clave desde settings.py (.env)
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
+class GooglePayView(APIView):
+    def post(self, request):
+        try:
+            # Extrae el token enviado desde Google Pay
+            payment_token = request.data['paymentMethodData']['tokenizationData']['token']
+
+            # ✅ Usar PaymentIntent (recomendado)
+            intent = stripe.PaymentIntent.create(
+                amount=1000,  # 💡 Monto en centavos (10.00 USD)
+                currency='usd',
+                payment_method_data={
+                    'type': 'card',
+                    'card': {
+                        'token': payment_token
+                    }
+                },
+                confirmation_method='automatic',
+                confirm=True,  # Confirmar en la misma solicitud
+            )
+
+            return Response({'status': 'success', 'payment_intent': intent}, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)

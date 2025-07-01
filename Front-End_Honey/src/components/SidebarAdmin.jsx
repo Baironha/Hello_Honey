@@ -1,4 +1,4 @@
- import React from 'react'
+import React from 'react'
 import '../style/AdminPrueba.css'
 import { Outlet, useNavigate } from "react-router-dom";
 

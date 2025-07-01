@@ -1,0 +1,139 @@
+/* Usa toda la pantalla y centra contenido */
+.padre-container-premium {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  background-color: #020202;
+  display: flex;
+  justify-content: center; /* centrado horizontal */
+  padding: 10px 20px; /* 10px superior */
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.standard-container-premium {
+  background: linear-gradient(
+    135deg,
+    #01010f 15%,     /* negro */
+    #020752 55%,    /* azul oscuro */
+    #01011f 90%  /* azul intermedio */
+  );
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+
+  margin-top: 10px;
+}
+
+
+/* Título con logo */
+.titulo-con-logo_Premium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.logo-standard_Premium {
+  width: 80px;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.titulo_Premium {
+  font-size: 28px;
+  color: #f8f8fc;
+  margin: 0;
+}
+
+
+.PrecioPlus_Premium {
+  font-size: 22px;
+  color: #00aaff;
+  margin-top: 8px;
+}
+
+.logo_Premium{
+  width: 100px;
+  height: auto;
+  margin: 20px 0;
+}
+/* Imagen decorativa */
+.imagen-honey_Premium {
+  width: 100px;
+  height: auto;
+  margin: 20px 0;
+  
+}
+
+/* Lista de beneficios */
+.beneficios_Premium {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: left;
+  color: #ffffff;
+}
+
+.beneficios_Premium li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Descripción */
+.descripcion_Premium{
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* Botón */
+.boton-adquirir_Premium {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.boton-adquirir_Premium:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .standard-container-premium {
+    padding: 24px;
+  }
+
+  .titulo_Premium {
+    font-size: 24px;
+  }
+
+  .PrecioPlus_Premium {
+    font-size: 20px;
+  }
+
+  .beneficios_Premium li {
+    font-size: 14px;
+  }
+
+  .descripcion_Premium {
+    font-size: 14px;
+  }
+
+  .boton-adquirir_Premium {
+    width: 100%;
+  }
+}

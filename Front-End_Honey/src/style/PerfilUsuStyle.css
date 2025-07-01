@@ -1,0 +1,135 @@
+.profile-container {
+    width: 100rem;   
+    padding: 2rem;
+    background: linear-gradient(
+        135deg,
+        #01010f 15%,
+        #020752 55%,
+        #01011f 90%
+    );
+    min-height: 100vh;
+}
+
+.profile-card {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    max-width: 900px;
+    margin-left: 13%;
+    background: rgba(32, 32, 32, 0.445);
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-left {
+    background: rgba(32, 32, 32, 0.068);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 35%;
+    padding: 2rem;
+    text-align: center;
+}
+
+.profile-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.edit-photo-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    transition: 0.2s ease;
+}
+
+.edit-photo-button:hover {
+    opacity: 1;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.info p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.profile-right {
+    width: 65%;
+    padding: 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.section {
+    margin-top: 2rem;
+}
+
+.section h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    resize: none;
+}

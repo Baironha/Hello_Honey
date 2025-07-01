@@ -1,31 +1,45 @@
 /* ==== NAVBAR ==== */
 #NavbarHoney {
   position: fixed;
-  top: 0px;
+  top: 0;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 5px;
+  padding: 5px 5px;
   z-index: 1000;
-  background-image:
-  linear-gradient(135deg, #01010f 25%, #02085f 50%, #01011f 100%);
+  background-image: linear-gradient(135deg, #01010f 25%, #02085f 50%, #01011f 100%);
   font-family: 'Google Sans', sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.LogoNavbar {
+  margin-top: 1px;
+  max-width: 50px;
+  height: auto;
+  object-fit: contain;
 }
 
 #NavbarHoneyLogo {
+  margin-top: 1px;
   color: white;
   font-size: 20px;
   font-weight: 100;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 #NavbarHoneyLinks {
   list-style: none;
   display: flex;
-  gap: 10px;
+  gap: 5px;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 #NavbarHoneyLinks .nav-btn {
@@ -39,6 +53,7 @@
   padding: 6px 12px;
   border-radius: 6px;
   transition: background 0.2s ease;
+  white-space: nowrap;
 }
 
 #NavbarHoneyLinks .nav-btn.active {
@@ -53,19 +68,19 @@
 #NavbarHoneyIcons {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
   justify-content: flex-end;
-  max-width: 160px;
+  align-items: center;  /* ✅ añadido para alinear bien */
+  overflow: hidden;
 }
 
 .nav-icon-link {
-  padding: 12px 40px;
+  padding: 6px 12px;
   color: white;
+  background-color: #a8cfff00;
   text-decoration: none;
   font-family: 'Google Sans', sans-serif;
   font-size: 16px;
   font-weight: 100;
-  padding: 6px 12px;
   border-radius: 6px;
   transition: background 0.3s ease;
   white-space: nowrap;
@@ -76,29 +91,27 @@
   color: white;
 }
 
-/* ==== PANEL DESPLEGABLE CON APARICIÓN/DESAPARICIÓN SIMÉTRICA ==== */
+/* ==== PANEL DESPLEGABLE ==== */
 .dropdown-panel-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  overflow: hidden;
   background-color: #0d0d0d;
   z-index: 999;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   color: white;
   border-bottom: 3px solid #00ffff;
   box-shadow: 0 6px 18px #00ffff;
-  transition:
-    opacity 3s linear,
-    max-height 3s linear,
-    padding 3s linear,
-    visibility 3s linear;
+  transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease, visibility 0.5s ease;
   opacity: 0;
   max-height: 0;
   padding: 0 40px;
   visibility: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .dropdown-panel-wrapper.active {
@@ -118,6 +131,9 @@
 /* ==== CONTENIDO ==== */
 .dropdown-description {
   max-width: 40%;
+  flex: 1;
+  min-width: 280px;
+  box-sizing: border-box;
 }
 
 .dropdown-description h3 {
@@ -134,11 +150,15 @@
 .dropdown-cards {
   display: flex;
   gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 2;
+  min-width: 280px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .info-card {
-  height: 200px;
-  width: 200px;
   background: #1a1a1a;
   border-radius: 8px;
   text-decoration: none;
@@ -146,6 +166,11 @@
   overflow: hidden;
   transition: transform 0.3s ease;
   box-shadow: 0 0 4px rgba(0, 255, 255, 0.1);
+  width: 200px;
+  min-width: 180px;
+  max-width: 240px;
+  height: auto;
+  box-sizing: border-box;
 }
 
 .info-card:hover {
@@ -157,6 +182,7 @@
   width: 100%;
   height: 140px;
   object-fit: cover;
+  display: block;
 }
 
 .info-card h4 {
@@ -192,7 +218,6 @@
   }
 
   .dropdown-cards {
-    flex-wrap: wrap;
     justify-content: center;
   }
 
