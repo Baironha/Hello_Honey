@@ -1,0 +1,40 @@
+.dashboard-container {
+    width: 100rem;
+    height: 100%;
+    padding: 2rem;
+    padding-left: 300px;
+    background: linear-gradient(
+        135deg,
+        #01010f 15%,     /* negro */
+        #020752 55%,    /* azul oscuro */
+        #01011f 90%  /* azul intermedio */
+    );
+}
+
+.cards {
+    background: rgba(7, 7, 7, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 30%;
+}
+
+.card {
+  background: rgba(7, 7, 7, 0.06);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.card.full {
+  grid-column: span 2;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}

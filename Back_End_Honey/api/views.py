@@ -340,6 +340,96 @@ def historial_chat(request):
 
 
 
+from django.db.models.functions import TruncHour
+from django.db.models import Count
+
+class InteraccionesTimeSeriesView(APIView):
+    def get(self, request):
+        data = (
+            Conversacion.objects
+            .annotate(hour=TruncHour('timestamp'))
+            .values('hour')
+            .annotate(total=Count('id'))
+            .order_by('hour')
+        )
+        return Response(data)
+
+
+
+
+from datetime import datetime, timedelta
+
+class GraficoInteraccionesView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        # Devuelve interacciones por hora como ejemplo
+        data = []
+        now = datetime.now()
+        for i in range(10):
+            data.append({
+                "hour": (now - timedelta(hours=i)).strftime("%H:%M"),
+                "total": i * 10 + 5,
+            })
+        return Response(data[::-1])  # Orden cronológico
+
+class AvanceAnaliticoHoneyView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        # Simulación de progreso analítico
+        data = [
+            {"week": "Semana 1", "interacciones": 50, "precision": 70, "satisfaccion": 65},
+            {"week": "Semana 2", "interacciones": 120, "precision": 75, "satisfaccion": 70},
+            {"week": "Semana 3", "interacciones": 200, "precision": 80, "satisfaccion": 78},
+            {"week": "Semana 4", "interacciones": 320, "precision": 82, "satisfaccion": 80},
+            {"week": "Semana 5", "interacciones": 450, "precision": 85, "satisfaccion": 83},
+        ]
+        return Response(data)
+
+
+# ✅ views.py
+
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from django.contrib.auth import get_user_model
+
+
+class DashboardMetricsView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get(self, request):
+        """
+        Devuelve métricas básicas de uso para el dashboard Honey.
+        """
+        total_chats = Conversacion.objects.count()
+        total_audios = Conversacion.objects.exclude(respuesta="").count()
+        usuarios_activos = get_user_model().objects.filter(is_active=True).count()
+
+        if total_chats > 0:
+            promedio_respuesta = sum(len(c.respuesta) for c in Conversacion.objects.all()) / total_chats
+        else:
+            promedio_respuesta = 0
+
+        ultima_transcripcion = (
+            Conversacion.objects.last().mensaje if Conversacion.objects.exists() else ""
+        )
+
+        # Puedes agregar estado real de LM Studio si quieres: por defecto Activo
+        estado_lmstudio = "Activo ✅"
+
+        data = {
+            "total_chats": total_chats,
+            "usuarios_activos": usuarios_activos,
+            "total_audios": total_audios,
+            "promedio_respuesta": round(promedio_respuesta, 2),
+            "ultima_transcripcion": ultima_transcripcion,
+            "estado_lmstudio": estado_lmstudio
+        }
+
+        return Response(data)
+
+
 
 
 

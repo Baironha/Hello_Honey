@@ -47,6 +47,9 @@ urlpatterns =[
     path("chat/", ChatView.as_view(), name="chat"),
     path('chat/historial/', historial_chat, name='historial'),  # GET
 
+    path("dashboard/metrics/", DashboardMetricsView.as_view(), name="dashboard-metrics"),
+    path("dashboard/interacciones/", GraficoInteraccionesView.as_view(), name="dashboard-interacciones"),
+    path("dashboard/avance-analitico/", AvanceAnaliticoHoneyView.as_view(), name="dashboard-avance-analitico"),
 
     path('api/googlepay/', GooglePayView.as_view(), name='googlepay'),
 

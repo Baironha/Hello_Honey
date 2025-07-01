@@ -27,6 +27,7 @@
   ); 
   position: relative; /* importante para posicionar hijo absoluto */
   overflow: hidden;   /* evita que el contenido sobresalga visualmente */
+  
 }
 .tabla-usuarios h2 {
   margin-bottom: 1.5rem;

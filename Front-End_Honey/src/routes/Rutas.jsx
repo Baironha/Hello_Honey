@@ -34,6 +34,7 @@ import AdministracionNegocios from '../components/AdministracionNegocios.jsx';
 import Psicologica_Page from '../pages/Psicologica_Page.jsx';
 import TareasAdmin from '../components/TareasAdmin.jsx';
 import Perfilusuarios from '../pages/Perfilusuarios_Page.jsx';
+import DashboardHoney from '../components/DashboardHoney.jsx';
 
 function Routing() {
 
@@ -59,7 +60,7 @@ function Routing() {
                         <Route path="/Psicologia" element={<Psicologica_Page/>}/>{/*MEMBRESIA*/}
                         <Route path="/PerfilUsuarios" element={<Perfilusuarios/>}/>{/*MEMBRESIA*/}
 
-                        <Route path="/admins" element={<Admin_page/>}>  
+                        <Route path="/admins" element={<Admin_page/>}>  DashboardHoney
                             <Route path="AdminHome" element={<AdminHome/>}/>
                             <Route path="TareasAdmin" element={<TareasAdmin/>}/>
                             <Route path="Gestion_usuarios" element={<Gestion_Usuarios/>}/>
@@ -68,6 +69,7 @@ function Routing() {
                             <Route path="Gestion_Membresias" element={<Gestion_Membresias/>}/>
                             <Route path="Gestion_Notificaciones" element={<Gestion_Notificaciones/>}/>
                             <Route path="Gestion_Ventas" element={<Gestion_Ventas/>}/>
+                            <Route path="DashboardHoney" element={<DashboardHoney/>}/>
                         </Route>
                         
                         <Route path="/Economia" element={<Economia_page/>}>  
