@@ -103,19 +103,19 @@ export default QuienEsHoney;
 import React, { useState, useEffect } from 'react';
 import '../Style/QuienEsHoney.css';
 
-import Planificacion_Proyectos from '../img/PLANIFICACIONPROYECT.png';
-import Analisis_Mercado from '../img/ANALISISMERCADO.png';
-import KPI from '../img/KPI.png';
-import meditacion from '../img/meditacion2.jpg';
-import Terapia from '../img/TERAPIA.jpg';
+import Planificacion_Proyectos from '../img/PLA_NIFICACION_3.jpg';
+import Analisis_Mercado from '../img/ANAL_ISISI_MERCADO_3.jpg';
+import KPI from '../img/KPI_2.jpg';
+import meditacion from '../img/Meditacion_2.jpg';
+import Terapia from '../img/Terapia_2.jpg';
 import MentalidadGanadora from '../img/MentalidadGanadora.jpg';
 
 const slides = [
-  { src: Planificacion_Proyectos, caption: 'Caption Text' },
-  { src: Analisis_Mercado, caption: 'Caption Two' },
-  { src: KPI, caption: 'Caption Three' },
-  { src: meditacion, caption: 'Caption Ford' },
-  { src: Terapia, caption: 'Caption Five' },
+  { src: Planificacion_Proyectos, caption: 'Planifica tus proyectos de formal agil' },
+  { src: Analisis_Mercado, caption: 'Analisael mercado y desarrolla tu proyecto' },
+  { src: KPI, caption: 'Implementa KPI en tus proyectos y negocio' },
+  { src: meditacion, caption: 'Aprende a meditar y conectartar mas con tu interior' },
+  { src: Terapia, caption: 'Conecta mas con vos ' },
   { src: MentalidadGanadora, caption: 'Caption Six' },
 ];
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import '../style/AdminPrueba.css'
 import { Outlet, useNavigate } from "react-router-dom";
+import BTN_logout from './BTN_logout';
 
 
 
@@ -12,8 +13,6 @@ function SidebarAdmin() {
     <div>
       <div>
         <aside className="custom-sidebar">
-          
-          
           <ul className="sidebar-menu">
             <h1 className="sidebar-title">PANEL</h1>
             <li onClick={() => navigate("AdminHome")}>Home</li>
@@ -25,6 +24,7 @@ function SidebarAdmin() {
             <li onClick={() => navigate("Gestion_Admins")}>Administradores</li>
             <li onClick={() => navigate("/ventas")}>Ventas</li>
             <li onClick={() => navigate("DashboardHoney")}>IA Control</li>
+            <li><BTN_logout/></li>
           </ul>
         </aside>
       </div>

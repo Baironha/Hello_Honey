@@ -1,23 +1,22 @@
-
-
+// PrivateRoutes.jsx
+import { Navigate, Outlet } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
 
-const Logout = () => {
-  const navigate = useNavigate();
+const PrivateRoutes = ({ children }) => {
+  const token = Cookies.get("access_token");
+  const rol = Cookies.get("user_role");
 
-  const handleLogout = () => {
-    Cookies.remove("access_token");
-    navigate("/Login"); 
-  };
+  if (!token) return <Navigate to="/Login" />;
 
-  return <button onClick={handleLogout}>NO ESTAS AUTORIZADO <br />
-  INICIA SESION</button>;
+  if (rol === "admins") {
+    return children; 
+  } else if (rol === "empleado") {
+    return <Navigate to="/empleados" />;
+  } else if (rol === "usuario") {
+    return <Navigate to="/" />;
+  } else {
+    return <Navigate to="/Login" />;
+  }
 };
 
-export default Logout;
-
-
-
-
-
+export default PrivateRoutes;

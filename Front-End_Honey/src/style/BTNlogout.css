@@ -1,0 +1,21 @@
+.BtnLogout{
+    background: linear-gradient(
+        135deg,
+        #020242 15%,     
+        #0602ff 55%,    
+        #010153 90%  
+    );
+}
+
+BtnLogout a {
+  background-color: #222; /* Por ejemplo */
+  color: #fff; /* Contraste */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.BtnLogout a:hover {
+    transform: scale(1.05);
+    background-color: #0a0a0a;
+    box-shadow: 10px 10px 20px rgba(245, 4, 165, 0.4);
+    }

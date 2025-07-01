@@ -28,7 +28,10 @@ function Header_Component() {
         <header id='HeaderHomePage'>
             <h1 className='TiuloHeader1'>Hello HONEY</h1>
             <h2 className='TituloHeader2'>EN LA ORILLA DEL MAR HONEY VE EL SOL BRILLAR</h2>
-            <button id='BtnHeaderHoney' onClick={NavigateChatHoney}>Habla con Honey</button>
+            <div className='wrap_btn_header'>
+              <button id='BtnHeaderHoney' onClick={NavigateChatHoney}>Habla con Honey</button>
+            </div>
+            
         </header>
     </div>
   )
