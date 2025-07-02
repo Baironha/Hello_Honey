@@ -10,14 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-
+import os
 from decouple import config
 """ from decouple import config
 ELEVENLABS_API_KEY = config("ELEVENLABS_API_KEY", default="") """
 ELEVENLABS_API_KEY = config("ELEVENLABS_API_KEY", default="")
 
-
 api_key = config("OPENAI_API_KEY", default="").strip()
+
+
+AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
 
 
 
@@ -32,7 +36,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-gl7!rq3v+9s@)v44jnpuej#@_rolc=$m=$jdg(+snq)eoa1rw='
-
 
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
@@ -55,6 +58,7 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'corsheaders',
+    'storages',
 ]
 
 

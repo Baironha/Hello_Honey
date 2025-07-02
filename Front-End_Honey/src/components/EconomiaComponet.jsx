@@ -1,4 +1,4 @@
-    import React from 'react'
+/*     import React from 'react'
 import Navbar_Honey from './NavbarHomecomponent'
 
     function EconomiaComponet() {
@@ -9,4 +9,4 @@ import Navbar_Honey from './NavbarHomecomponent'
     )
 }
 
-export default EconomiaComponet
+export default EconomiaComponet */

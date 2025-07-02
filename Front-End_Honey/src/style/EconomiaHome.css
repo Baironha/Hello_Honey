@@ -3,10 +3,10 @@
     
     background-color: rgb(2, 5, 48);
     color: white;
-    padding-left: 300px;
+    padding-left: 230px;
     padding-right: 10px;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     font-family: sans-serif;
     height: 100%;
 }
@@ -14,7 +14,7 @@
 .Cont_Izquierdos_Eco {
     width: 700px;
     margin-left: auto;
-    margin-right: 70px;
+    margin-right: 500px;
     text-align: right;
 
     /* Borde agregado */

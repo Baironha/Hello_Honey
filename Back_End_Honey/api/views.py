@@ -7,7 +7,7 @@ import boto3
 import uuid
 from django.conf import settings
 import os
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView, RetrieveAPIView
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -58,13 +58,14 @@ class Usuarios_DetailView(RetrieveUpdateDestroyAPIView):
 
 
 
-class UsuariosActualizarImagenView(APIView):
+""" class UsuariosActualizarImagenView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
     parser_classes = [MultiPartParser]
 
     def put(self, request, user_id):
         perfil = get_object_or_404(Usuarios_perfil, user__id=user_id)
         nueva_imagen = request.FILES.get("imagen")
+        print(perfil, nueva_imagen)
 
         if not nueva_imagen:
             return Response({"error": "No se envió ninguna imagen"}, status=400)
@@ -76,32 +77,95 @@ class UsuariosActualizarImagenView(APIView):
         # Subir a S3
         s3 = boto3.client(
             's3',
-            aws_access_key_id=settings.REACT_APP_AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=settings.REACT_APP_AWS_SECRET_ACCESS_KEY,
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
         )
-
         s3.upload_fileobj(
             nueva_imagen,
-            settings.bucketbyronimg,
+            settings.AWS_STORAGE_BUCKET_NAME,
             filename,
-            ExtraArgs={"ACL": "public-read", "ContentType": nueva_imagen.content_type}
+            ExtraArgs={"ContentType": nueva_imagen.content_type}  # 👈 Solo ContentType, sin ACL
         )
+
+        
 
         # Borrar imagen anterior si existe
         if perfil.Imagen:
             try:
-                prev_key = perfil.Imagen.replace(f"https://{settings.bucketbyronimg}.s3.amazonaws.com/", "")
-                s3.delete_object(Bucket=settings.bucketbyronimg, Key=prev_key)
+                prev_key = perfil.Imagen.replace(f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/", "")
+                s3.delete_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME
+, Key=prev_key)
             except Exception as e:
                 print(f"No se pudo eliminar la imagen anterior: {e}")
 
         # Guardar nueva URL
-        image_url = f"https://{settings.bucketbyronimg}.s3.amazonaws.com/{filename}"
+        image_url = f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/{filename}"
         perfil.Imagen = image_url
         perfil.save()
 
         return Response({"mensaje": "Imagen actualizada correctamente", "url": image_url})
 
+ """
+
+
+# views.py
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.parsers import MultiPartParser
+from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404
+from django.conf import settings
+import uuid
+import boto3
+from .models import Usuarios_perfil
+
+
+class UsuariosActualizarImagenView(APIView):
+    permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser]
+
+    def get(self, request, user_id):
+        perfil = get_object_or_404(Usuarios_perfil, user__id=user_id)
+        return Response({"Imagen": perfil.imagen})
+
+    def put(self, request, user_id):
+        perfil = get_object_or_404(Usuarios_perfil, user__id=user_id)
+        nueva_imagen = request.FILES.get("imagen")
+
+        if not nueva_imagen:
+            return Response({"error": "No se envió ninguna imagen"}, status=400)
+
+        if nueva_imagen.content_type not in ["image/jpeg", "image/png", "image/webp"]:
+            return Response({"error": "Formato de imagen no permitido"}, status=400)
+
+        extension = nueva_imagen.name.split('.')[-1]
+        filename = f"usuarios/perfiles/{uuid.uuid4()}.{extension}"
+
+        s3 = boto3.client(
+            's3',
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+        )
+
+        s3.upload_fileobj(
+            nueva_imagen,
+            settings.AWS_STORAGE_BUCKET_NAME,
+            filename,
+            ExtraArgs={
+                "ContentType": nueva_imagen.content_type,
+                "ACL": "public-read"  # 👈 importante si quieres acceso público
+            }
+        )
+
+        s3_url = f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/{filename}"
+        perfil.imagen = s3_url
+        perfil.save()
+
+        return Response({
+            "mensaje": "Imagen actualizada correctamente",
+            "url": s3_url
+        })
 
 
 

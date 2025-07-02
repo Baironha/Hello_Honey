@@ -2,6 +2,7 @@ import React from 'react'
 import '../style/AdminPrueba.css'
 import { Outlet, useNavigate } from "react-router-dom";
 import BTN_logout from './BTN_logout';
+import FooterHoneyComponent from './FooterHoneyComponent';
 
 
 
@@ -30,6 +31,7 @@ function SidebarAdmin() {
       </div>
       <div>
         <Outlet/>
+        
       </div>
     </div>
   );
