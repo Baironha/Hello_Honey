@@ -1,0 +1,105 @@
+/* Fondo general */
+.Cont_Padre_Proyectos {
+  background-color: rgb(2, 5, 48);
+  color: white;
+  padding-left: 230px;
+  padding-right: 10px;
+  width: 100vw;
+  min-height: 100%;
+  font-family: sans-serif;
+  height: 100%;
+  overflow: hidden;
+}
+
+.TitulosSeccionProyectos {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.proyectos-wrapper {
+  width: 100%;
+}
+
+.proyectos-section {
+  width: 800px;
+  margin-left: 200px;
+}
+
+.conttext{
+    
+    text-align: center;
+}
+
+.HeaderProyectos {
+  width: 600px;
+  text-align: center;
+}
+
+.Cont_Derecho_Proyectos {
+  width: 700px;
+  margin-left: auto;
+  margin-left: 400px;
+  text-align: left;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.Cont_Izquierdos_Proyectos {
+  width: 700px;
+  margin-right: auto;
+  margin-left: 30px;
+  text-align: left;
+  border-radius: 3px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Bordes */
+#intro-proyectos {
+  border-left: 4px solid white;
+  padding-left: 30px;
+  margin-bottom: 50px;
+}
+
+#objetivos-proyectos {
+  border-right: 4px solid white;
+  padding-right: 30px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .proyectos-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .Cont_Izquierdos_Proyectos,
+  .Cont_Derecho_Proyectos {
+    width: 100%;
+    margin: 0 auto 30px auto;
+    text-align: center;
+  }
+
+  #intro-proyectos,
+  #objetivos-proyectos {
+    border: none;
+    padding: 0;
+  }
+
+  .TitulosSeccionProyectos {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .proyectos-wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .TitulosSeccionProyectos {
+    font-size: 18px;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaInstagram, FaFacebook, FaGithub } from 'react-icons/fa';
-import '../Style/FooterHoney.css';
+import '../style/FooterHoney.css';
 
 function FooterHoneyComponent() {
   return (

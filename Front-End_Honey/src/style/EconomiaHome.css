@@ -1,62 +1,56 @@
 /* Estilo general del fondo */
 .economia-page {
-    
-    background-color: rgb(2, 5, 48);
-    color: white;
-    padding-left: 230px;
-    padding-right: 10px;
-    width: 100%;
-    min-height: 100%;
-    font-family: sans-serif;
-    height: 100%;
+  background-color: rgb(2, 5, 48);
+  color: white;
+  padding-left: 230px;
+  padding-right: 10px;
+  width: 100vw;
+  min-height: 100%;
+  font-family: sans-serif;
+  height: 100%;
+  overflow: hidden; /* evita que el contenido sobresalga visualmente */
 }
 
 .Cont_Izquierdos_Eco {
-    width: 700px;
-    margin-left: auto;
-    margin-right: 500px;
-    text-align: right;
-
-    /* Borde agregado */
-    /* border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px; */
-    padding: 1rem;
-    box-sizing: border-box;
+  width: 700px;
+  margin-left: auto;
+  margin-right: 300px;
+  text-align: right;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-
-
-.Cont_Derecho_eco{
-    width: 700px;
-    margin-right: auto;
-    margin-left: 30px;
-    text-align: left;
-    border-radius: 3px;
-    border-color: brown;
+.Cont_Derecho_eco {
+  width: 700px;
+  margin-right: auto;
+  margin-left: 30px;
+  text-align: left;
+  border-radius: 3px;
+  border-color: brown;
 }
 
-
-
-#Container_la_política_monetaria, #container_Recesión_Crecimiento_Económico, #container_Transformación_Digital_Finanzas_Tecnológicas{
-
-    border-left: 4px solid white;
-    padding-left: 30px;
-    margin-bottom: 50px;
+#Container_la_política_monetaria,
+#container_Recesión_Crecimiento_Económico,
+#container_Transformación_Digital_Finanzas_Tecnológicas {
+  border-left: 4px solid white;
+  padding-left: 30px;
+  margin-bottom: 50px;
 }
 
-#container_Mercados_Financieros_Bolsa_Valores,#Container_Inflación_Política_Monetaria,#container_Globalización_Comercio_Internacional{
-    border-right: 4px solid white;
-    padding-right: 30px;
-    margin-bottom: 50px;
+#container_Mercados_Financieros_Bolsa_Valores,
+#Container_Inflación_Política_Monetaria,
+#container_Globalización_Comercio_Internacional {
+  border-right: 4px solid white;
+  padding-right: 30px;
+  margin-bottom: 50px;
 }
-
 
 /* Títulos principales */
 #TitulosPrincipalesEco {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* Botones */
@@ -65,15 +59,15 @@
 #Btn_Mostrar_Mas_Mercados_Financieros_Bolsa_Valores,
 #Btn_Mostrar_Mas_Recesión_Crecimiento_Económico,
 #Btn_Mostrar_Mas_Transformación_Digital_Finanzas_Tecnológicas {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    transition: all 0.2s ease;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
 }
 
 #Btn_Mostrar_Mas_Inflación_Política_Monetaria:hover,
@@ -81,6 +75,46 @@
 #Btn_Mostrar_Mas_Mercados_Financieros_Bolsa_Valores:hover,
 #Btn_Mostrar_Mas_Recesión_Crecimiento_Económico:hover,
 #Btn_Mostrar_Mas_Transformación_Digital_Finanzas_Tecnológicas:hover {
-    background-color: white;
-    color: rgb(238, 234, 234);
+  background-color: white;
+  color: rgb(238, 234, 234);
+}
+
+/* ✅ MEDIA QUERY RESPONSIVE */
+@media (max-width: 768px) {
+  .economia-page {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .Cont_Izquierdos_Eco,
+  .Cont_Derecho_eco {
+    width: 100%;
+    margin: 0 auto 30px auto;
+    text-align: center;
+  }
+
+  #Container_la_política_monetaria,
+  #container_Recesión_Crecimiento_Económico,
+  #container_Transformación_Digital_Finanzas_Tecnológicas,
+  #container_Mercados_Financieros_Bolsa_Valores,
+  #Container_Inflación_Política_Monetaria,
+  #container_Globalización_Comercio_Internacional {
+    border: none;
+    padding: 0;
+  }
+
+  #TitulosPrincipalesEco {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .economia-page {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #TitulosPrincipalesEco {
+    font-size: 18px;
+  }
 }

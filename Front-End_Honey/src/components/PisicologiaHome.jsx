@@ -1,5 +1,7 @@
 import React from 'react';
 import '../style/PisicologiaHome.css'; // Importa el CSS externo
+import { Link } from "react-router-dom";
+
 
 function PisicologiaHome() {
     return (
@@ -52,6 +54,11 @@ function PisicologiaHome() {
                     guiarnos en nuestras decisiones económicas y profesionales. Aplicar principios de la psicología en la vida personal, laboral y financiera permite construir una existencia más consciente,
                     equilibrada y satisfactoria. En un mundo donde el estrés, la ansiedad y la incertidumbre son comunes, cultivar el bienestar psicológico ya no es una opción: es una necesidad.
                 </p>
+                <div>
+                    <Link to="/ChatHoney" >
+                        ¡¡Habla con Honey!!
+                    </Link>
+                </div>
             </div>
         </div>
     );

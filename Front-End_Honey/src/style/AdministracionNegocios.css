@@ -1,67 +1,137 @@
 /* AdministracionNegocios.css */
-
-.admin-negocios-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.8;
-  background-color: #fefefe;
-  color: #222;
+/* Fondo general */
+.Cont_Padre_Negocios {
+  background-color: rgb(2, 5, 48);
+  color: white;
+  padding-left: 230px;
+  padding-right: 10px;
+  width: 100vw;
+  min-height: 100%;
+  font-family: sans-serif;
+  height: 100%;
+  overflow: hidden; /* evita que el contenido sobresalga visualmente */
 }
 
-.admin-negocios-container h1 {
+/* Título principal */
+.TitulosSeccionNegocios {
   text-align: center;
-  color: #004080;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.admin-negocios-container section {
-  margin-bottom: 2.5rem;
-  padding: 1.5rem;
-  background-color: #ffffff;
-  border-left: 6px solid #007acc;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+/* Contenedor general */
+.negocios-wrapper {
+  width: 100%;
 }
 
-.admin-negocios-container h2 {
-  color: #007acc;
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
+/* Bloque principal */
+.negocios-section {
+  width: 800px;
+  margin-left: 100px;
 }
 
-.admin-negocios-container p {
-  margin-bottom: 1rem;
-  font-size: 1.05rem;
+/* Encabezado */
+.HeaderNegocios {
+  width: 600px;
+  text-align: center;
 }
 
-.admin-negocios-container ol,
-.admin-negocios-container ul {
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
+/* Contenedor derecho */
+.Cont_Derecho_Negocios {
+  width: 700px;
+  margin-left: auto;
+  margin-right: 300px;
+  text-align: left;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-.admin-negocios-container li {
-  margin-bottom: 0.6rem;
-  font-size: 1rem;
+/* Contenedor izquierdo */
+.Cont_Izquierdos_Negocios {
+  width: 700px;
+  margin-right: auto;
+  margin-left: 30px;
+  text-align: left;
+  border-radius: 3px;
+  border-color: brown;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-strong {
-  color: #333;
+/* Bordes para secciones */
+#intro-negocios_izquierdo {
+  border-left: 4px solid white;
+  padding-left: 30px;
+  margin-bottom: 50px;
 }
 
+#politica-negocios_derecho {
+  border-right: 4px solid white;
+  padding-right: 30px;
+  margin-bottom: 50px;
+}
+
+/* Botones */
+#Btn_Mostrar_Mas_AdminNegociosIntro,
+#Btn_Mostrar_Mas_AdminNegociosPolitica,
+#Btn_Mostrar_Mas_AdminNegociosTomaDecisiones,
+#Btn_Mostrar_Mas_AdminNegociosCultura,
+#Btn_Mostrar_Mas_AdminNegociosEntorno,
+#Btn_Mostrar_Mas_AdminNegociosEstrategia {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+}
+
+#Btn_Mostrar_Mas_AdminNegociosIntro:hover,
+#Btn_Mostrar_Mas_AdminNegociosPolitica:hover,
+#Btn_Mostrar_Mas_AdminNegociosTomaDecisiones:hover,
+#Btn_Mostrar_Mas_AdminNegociosCultura:hover,
+#Btn_Mostrar_Mas_AdminNegociosEntorno:hover,
+#Btn_Mostrar_Mas_AdminNegociosEstrategia:hover {
+  background-color: white;
+  color: rgb(238, 234, 234);
+}
+
+/* ✅ Responsive */
 @media (max-width: 768px) {
-  .admin-negocios-container {
-    padding: 1rem;
+  .negocios-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
-  .admin-negocios-container h1 {
-    font-size: 2rem;
+  .Cont_Izquierdos_Negocios,
+  .Cont_Derecho_Negocios {
+    width: 100%;
+    margin: 0 auto 30px auto;
+    text-align: center;
   }
 
-  .admin-negocios-container h2 {
-    font-size: 1.3rem;
+  #intro-negocios,
+  #politica-negocios {
+    border: none;
+    padding: 0;
+  }
+
+  .TitulosSeccionNegocios {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .negocios-wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .TitulosSeccionNegocios {
+    font-size: 18px;
   }
 }

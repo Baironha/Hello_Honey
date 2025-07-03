@@ -134,17 +134,17 @@ function Navbar_Honey() {
               <p>Escoge la experiencia de acompañamiento que deseas.</p>
             </div>
             <div className="dropdown-cards">
-              <a href="#plan-basico" className="info-card">
+              <a href="/AddStandard" className="info-card">
                 <img src={FREE} alt="Plan Básico" />
                 <h4>Plan Básico</h4>
                 <p>Ideal para usuarios nuevos. Gratuito.</p>
               </a>
-              <a href="#plan-pro" className="info-card">
+              <a href="/AddMembresiaPremium" className="info-card">
                 <img src={PREMIUM} alt="Plan PREMIUM" />
                 <h4>Plan Pro</h4>
                 <p>Acceso completo a todas las funciones premium.</p>
               </a>
-              <a href="#plan-vip" className="info-card">
+              <a href="/AddVip" className="info-card">
                 <img src={VIP} alt="Plan VIP" />
                 <h4>Plan VIP</h4>
                 <p>La experiencia exclusiva para acompañamiento total.</p>

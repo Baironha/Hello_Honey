@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import '../style/AddMembresiaVip.css'
 import logoStandard from '../img/Logo_VIP_original.png'
 import imgHoney from '../img/HoneyLogo.png'
+import Navbar_Honey from './Navbar_Honey'
 
 function AddMembresiaVip() {
   const navigate = useNavigate()
@@ -22,6 +23,7 @@ function AddMembresiaVip() {
 
   return (
     <div className='Container_principal_VIP'>
+      <Navbar_Honey/>
       <div className="standard-container-vip">
         <div className="titulo-con-logo_VIP">
           <img src={logoStandard} alt="Logo Standard" className="logo_VIP" />

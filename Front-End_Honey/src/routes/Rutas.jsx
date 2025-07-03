@@ -36,6 +36,8 @@ import TareasAdmin from '../components/TareasAdmin.jsx';
 import Perfilusuarios from '../pages/Perfilusuarios_Page.jsx';
 import DashboardHoney from '../components/DashboardHoney.jsx';
 import SidebarEconomia from '../components/SidebarEconomia.jsx';
+import AddMembresiaPremium_page from '../pages/AddMembresiaPremium_page.jsx';
+import AddMembresiaVip_page from '../pages/AddMembresiaVip_page.jsx';
 
 function Routing() {
 
@@ -55,23 +57,12 @@ function Routing() {
                         <Route path="/Carrito" element={<Carrito_Compras_Page/>}/>{/* Carrito*/}
 
                         <Route path="/AddStandard" element={<AddMembreStandard_page/>}/>{/*MEMBRESIA*/}
-                        <Route path="/AddMembresiaPremium" element={<AddMembresiaPreMIUM/>}/>{/* HOMEPAGE */}
-                        <Route path="/AddVip" element={<AddMembresiaVip/>}/>{/* HOMEPAGE */}
+                        <Route path="/AddMembresiaPremium" element={<AddMembresiaPremium_page/>}/>{/* HOMEPAGE */}
+                        <Route path="/AddVip" element={<AddMembresiaVip_page/>}/>{/* HOMEPAGE */}
 
                         <Route path="/Psicologia" element={<Psicologica_Page/>}/>{/*MEMBRESIA*/}
                         <Route path="/PerfilUsuarios" element={<Perfilusuarios/>}/>{/*MEMBRESIA*/}
 
-                        {/* <Route path="/admins" element={<Admin_page/>}>
-                            <Route path="AdminHome" element={<AdminHome/>}/>
-                            <Route path="TareasAdmin" element={<TareasAdmin/>}/>
-                            <Route path="Gestion_usuarios" element={<Gestion_Usuarios/>}/>
-                            <Route path="Gestion_Admins" element={<Gestion_Admins/>}/>
-                            <Route path="Gestion_empleados" element={<Gestion_Empleados/>}/>
-                            <Route path="Gestion_Membresias" element={<Gestion_Membresias/>}/>
-                            <Route path="Gestion_Notificaciones" element={<Gestion_Notificaciones/>}/>
-                            <Route path="Gestion_Ventas" element={<Gestion_Ventas/>}/>
-                            <Route path="DashboardHoney" element={<DashboardHoney/>}/>
-                        </Route> */}
                         <Route path="/admins" element={<PrivateRoutes><Admin_page/></PrivateRoutes>}>
                             <Route path="AdminHome" element={<AdminHome/>} />
                             <Route path="TareasAdmin" element={<TareasAdmin/>} />

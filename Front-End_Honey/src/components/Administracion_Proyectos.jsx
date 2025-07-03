@@ -1,126 +1,142 @@
-import React from 'react'
+import React, { useState } from 'react';
+import '../style/AdministracionProyectos.css';
 
 function Administracion_Proyectos() {
+  const [seccionesVisibles, setSeccionesVisibles] = useState({});
+
+  const toggleSeccion = (id) => {
+    setSeccionesVisibles((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const renderBoton = (id, texto) => (
+    <button
+      id={`Btn_Mostrar_Mas_${id}`}
+      onClick={(e) => {
+        if (e.detail === 2) {
+          toggleSeccion(id);
+        } else if (e.detail === 1 && !seccionesVisibles[id]) {
+          toggleSeccion(id);
+        }
+      }}
+    >
+      {seccionesVisibles[id] ? 'Ocultar' : texto}
+    </button>
+  );
+
     return (
-        <div>
-            <div>
-                <h1>Qué es la administración de proyectos</h1>
-                <p>
-                    Es un método para determinar una serie de tareas necesarias para alcanzar un objetivo específico. <br />
-                    Estas tareas incluyen la planificación, la asignación de recursos, los preparativos para la ejecución <br />
-                    del proyecto, el seguimiento y la evaluación. <br />
-                    La administración de proyectos, a menudo también aparece como PM que es la versión abreviada de como se <br />
-                    conoce en inglés: Project Management. <br />
-                    En el mundo del marketing digital, los conceptos generales de la administración de proyectos se utilizan para <br />
-                    coordinar y ejecutar campañas publicitarias, lanzamientos de productos, desarrollo de sitios web y una amplia variedad de iniciativas estratégicas. <br />
-                    Sin embargo, la administración de proyectos va más allá de simplemente llevar un registro de tareas. <br />
-                    Es una disciplina que implica la alineación de los recursos disponibles con los objetivos del proyecto y la gestión de plazos, costes y riesgos de manera eficiente. <br />
-                    Cuando se realiza de manera adecuada, permite a las empresas mantenerse ágiles, cumplir con los plazos y superar la competencia en un entorno digital en constante cambio. 
-                </p>
-            </div>
-            <div>
-                <h1>Objetivos de la administración de proyectos</h1>
-                <p>
-                    Como decía, los conceptos básicos de la administración de proyectos van más allá del hecho de cumplir tareas y fechas límite. <br />
-                    En el ámbito del marketing digital, esta disciplina sirve como una brújula que guía a las empresas hacia la consecución de objetivos generales y específicos, en un <br />
-                    mundo en constante evolución. <br />
-                    Los objetivos de la administración de proyectos son variados, pero todos tienen un denominador común: lograr que los proyectos se ejecuten de manera eficiente y efectiva. <br />
-                    <strong>Aquí te presentamos cuáles son los objetivos principales de la administración de proyectos:</strong>
-                </p>
-                <br />
-                <h2> Cumplir plazos y presupuestos</h2>
-                <p>
-                    Uno de los objetivos principales de la administración de proyectos es asegurarse de que los proyectos se completen en el tiempo previsto y dentro del presupuesto asignado. <br />
-                    En el marketing digital, donde los tiempos son cruciales, este objetivo es esencial para aprovechar oportunidades y mantener la competitividad.
-                </p>
-                <br />
-                <h2>Maximizar la calidad</h2>
-                <p>
-                    <strong>La calidad siempre es un factor fundamental. </strong><br />
-                    La administración de proyectos se enfoca en garantizar que el trabajo realizado cumpla con los estándares de calidad establecidos. Esto impacta en el proceso productivo y asegura <br />
-                    que los resultados sean efectivos y satisfagan las necesidades del público objetivo.
-                </p>
-                <br />
-                <h2>Optimizar los recursos</h2>
-                <p>
-                    En un proyecto los recursos, como el tiempo, el talento y el presupuesto, son limitados. <br />
-                    Un objetivo de la administración de proyectos busca asignar estos recursos de manera eficiente, aprovechando al máximo lo disponible y optimizando también los sistemas de producción.
-                </p>
-                <br />
-                <h2> Minimizar riesgos</h2>
-                <p>
-                    <strong>La incertidumbre suele ser una constante. </strong>
-                    Otro de los principales objetivos de la administración de proyectos se centra en identificar y mitigar los riesgos potenciales. Al anticipar problemas y elaborar un plan de acción, <br />
-                    se reduce la probabilidad de desviaciones significativas.
-                </p>
-                <br />
-                <h2>Alcanzar objetivos estratégicos</h2>
-                <p>
-                    Cada proyecto debe contribuir a su vez a los objetivos estratégicos de la empresa. 
-                    La administración de proyectos garantiza que cada proyecto esté alineado con la visión general y las metas de la organización. Por ejemplo, que los objetivos de <br />
-                    marketing estén definidos y sean alcanzables.
-                </p>
-                <br />
-                <h2>Aprender y mejorar</h2>
-                <p>
-                    Otro objetivo de la administración de proyectos implica la revisión constante de lo que se hizo bien y lo que se puede mejorar. <br />
-                    Este aprendizaje continuo permite a las empresas encontrar oportunidades, adaptarse y evolucionar en un entorno digital en constante cambio.
-                </p>
-            </div>
-            <div>
+        <div className="Cont_Padre_Proyectos">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div className="proyectos-wrapper">
+                
+                <div className="Cont_Derecho_Proyectos" id="objetivos-proyectos">
+                    <div>
+                        
+                    </div>
+                    <div className="HeaderProyectos">
+                        <h1 className="TitulosSeccionProyectos">Qué es la administración de proyectos</h1>
+                    </div>
+                    <div className="Cont_Principal_Proyectos">
+                        <p>
+                            Es un método para determinar una serie de tareas necesarias para alcanzar un objetivo específico. <br />
+                            Estas tareas incluyen la planificación, la asignación de recursos, los preparativos para la ejecución <br />
+                            del proyecto, el seguimiento y la evaluación. <br />
+                            La administración de proyectos, a menudo también aparece como PM que es la versión abreviada de como se <br />
+                            conoce en inglés: Project Management. <br />
+                            En el mundo del marketing digital, los conceptos generales de la administración de proyectos se utilizan para <br />
+                            coordinar y ejecutar campañas publicitarias, lanzamientos de productos, desarrollo de sitios web y una amplia variedad de iniciativas estratégicas. <br />
+                        </p>
+                        {renderBoton('Intro_Proyectos', 'Mostrar más')}
+                        {seccionesVisibles['Intro_Proyectos'] && (
+                            <div id="Cont_desple_Intro_Proyectos">
+                                <p>
+                                Sin embargo, la administración de proyectos va más allá de simplemente llevar un registro de tareas. <br />
+                                Es una disciplina que implica la alineación de los recursos disponibles con los objetivos del proyecto y la gestión de plazos, costes y riesgos de manera eficiente. <br />
+                                Cuando se realiza de manera adecuada, permite a las empresas mantenerse ágiles, cumplir con los plazos y superar la competencia en un entorno digital en constante cambio.
+                                </p>
+                            </div>
+                        )}
+                        
+                    </div>
+                </div>
+
+                <div className="Cont_Izquierdos_Proyectos" id="intro-proyectos">
+                    <h1 className="TitulosSeccionProyectos">Objetivos de la administración de proyectos</h1>
+                    <p>
+                        Como decía, los conceptos básicos de la administración de proyectos van más allá del hecho de cumplir tareas y fechas límite. <br />
+                        En el ámbito del marketing digital, esta disciplina sirve como una brújula que guía a las empresas hacia la consecución de objetivos generales y específicos, en un <br />
+                        mundo en constante evolución.
+                    </p>
+                    {renderBoton('Objetivos_Proyectos', 'Mostrar más')}
+                    {seccionesVisibles['Objetivos_Proyectos'] && (
+                        <div id="Cont_desple_Objetivos_Proyectos">
+                            <p>
+                                Los objetivos de la administración de proyectos son variados, pero todos tienen un denominador común: lograr que los proyectos se ejecuten de manera eficiente y efectiva. <br />
+                                <strong>Aquí te presentamos cuáles son los objetivos principales de la administración de proyectos:</strong>
+                            </p>
+                            <h2>Cumplir plazos y presupuestos</h2>
+                            <p>Uno de los objetivos principales de la administración de proyectos es asegurarse de que los proyectos se completen en el tiempo previsto y dentro del presupuesto asignado.</p>
+
+                            <h2>Maximizar la calidad</h2>
+                            <p>La calidad siempre es un factor fundamental. La administración de proyectos se enfoca en garantizar estándares altos y resultados satisfactorios.</p>
+
+                            <h2>Optimizar los recursos</h2>
+                            <p>Asignar recursos como tiempo, talento y presupuesto de forma eficiente.</p>
+
+                            <h2>Minimizar riesgos</h2>
+                            <p>Identificar y mitigar riesgos potenciales para evitar desviaciones.</p>
+
+                            <h2>Alcanzar objetivos estratégicos</h2>
+                            <p>Garantizar que cada proyecto aporte a la visión y metas de la organización.</p>
+
+                            <h2>Aprender y mejorar</h2>
+                            <p>Revisar lo aprendido, optimizar procesos y adaptarse a nuevos retos.</p>
+                        </div>
+                    )}
+                </div>
+
+                <div className="Cont_Derecho_Proyectos" id="objetivos-proyectos">
                 <h1>Las 6 fases de la administración de proyectos</h1>
                 <p>
                     La administración de proyectos se rige por un conjunto de fases bien definidas, cada una con su importancia y tareas específicas. <br />
-                    Estas etapas proporcionan una estructura sólida que garantiza que un proyecto se desarrolle con eficiencia y se logren los objetivos deseados. <br />
-                    La administración de proyectos implica varias fases o etapas, veamos cuáles son en orden. <br />
+                    Estas etapas proporcionan una estructura sólida que garantiza que un proyecto se desarrolle con eficiencia y se logren los objetivos deseados.
                 </p>
-                <br />
-                <h3>1. Inicio del proyecto</h3>
-                <p>
-                    Como primera fase de la administración del proyecto, sirve para definir el alcance del mismo. Se identifican los objetivos y se establece un plan inicial. 
-                    También se forman equipos, se asignan roles y se elabora una breve descripción del proyecto.
-                </p>
-                <br />
-                <h3>2. Planificación</h3>
-                <p>
-                    Seguir un plan de administración del proyecto es crucial. <br />
-                    Aquí se elabora un plan detallado que incluye el cronograma, el presupuesto, los recursos necesarios y los indicadores clave de rendimiento (KPIs). Además, <br />
-                    se identifican posibles riesgos y se desarrollan estrategias para gestionarlos.
-                </p>
-                <br />
-                <h3>3. Ejecución</h3>
-                <p>
-                    En esta fase de la administración de proyectos, el proyecto cobra vida. <br />
-                    Los equipos trabajan en las tareas asignadas y se sigue el plan cuidadosamente. La comunicación efectiva es esencial para mantener a todos los miembros <br />
-                    del equipo en la misma página.
-                </p>
-                <br />
-                <h3>4. Seguimiento y control</h3>
-                <p>
-                    El monitoreo constante es crucial. Dentro de los elementos de la administración de proyectos es clave. <br />
-                    Utiliza técnicas de recolección de datos para comparar los resultados con el plan original y se toman medidas para abordar cualquier desviación. Esto garantiza <br />
-                    que el proyecto se mantenga en la dirección correcta y se cumplan los plazos y el presupuesto.
-                </p>
-                <br />
-                <h3>5. Cierre del proyecto</h3>
-                <p>
-                    Al concluir el proyecto, se evalúa su desempeño y se verifica si se cumplieron los objetivos. 
-                    Se documenta lo aprendido durante el proceso para futuros proyectos. 
-                    Además, se realiza una revisión final y se entregan los resultados al cliente o equipo de dirección.
-                </p>
-                <br />
-                <h3>6. Evaluación</h3>
-                <p>
-                    Aunque no siempre se considera una fase formal, la evaluación posterior es esencial. <br />
-                    Para concluir las fases de la administración de proyectos, aquí se analizan los resultados a largo plazo del proyecto y se evalúa su impacto en el negocio. <br />
-                    Este análisis permite extraer lecciones valiosas para proyectos futuros.<br />
-                    Estas fases de la administración de proyectos son la columna vertebral del mismo.<br />
-                    Cada una de ellas cumple una función específica y contribuye al éxito general del proyecto. Al seguir este enfoque metodológico, las empresas pueden maximizar <br />
-                    la eficiencia, minimizar los riesgos y asegurarse de que sus proyectos se alineen con sus objetivos estratégicos.
-                </p>
+                {renderBoton('Fases_Proyectos', 'Mostrar más')}
+                {seccionesVisibles['Fases_Proyectos'] && (
+                    <div id="Cont_desple_Fases_Proyectos">
+                    <h3>1. Inicio del proyecto</h3>
+                    <p>Definir el alcance, establecer equipos, roles y plan inicial.</p>
+
+                    <h3>2. Planificación</h3>
+                    <p>Plan detallado con cronograma, presupuesto, recursos y KPIs.</p>
+
+                    <h3>3. Ejecución</h3>
+                    <p>Trabajo de equipos, tareas asignadas y comunicación efectiva.</p>
+
+                    <h3>4. Seguimiento y control</h3>
+                    <p>Monitoreo constante, comparación con el plan y medidas correctivas.</p>
+
+                    <h3>5. Cierre del proyecto</h3>
+                    <p>Evaluación del desempeño, documentación de aprendizajes y entrega de resultados.</p>
+
+                    <h3>6. Evaluación</h3>
+                    <p>Análisis del impacto y lecciones para proyectos futuros.</p>
+                    </div>
+                )}
+                </div>
+
             </div>
         </div>
-    )
+    );
 }
 
-export default Administracion_Proyectos
+export default Administracion_Proyectos;
