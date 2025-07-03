@@ -4,7 +4,7 @@ import '../style/FooterHoney.css';
 
 function FooterHoneyComponent() {
   return (
-    <footer className='footer-container'>
+    <footer className='footer-container-honey'>
       <div className='footer-section'>
         <h3>Contáctanos</h3>
         <p>Tel. 87409661</p>
