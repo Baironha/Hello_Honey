@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import '../Style/HoneyAsistenteStyle.css'
+import '../style/HoneyAsistenteStyle.css'
 import Logo from '../img/HoneyLogo.png'
 
 function HoneyAsistente() {
@@ -11,7 +11,7 @@ function HoneyAsistente() {
     }
 
     return (
-        <div id='Cont-Honey-Asis'>
+        <div id='Cont-Honey-Asistente'>
             <h1 className='T1HoneyAsisten'>UN DÍA MUY OCUPADO?</h1>
             <p className='TextoHoneyAsistente'>
                 Nos importa tu salud y Honey está para ti. <br />
