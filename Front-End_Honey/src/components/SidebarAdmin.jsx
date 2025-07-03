@@ -24,9 +24,8 @@ function SidebarAdmin() {
             <li onClick={() => navigate("Gestion_usuarios")}>Usuarios</li>
             <li onClick={() => navigate("Gestion_empleados")}>Empleados</li>
             <li onClick={() => navigate("Gestion_Admins")}>Administradores</li>
-            <li onClick={() => navigate("/ventas")}>Ventas</li>
             <li onClick={() => navigate("DashboardHoney")}>IA Control</li>
-            <li><Link to="/" className="registro-to-link"></Link></li>
+            <li><Link to="/" className="registro-to-link">Homepage</Link></li>
             <li><BTN_logout/></li>
           </ul>
           

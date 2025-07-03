@@ -114,16 +114,6 @@ const AdmininHome = () => {
             </tbody>
           </table>
         </div>
-
-        <div className="card">
-          <h2>Ventas Actuales</h2>
-          <div className="dashboard-placeholder">[Gráfico de ventas actuales]</div>
-        </div>
-
-        <div className="card">
-          <h2>Predicción de Ventas Futuras</h2>
-          <div className="dashboard-placeholder">[Gráfico de predicciones]</div>
-        </div>
       </div>
     </div>
   );
