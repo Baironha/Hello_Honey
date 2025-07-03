@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+/* NO ES ERROR, SOLO ME ABVIERTE DE EL USO DE LIRERIA */
 import "../style/EconomiaBodyStyle.css";
 
 function EconomiaBodyComponent() {
