@@ -68,7 +68,7 @@ function ChatHoneyComponent() {
     setInput("");
   };
 
-  // ✅ Inicia grabación de audio
+  //  Inicia grabación de audio
   const startRecording = async () => {
     try {
       setRecording(true);
@@ -88,7 +88,7 @@ function ChatHoneyComponent() {
         const url = URL.createObjectURL(blob);
         console.log("🎙️ Audio grabado:", url);
 
-        // ✅ Muestra en UI mensaje "usuario envió audio"
+        //Muestra en UI mensaje "usuario envió audio"
         setMessages((prev) => [
           ...prev,
           { type: "audio", content: url, role: "user" },
@@ -125,7 +125,7 @@ function ChatHoneyComponent() {
     }
   };
 
-  // ✅ Detiene grabación y envía
+  // Detiene grabación y envía
   const stopRecording = () => {
     setRecording(false);
     if (mediaRecorderRef.current) {
@@ -141,18 +141,10 @@ function ChatHoneyComponent() {
     <div className={`main-container ${darkMode ? "dark" : ""}`}>
       <aside className="sidebar">
         <button className="new-chat-button" onClick={handleGoHome}>
-          🏠 Ir a Home
+          Ir a Home
         </button>
         <button className="new-chat-button">Nuevo Chat</button>
         <input type="text" placeholder="Buscar chat" />
-        <label>Modelo:</label>
-        <select>
-          <option>Psicologia</option>
-          <option>Economia</option>
-        </select>
-        <div className="sidebar-section">Historial de chats</div>
-        <div className="sidebar-section">Documentos subidos</div>
-        <div className="sidebar-section">Imágenes subidas</div>
         <label>Contactanos:</label>
         <select>
           <option>contacto1@gmail.com</option>

@@ -69,13 +69,6 @@ function LoginComponent() {
           } if (rol === "usuarios"){
             navigate("/");
           }
-          else {
-            Swal.fire({
-              icon: "error",
-              title: "Rol desconocido",
-              text: "No se pudo redirigir porque el rol no es válido.",
-            });
-          }
         });
 
         // Limpieza de campos

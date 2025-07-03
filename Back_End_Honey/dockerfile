@@ -1,0 +1,23 @@
+# Usa Ubuntu base
+FROM ubuntu:22.04
+
+# 1️⃣ Instala dependencias base
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip curl git
+
+# 2️⃣ Instala Ollama (Mistral)
+RUN curl -fsSL https://ollama.com/install.sh | sh
+
+# 3️⃣ Instala requirements Python
+WORKDIR /app
+COPY ./requirements.txt /app/requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# 4️⃣ Copia tu proyecto completo
+COPY . /app
+
+# 5️⃣ Expone puertos
+EXPOSE 8000 11434
+
+# 6️⃣ Arranca Ollama + Gunicorn en paralelo
+CMD ollama serve & gunicorn back_end_honey.wsgi:application --bind 0.0.0.0:8000

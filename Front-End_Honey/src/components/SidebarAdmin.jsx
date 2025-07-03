@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import BTN_logout from './BTN_logout';
 import FooterHoneyComponent from './FooterHoneyComponent';
 
+import { Link } from "react-router-dom";
 
 
 function SidebarAdmin() {
@@ -25,8 +26,10 @@ function SidebarAdmin() {
             <li onClick={() => navigate("Gestion_Admins")}>Administradores</li>
             <li onClick={() => navigate("/ventas")}>Ventas</li>
             <li onClick={() => navigate("DashboardHoney")}>IA Control</li>
+            <li><Link to="/" className="registro-to-link"></Link></li>
             <li><BTN_logout/></li>
           </ul>
+          
         </aside>
       </div>
       <div>
