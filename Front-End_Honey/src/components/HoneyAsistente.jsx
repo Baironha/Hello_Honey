@@ -11,7 +11,7 @@ function HoneyAsistente() {
     }
 
     return (
-        <div id='ContHoneyAsis'>
+        <div id='Cont-Honey-Asis'>
             <h1 className='T1HoneyAsisten'>UN DÍA MUY OCUPADO?</h1>
             <p className='TextoHoneyAsistente'>
                 Nos importa tu salud y Honey está para ti. <br />
