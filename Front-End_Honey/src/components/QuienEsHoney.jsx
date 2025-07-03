@@ -101,7 +101,7 @@ export default QuienEsHoney;
 
 
 import React, { useState, useEffect } from 'react';
-import '../Style/QuienEsHoney.css';
+import '../style/QuienEsHoney.css';
 
 import Planificacion_Proyectos from '../img/PLA_NIFICACION_3.jpg';
 import Analisis_Mercado from '../img/ANAL_ISISI_MERCADO_3.jpg';
@@ -136,7 +136,7 @@ const Slideshow = () => {
   }, []);
 
   return (
-    <div className='Container-Carrusel'>
+    <div className='Container-Carrusel-honey'>
       <div className="slideshow-box">
         {slides.map((slide, index) => (
           <div
